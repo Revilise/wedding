@@ -1,0 +1,26 @@
+/**
+ * Адаптивный размер шрифта (fluid type).
+ * Перед @apply задайте переменные:
+ *   --fluid-font-min     — минимальный font-size (например 1rem)
+ *   --fluid-font-max     — максимальный font-size (например 1.5rem)
+ *   --fluid-font-min-vw  — ширина viewport «от» (по умолчанию 320px)
+ *   --fluid-font-max-vw  — ширина viewport «до» (по умолчанию 1200px)
+ *
+ * Пример:
+ *   .title {
+ *     --fluid-font-min: 1rem;
+ *     --fluid-font-max: 2rem;
+ *     @apply --fluid-type;
+ *   }
+ */
+@mixin --fluid-font() {
+  font-size: clamp(
+    var(--fluid-font-min, 2rem),
+    calc(
+      var(--fluid-font-min, 2rem)
+      + (var(--fluid-font-max, 2.5rem) - var(--fluid-font-min, 2rem))
+      * ((100vw - var(--fluid-min-vw, 320px)) / (var(--fluid-max-vw, 1200px) - var(--fluid-min-vw, 320px)))
+    ),
+    var(--fluid-font-max, 2.5rem)
+  );
+}

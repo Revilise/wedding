@@ -1,0 +1,108 @@
+.grid {
+  --gridTemplColumns: auto;
+  --gridTemplRows: auto;
+  --gridGap: 3rem;
+  
+  display: grid;
+  grid-template-columns: var(--gridTemplColumns);
+  grid-template-rows: var(--gridTemplRows);
+  gap: var(--gridGap);
+  
+  @media (--mobile) {
+    --gridTemplColumns: 1fr !important;
+  }
+  
+  &--isVariant1 {
+    --gridTemplColumns: 1fr 38rem;
+  }
+  
+  &--isVariant2 {
+    --gridTemplColumns: 38rem 1fr;
+  }
+  
+  &--isAutoMin {
+    --gridTemplColumns: 1fr min-content !important;
+  }
+  
+  &--isMinAuto {
+    --gridTemplColumns: min-content 1fr !important;
+  }
+  
+  &--is2Columns {
+    --gridTemplColumns: repeat(2, 1fr) !important;
+  }
+  
+  &--isOffset {
+    --gridTemplColumns: repeat(3, 1fr);
+    position: relative;
+    
+    grid-template-areas:
+        "area-1 area-1 area-2"
+        "area-1 area-1 area-3";
+    
+    @media (--tablet) {
+      --gridTemplColumns: 1fr;
+      grid-template-areas: "area-1" "area-3" "area-2";
+    }
+  }
+  
+  &--isPalette {
+    --gridTemplColumns: repeat(3, 1fr);
+    --gridTemplRows: repeat(2, 22.5rem);
+    grid-auto-rows: 22.5rem;
+    
+    @media (--mobile) {
+      --gridTemplRows: repeat(2, 7rem);
+      grid-auto-rows: 7rem;
+    }
+  }
+  
+  &__item {
+    &--isRowStart1 {
+      grid-row-start: 1;
+    }
+    
+    &--isRowEnd3 {
+      grid-row-end: 3;
+    }
+    
+    &--isCol2 {
+      grid-column: 2;
+    }
+    
+    &--isColSpan6 {
+      grid-column: span 6;
+    }
+    
+    &--isColSpan3 {
+      grid-column: span 3;
+    }
+    
+    &--isContent {
+      padding-block: 10rem;
+      padding-inline: 8rem;
+    }
+    
+    &--isBorderRad32 {
+      border-radius: 4rem;
+    }
+    
+    &--isPaletteColor {
+      padding: 2rem;
+      border-radius: 2rem;
+      display: flex;
+      place-items: end;
+      place-content: end;
+      
+      span {
+        filter: brightness(.5);
+      }
+    }
+  }
+}
+
+@for $i from 1 to 4 {
+  .grid__item--isArea-$i {
+    grid-area: area-$i;
+  }
+}

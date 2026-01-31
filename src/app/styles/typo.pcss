@@ -1,0 +1,139 @@
+:root {
+  --font-angst: "angst", sans-serif;
+  --font-anonymous: "anonymous", sans-serif;
+  --font-source-serif: "source-serif", sans-serif;
+  
+  --fluid-margin: calc((100% - var(--viewport-width)) / 2);
+  --background-color: var(--colorWhite);
+  --viewport-padding: 4rem;
+  --viewport-width: 100rem;
+  
+  --fluid-min-vw: 320px;
+  --fluid-max-vw: 1280px;
+}
+
+@font-face {
+  src: url("../../../public/fonts/Angst-Bold.otf") format("opentype");
+  font-family: "angst";
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../../../public/fonts/AnonymousPro-Bold.ttf") format("truetype");
+  font-family: "anonymous";
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../../../public/fonts/AnonymousPro-Regular.ttf") format("truetype");
+  font-family: "anonymous";
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../../../public/fonts/SourceSerifPro-Bold.ttf") format("truetype");
+  font-family: "source-serif";
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../../../public/fonts/SourceSerifPro-Regular.ttf") format("truetype");
+  font-family: "source-serif";
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  font-size: 8px;
+}
+
+body {
+  font-size: 2rem;
+  background: var(--background-color);
+  font-family: var(--font-anonymous);
+  line-height: 1.4;
+  
+  @media (--mobile) {
+    --viewport-padding: 2rem;
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  font-family: var(--font-angst);
+  font-size: 112px;
+  line-height: 1;
+  
+  @media (--mobile) {
+    font-size: 54px;
+  }
+  
+  @media (--smallMobile) {
+    font-size: 48px;
+  }
+}
+
+h2, .h2 {
+  font-family: var(--font-source-serif);
+  font-size: 75px;
+  line-height: 1;
+  
+  @media (--mobile) {
+    font-size: 54px;
+  }
+  
+  @media (--smallMobile) {
+    font-size: 54px;
+  }
+}
+
+h3, .h3 {
+  font-size: 50px;
+  line-height: 62px;
+  font-weight: bold;
+  font-family: var(--font-source-serif);
+}
+
+h4, .h4 {
+  font-size: 40px;
+  line-height: 50px;
+  font-family: var(--font-source-serif);
+  font-weight: normal;
+}
+
+mark {
+  background: var(--colorCoolHazel);
+}
+
+.text {
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.text-2 {
+  font-size: 22px;
+  line-height: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.colorWhite {
+  color: var(--colorWhite)
+}
+
+.colorVintageCoral {
+  color: var(--colorVintageCoral);
+}

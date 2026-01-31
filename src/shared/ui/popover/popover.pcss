@@ -1,0 +1,63 @@
+.popover {
+  --popoverWidth: 100%;
+  --popoverHeight: 100%;
+  --popoverBg: transparent;
+  --popoverPadX: 4rem;
+  --popoverPadY: 4rem;
+  
+  /* wrapper */
+  --popoverWrapperBg: var(--colorWhite);
+  --popoverWrapperWidth: 100%;
+  --popoverWrapperMaxWidth: 960px;
+  --popoverWrapperHeight: min-content;
+  --popoverWrapperMaxHeight: 100%;
+  --popoverWrapperPadX: 4rem;
+  --popoverWrapperPadY: 4rem;
+  --popoverWrapperBorderRad: 3rem;
+  
+  position: fixed;
+  width: var(--popoverWidth);
+  height: var(--popoverHeight);
+  background-color: var(--popoverBg);
+  padding-inline: var(--popoverPadX);
+  padding-block: var(--popoverPadY);
+  transition: .3s background-color;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  inset: 0;
+  z-index: 100;
+  
+  .btn {
+    &--isClosePopover {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  
+  &__wrapper {
+    width: var(--popoverWrapperWidth);
+    max-width: var(--popoverWrapperMaxWidth);
+    height: var(--popoverWrapperHeight);
+    max-height: var(--popoverWrapperMaxHeight);
+    background: var(--popoverWrapperBg);
+    padding-inline: var(--popoverWrapperPadX);
+    padding-block: var(--popoverWrapperPadX);
+    border-radius: var(--popoverWrapperBorderRad);
+    position: relative;
+  }
+  
+  @media (--mobile) {
+    --popoverPadX: 1rem;
+    --popoverPadY: 1rem;
+    --popoverWrapperHeight: 100%;
+  }
+}
+
+.popover-overlay {
+  background: var(--colorBlackout30);
+  z-index: 99;
+  position: fixed;
+  inset: 0;
+}

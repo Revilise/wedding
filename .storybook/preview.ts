@@ -1,4 +1,5 @@
 import type { Preview } from 'storybook-react-rsbuild'
+import "../src/app/styles/index.pcss";
 
 const preview: Preview = {
   parameters: {

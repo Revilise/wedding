@@ -1,0 +1,19 @@
+.icon {
+  --iconSize: 2rem;
+  
+  &__preview {
+    display: block;
+    width: var(--iconSize);
+    height: var(--iconSize);
+    
+    use {
+      width: inherit;
+      height: inherit;
+    }
+  }
+  
+  &--size-120 {
+    --iconSize: 15rem;
+  }
+}
+

@@ -1,0 +1,40 @@
+.header {
+  --headerBg: rgba(255, 255, 255, 0.5);
+  --headerColor: var(--colorCabbagePont);
+  --headerJustifyContent: space-between;
+  --headerPadX: var(--viewport-padding);
+  --headerPadY: 2rem;
+  /* wrapper */
+  /* info */
+  --headerInfoDisplay: flex;
+  
+  background: var(--headerBg);
+  padding-block: var(--headerPadY);
+  padding-inline: var(--headerPadX);
+  backdrop-filter: blur(3px);
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  
+  &__wrapper {
+    justify-content: var(--headerJustifyContent);
+    max-width: var(--fluid-max-vw);
+    margin-inline: auto;
+    display: flex;
+  }
+  
+  &__info {
+    display: var(--headerInfoDisplay);
+    color: var(--headerColor);
+    gap: 24px;
+    align-items: center;
+  }
+  
+  @media (--tablet) {
+    --headerInfoDisplay: none;
+    --headerJustifyContent: center;
+  }
+}

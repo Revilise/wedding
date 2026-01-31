@@ -1,0 +1,64 @@
+.section {
+  --sectionBg: transparent;
+  --sectionPadY: 0;
+  --sectionPadX: var(--viewport-padding);
+  --sectionMarY: 0 10rem;
+  
+  --sectionWrapperMaxWidth: var(--viewport-width);
+  --sectionWrapperPadX: 0;
+  
+  background: var(--sectionBg);
+  padding-inline: var(--sectionPadX);
+  padding-block: var(--sectionPadY);
+  margin-block: var(--sectionMarY);
+  
+  &__wrapper {
+    max-width: var(--sectionWrapperMaxWidth);
+    padding-inline: var(--sectionWrapperPadX);
+    margin-inline: auto;
+  }
+  
+  &__heading {
+    max-width: var(--sectionHeaderMaxWidth);
+    margin-inline: auto;
+  }
+  
+  @media (--mobile) {
+    --sectionMarY: 0 8rem;
+    --sectionWrapperPadX: 2rem;
+  }
+  
+  &--isLarge {
+    --sectionWrapperMaxWidth: var(--fluid-max-vw);
+    --sectionWrapperPadX: 0 !important;
+  }
+  
+  &--isFull {
+    --sectionWrapperMaxWidth: 100%;
+    --sectionWrapperPadX: 0 !important;
+    --sectionPadX: 0 !important;
+  }
+  
+  &--isFullBleed {
+    --sectionHeaderMaxWidth: var(--viewport-width);
+    --sectionWrapperMaxWidth: 100%;
+    
+    --sectionPadX: 0;
+    
+    @media (--mobile) {
+      --sectionWrapperPadX: 0
+    }
+    
+    .image {
+      width: 300px;
+    }
+  }
+  
+  &--isSweetGreyBg {
+    --sectionBg: var(--colorSweetGrey30);
+  }
+  
+  &--isWideVerticalPad {
+    --sectionPadY: 10rem;
+  }
+}

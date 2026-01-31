@@ -1,11 +1,12 @@
-import './App.css';
+import "@app/styles/index.pcss";
+import { HomePage } from "./pages/home";
+import {PopoverProvider} from "@ui/popover";
 
 const App = () => {
   return (
-    <div className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-    </div>
+     <PopoverProvider>
+       <HomePage />
+     </PopoverProvider>
   );
 };
 

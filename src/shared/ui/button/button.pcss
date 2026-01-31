@@ -1,0 +1,77 @@
+.btn {
+  --btnPadX: 2rem;
+  --btnPadY: 1.25rem;
+  --btnWidth: auto;
+  --btnBorderRad: 2rem;
+  
+  /* base */
+  --btnCurBg: var(--btnBg);
+  --btnCurBorderColor: transparent;
+  --btnCurColor: var(--colorBlackout);
+  
+  --btnBg: var(--colorAngoraWhite);
+  --btnBorderColor: transparent;
+  --btnColor: var(--colorBlackout);
+  
+  /* :hover */
+  --btnHoverBg: var(--colorSweetGrey);
+  --btnHoverBorderColor: transparent;
+  --btnHoverColor: var(--colorBlackout);
+  
+  /* :active */
+  --btnActiveBg: var(--colorSweetGrey30);
+  --btnActiveBorderColor: transparent;
+  --btnActiveColor: var(--colorBlackout);
+  
+  background: var(--btnCurBg);
+  padding-inline: var(--btnPadX);
+  padding-block: var(--btnPadY);
+  width: var(--btnWidth);
+  border-radius: var(--btnBorderRad);
+  border: var(--btnBorderColor) 1px solid;
+  color: var(--btnCurColor);
+  transition: background-color .2s, color .2s, border-color .2s;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  
+  &:hover, &.isHover, &--isHover {
+    --btnCurBg: var(--btnHoverBg);
+    --btnCurBorderColor: var(--btnHoverBorderColor);
+    --btnCurColor: var(--btnHoverColor);
+  }
+  
+  &:active, &.isActive, &--isActive {
+    --btnActiveBg: var(--btnActiveBg);
+    --btnCurBorderColor: var(--btnActiveBorderColor);
+    --btnCurColor: var(--btnActiveColor);
+  }
+  
+  * {
+    pointer-events: none;
+  }
+  
+  &--isQr {
+    height: fit-content;
+    padding: 2rem;
+    border-radius: 3rem;
+    background-color: var(--colorWhite);
+  }
+  
+  &--isFit {
+    --btnWidth: fit-content;
+  }
+  
+  &--isClosePopover {
+    --btnBg: transparent;
+    --btnHoverBg: transparent;
+    --btnActiveBg: transparent;
+    
+    --btnHoverColor: var(--colorShinyCopper);
+    
+    --btnPadX: 2rem;
+    --btnPadY: 2rem;
+    --btnBorderRad: 100%;
+    aspect-ratio: 1;
+  }
+}

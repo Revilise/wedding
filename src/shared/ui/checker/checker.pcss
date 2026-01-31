@@ -1,0 +1,54 @@
+.checker {
+  --checkerPadX: 1.75rem;
+  --checkerPadY: 1.25rem;
+  --checkerBorderRad: 1.5rem;
+  
+  --checkerCurBg: var(--checkerBg);
+  --checkerCurColor: var(--checkerColor);
+  --checkerCurBorderColor: var(--checkerBorderColor);
+  
+  /* defaults */
+  --checkerBg: var(--colorAngoraWhite);
+  --checkerColor: var(--colorBlackout);
+  --checkerBorderColor: var(--colorAngoraWhite);
+  
+  /* hover */
+  --checkerHoverBg: var(--colorSweetGrey);
+  --checkerHoverColor: var(--colorBlackout);
+  --checkerHoverBorderColor: var(--colorSweetGrey);
+  
+  /* checked */
+  --checkerCheckedBg: var(--colorBlackout);
+  --checkerCheckedColor: var(--colorAngoraWhite);
+  --checkerCheckedBorderColor: var(--colorBlackout);
+  
+  display: block;
+  background: var(--checkerCurBg);
+  color: var(--checkerCurColor);
+  padding-block: var(--checkerPadY);
+  padding-inline: var(--checkerPadX);
+  border-radius: var(--checkerBorderRad);
+  transition: background-color .2s, border-color .2s, color .2s;
+  outline: none;
+  cursor: pointer;
+  
+  * {
+    pointer-events: none;
+  }
+  
+  &:hover {
+    --checkerCurBg: var(--checkerHoverBg);
+    --checkerCurColor: var(--checkerHoverColor);
+    --checkerCurBorderColor: var(--checkerHoverBorderColor);
+  }
+  
+  &:has(:checked) {
+    --checkerCurBg: var(--checkerCheckedBg);
+    --checkerCurColor: var(--checkerCheckedColor);
+    --checkerCurBorderColor: var(--checkerCheckedBorderColor);
+  }
+  
+  &__value {
+    display: none;
+  }
+}

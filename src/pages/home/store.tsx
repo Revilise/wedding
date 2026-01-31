@@ -1,0 +1,170 @@
+import ExampleImage from "@images/banner-flowers.jpg";
+import ExampleImage2 from "@images/image-oranges.jpg";
+import LocationImage from "@images/location.jpg";
+import ManLook1 from "@images/looks/man-1.jpg";
+import ManLook2 from "@images/looks/man-2.jpg";
+import ManLook3 from "@images/looks/man-3.jpg";
+import WomanLook1 from "@images/looks/woman-1.jpg";
+import WomanLook2 from "@images/looks/woman-2.jpg";
+import WomanLook3 from "@images/looks/woman-3.jpg";
+
+import type {IBanner} from "@ui/banner/types.ts";
+import type {SwiperOptions} from "swiper/types";
+
+export const heroSection = {
+  banner: {
+    slides: [{
+      image: {
+        src: ExampleImage as string
+      },
+      title: (
+         <>
+           <div className={"h1 colorWhite"}>Анастасия</div>
+           <div className={"h1 colorWhite"}>&Георгий</div>
+         </>
+      ),
+      description: <span className={"colorWhite text bold"}>Любовь, как выдержанное кьянти - раскрывается со временем, становясь крепче.</span>,
+      corner: {
+        position: "right-bottom",
+        content: (
+           <div className={"text-2 bold align-right colorVintageCoral pt-24 pl-24"}>
+             <div>01.08</div>
+             <div>2026</div>
+             <div>14:00</div>
+           </div>
+        )
+      }
+    }]
+  } satisfies IBanner
+}
+
+export const inviteSection = {
+  heading: "Дорогие родные и близкие!",
+  content: "Приглашаем вас на нашу свадьбу. Будьте с нами, станьте свидетелями этого светлого события, где мы обещаем друг другу вечную поддержку и радость в повседневности.",
+  image: {
+    extraCN: { isFullHeight: true, },
+    src: ExampleImage2 as string,
+  },
+}
+
+export const timePlaceSection = {
+  heading: <>Время &<wbr/>Место</>,
+  info: (
+     <>
+       <div>01.08.2026 в 12:00</div>
+       <div>улица Савушкина, 21 - ресторан "Юность"</div>
+     </>
+  ),
+  image: {
+    extraCN: { isHeight280: true },
+    src: LocationImage as string
+  },
+  extraInfo: (
+     <>
+       <span className={"h4"}>Трансфер</span>
+       <span>Среднее время дороги ~1.5 часа</span>
+     </>
+  )
+}
+
+export const programSection = {
+  heading: "День",
+  content: "Мы подготовили активности для гостей и оставили время на отдых.",
+  program: (
+     <>
+       <span className={"bold"}>Время</span>
+       <span className={"bold"}>Событие</span>
+       <span>10:00</span>
+       <span>Трансфер до места</span>
+       <span>10:00</span>
+       <span>Welcome, сбор гостей</span>
+       <span>13:00</span>
+       <span>Церемония</span>
+       <span>14:00</span>
+       <span>Банкет</span>
+       <span>19:00</span>
+       <span>Торт и танцы</span>
+     </>
+  ),
+  image: {
+    src: ExampleImage2 as string,
+  }
+}
+
+export const giftsSection = {
+  heading: "Подарки",
+  content: (
+     <>
+       <p>Просим не беспокоиться о выборе подарков — будем рады вашему вкладу в конверте, который поможет нам начать
+         семейную жизнь.</p>
+       <p>В welcome-зоне организован лоток с конвертами и канцелярией.</p>
+     </>
+  ),
+  image: {
+    extraCN: {isFullHeight: true,},
+    src: ExampleImage2 as string,
+  },
+}
+
+export const dressCodeSection = {
+  heading: "Дресс-код",
+  subTitle: <>Наша свадьба в<br/>итальянском стиле</>,
+  ladies: {
+    title: "Ladies",
+    content: <>
+     <mark>Пастельные платья</mark>(бежевый, оливковый, лазурный) из шелка или льна длиной миди или макси — это итальянская классика элегантности. Избегайте белого, добавьте наш акцент: яркие шарфы или украшения в цветах свадьбы для личного шарма.
+    </>
+  },
+  gentlemen: {
+    title: "Gentlemen:",
+    content: <>
+      <mark>Льняные или хлопковые костюмы светлых тонов</mark>, рубашки с закатанными рукавами.
+    </>
+  },
+  palette: [
+    { color: "#3E4A34" },
+    { color: "#BBC298" },
+    { color: "#D9B27B" },
+    { color: "#F7B557" },
+    { color: "#688EB3" },
+    { color: "#D2603D" }
+  ]
+}
+
+export const dressExamplesSection = {
+  heading: "бразы для вдохновения",
+  swiperCfg: {
+    slidesPerView: "auto",
+    spaceBetween: 20,
+  } satisfies SwiperOptions,
+  images: [
+    ManLook1,
+    WomanLook1,
+    ManLook2,
+    WomanLook2,
+    ManLook3,
+    WomanLook3,
+  ]
+}
+
+export const communitySection = {
+  heading: "Telegram",
+  qrCode: {
+    link: "https://t.me/+qUT-GT5l6PAzNzEy",
+    name: "qr",
+    extraCN: { "size-120": true }
+  }
+}
+
+export const feedbackSection = {
+  heading: "Анкета",
+  image: ExampleImage2 as string,
+  popoverId: "anketa",
+  content: (
+     <>
+       <p>Мы подготовили для вас пару вопросов, которые помогут нам в организации торжества.</p>
+       <p>Если вы идёте с парой и планируете взять детей информацию о них второй партнёр может не заполнять.</p>
+       <p>Подростки от 16 лет могут заполнять анкету самостоятельно.</p>
+     </>
+  )
+}

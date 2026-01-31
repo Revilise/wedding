@@ -1,0 +1,61 @@
+.banner {
+  --bannerHeight: 58.75rem;
+  /* slide */
+  --bannerSlideBorderRad: 4rem;
+  --bannerSlidePadX: 5%;
+  --bannerSlidePadY: 2%;
+  /* corner */
+  --bannerCornerPad: 0 3rem;
+  
+  border-radius: var(--bannerSlideBorderRad);
+  height: var(--bannerHeight);
+  overflow: hidden;
+  
+  &__slide {
+    
+    height: var(--bannerHeight) !important;
+
+    position: relative;
+    
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  &__slideContent {
+    padding-inline: var(--bannerSlidePadX);
+    padding-block: var(--bannerSlidePadY);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    inset: 0;
+  }
+  
+  &__corner {
+    background-color: var(--background-color);
+    mask-image: url("../../../../public/masks/mask-1.svg");
+    mask-repeat: no-repeat;
+    mask-position: right;
+    position: absolute;
+    overflow: hidden;
+    mask-size: cover;
+    padding: var(--bannerCornerPad);
+    aspect-ratio: 1;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    right: -1px;
+    bottom: -1px;
+  }
+  
+  @media (--tablet) {
+    --bannerHeight: 70vh
+  }
+  
+  @media (--smallMobile) {
+    --bannerHeight: 80vh
+  }
+}
