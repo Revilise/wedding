@@ -1,3 +1,5 @@
+"use server"
+
 import type { FC } from "react";
 import type {ILayout} from "./types.ts";
 import {Header} from "@ui/header";

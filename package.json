@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm run build:sprite && rsbuild build",
     "build:sprite": "node scripts/build-icon-sprite.js",
-    "dev": "npm run build:sprite && rsbuild dev --open",
+    "dev": "npm run build:sprite && node --experimental-vm-modules dev.server.js",
+    "start": "node ./prod.server.js",
     "format": "prettier --write .",
     "lint": "eslint .",
     "preview": "rsbuild preview",
@@ -14,6 +15,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@openagenda/react-portal-ssr": "^1.0.3",
+    "express": "^5.2.1",
     "motion": "^12.34.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

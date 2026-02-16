@@ -4,14 +4,15 @@ import type {BemFc} from "@lib/bem/types.ts";
 
 export interface IForm extends IComponent {
   children?: ReactNode;
+  url: string,
 }
 
 export interface IFormStep extends IComponent {
-  id?: number,
+  id?: string | "error" | "success",
   children?: ReactNode;
 }
 
 export interface IFormContext {
   bem: BemFc,
-  activeStepId?: number;
+  activeStepId?: string | "error" | "success";
 }

@@ -15,12 +15,14 @@
     padding-block: var(--inputPadY);
     padding-inline: var(--inputPadX);
     border-radius: var(--inputBorderRad);
-    transition: scale .2s;
+    font-family: var(--font-anonymous);
+    transition: all .2s;
     outline: none;
     font-weight: bold;
     
     &:focus {
       scale: 1.02;
+      --inputBorderColor: var(--colorSweetGrey);
     }
   }
 }

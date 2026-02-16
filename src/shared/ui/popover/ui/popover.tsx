@@ -1,3 +1,5 @@
+"use client"
+
 import {type FC, useEffect, useState} from "react";
 import { AnimatePresence, motion } from "motion/react"
 import type {IPopover} from "../config/types.ts";
@@ -6,17 +8,16 @@ import PopoverObserver from "../model/observer.ts";
 import {createPortal} from "react-dom";
 import {Button} from "@ui/button";
 import {Icon} from "@ui/icon";
-import {POPOVER} from "@shared/const";
+import { POPOVER } from "@shared/const";
 
 export const Popover: FC<IPopover> = ({
   extraCN = {},
   utilCN,
-  isOpen: defaultIsOpen = false,
   id,
   children,
 }) => {
   const { bem } = useBEM("popover");
-  const [isOpen, setIsOpen] = useState(defaultIsOpen);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     PopoverObserver.subscribe(id, (value: boolean) =>  setIsOpen(value));
@@ -52,5 +53,5 @@ export const Popover: FC<IPopover> = ({
          </motion.div>
        </>
     )}
-  </AnimatePresence>, document.body);
+  </AnimatePresence>, document.getElementById("portal") || document.body);
 }

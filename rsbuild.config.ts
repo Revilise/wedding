@@ -9,6 +9,52 @@ const root = path.resolve(__dirname, 'src');
 // Docs: https://rsbuild.rs/config/
 export default defineConfig({
   plugins: [pluginReact()],
+  output: {
+    manifest: true,
+  },
+  environments: {
+    web: {
+      source: {
+        entry: {
+          index: "./src/index.client.jsx"
+        },
+      },
+      output: {
+        target: "web",
+        distPath: "dist/client",
+      },
+      html: { template: "./src/index.html" }
+    },
+    node: {
+      source: {
+        entry: {
+          index: "./src/index.server.jsx"
+        }
+      },
+      output: {
+        target: "node",
+        distPath: "dist/server",
+        module: true,
+        manifest: {
+          generate: ({ files, manifestData  }) => {
+            const indexEntry = files.find(f =>
+               /^index\..*\.js$/.test(f.path.replace(/^.*\//, ''))
+            )?.path || "";
+            return {
+              ...manifestData,
+              entries: {
+                ...manifestData.entries,
+                index: {
+                  ...manifestData.entries.index,
+                  entry: indexEntry
+                },
+              }
+            }
+          }
+        }
+      },
+    }
+  },
   resolve: {
     alias: {
       '@app': path.join(root, 'app'),

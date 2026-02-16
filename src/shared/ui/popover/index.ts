@@ -1,3 +1,3 @@
 import "./popover.pcss";
-export { Popover } from "./ui/popover.tsx";
 export { Provider as PopoverProvider } from "./model/provider.ts";
+export { Popover } from "./ui/index.tsx";

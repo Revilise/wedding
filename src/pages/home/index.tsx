@@ -1,3 +1,5 @@
+"use server"
+
 import {Layout} from "@ui/layout";
 import {Section} from "@ui/section";
 import {Banner} from "@ui/banner";
@@ -18,6 +20,7 @@ import {Button} from "@ui/button";
 import {FeedbackForm} from "@widgets/feedbackForm";
 import {Popover} from "@ui/popover";
 import {POPOVER} from "@shared/const";
+
 export const HomePage = () => {
   return (
      <Layout>
@@ -100,7 +103,7 @@ export const HomePage = () => {
        </Section>
 
        <Section>
-       <Grid extraCN={{ isVariant2: true }}>
+         <Grid extraCN={{ isVariant2: true }}>
            <GridItem>
              <Image {...giftsSection.image} />
            </GridItem>
@@ -191,7 +194,7 @@ export const HomePage = () => {
                Пройти опрос
              </Button>
 
-             <Popover id={feedbackSection.popoverId} isOpen={true}>
+             <Popover id={feedbackSection.popoverId}>
                <FeedbackForm/>
              </Popover>
            </GridItem>

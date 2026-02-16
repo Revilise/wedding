@@ -1,3 +1,5 @@
+"use client"
+
 import { type FC, useCallback, useEffect } from "react";
 import type { IPopoverProvider } from "../config/types.ts";
 import { POPOVER } from "@shared/const";
