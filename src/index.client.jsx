@@ -11,6 +11,11 @@ if (!container) {
 
 prepareClientPortals()
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = await import("./app/msw/browser.js");
+  worker.start();
+}
+
 if (container.hasChildNodes()) {
   hydrateRoot(container, <App />);
 } else {

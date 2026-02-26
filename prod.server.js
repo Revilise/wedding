@@ -1,11 +1,12 @@
-import express from "express";
+import { Server } from "./server.js";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
-import { pathToFileURL } from "url";
 
+import { pathToFileURL } from "url";
 import { PortalServer } from "@openagenda/react-portal-ssr/server";
 import { PortalContext } from "@openagenda/react-portal-ssr";
+import express from "express";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,7 +24,7 @@ const __dirname = dirname(__filename);
  * // Run the production server
  * new ProdServer();
  */
-export class ProdServer {
+export class ProdServer extends Server {
   /**
    * @typedef {Object} ManifestConfig
    * @property {string} dir - Absolute path to the output directory.
@@ -42,6 +43,7 @@ export class ProdServer {
    * @type {ServerConfig}
    */
   cfg = {
+    backend: "http://localhost:8000",
     port: process.env.PORT || 3000,
     client: {
       dir: resolve(__dirname, 'dist/client'),
@@ -58,8 +60,7 @@ export class ProdServer {
    * @constructor
    */
   constructor() {
-    /** @type {import('express').Express} */
-    this.app = express();
+    super();
     this.start();
   }
 

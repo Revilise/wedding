@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:sprite && rsbuild build",
     "build:sprite": "node scripts/build-icon-sprite.js",
-    "dev": "npm run build:sprite && node --experimental-vm-modules dev.server.js",
+    "dev": "npm run build:sprite && node --env-file=dev.env --experimental-vm-modules dev.server.js",
     "start": "node ./prod.server.js",
     "format": "prettier --write .",
     "lint": "eslint .",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@openagenda/react-portal-ssr": "^1.0.3",
     "express": "^5.2.1",
+    "http-proxy-middleware": "^3.0.5",
     "motion": "^12.34.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
@@ -35,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.2.3",
     "globals": "^16.5.0",
+    "msw": "^2.12.10",
     "postcss-custom-media": "^12.0.0",
     "postcss-for": "^2.1.1",
     "postcss-import": "^16.1.1",
@@ -45,5 +47,10 @@
     "storybook-react-rsbuild": "^3.2.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

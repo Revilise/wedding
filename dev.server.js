@@ -1,4 +1,4 @@
-import express from "express";
+import { Server } from "./server.js";
 import { createRsbuild } from "@rsbuild/core";
 import rsbuildConfig from "./rsbuild.config.ts";
 import { PortalServer } from "@openagenda/react-portal-ssr/server";
@@ -17,7 +17,12 @@ import { PortalContext } from "@openagenda/react-portal-ssr";
  * // Start development server with HMR
  * new DevServer();
  */
-export class DevServer {
+export class DevServer extends Server {
+
+  cfg = {
+    backend: "http://localhost:8000"
+  }
+
   /**
    * @typedef {Object} RsbuildServer
    * @property {import('express').RequestHandler[]} middlewares - Rsbuild Express middlewares.
@@ -32,8 +37,7 @@ export class DevServer {
    * @constructor
    */
   constructor() {
-    /** @type {import('express').Express} */
-    this.app = express();
+    super();
     this.start();
   }
 
@@ -43,6 +47,7 @@ export class DevServer {
    */
   async start() {
     this.app.get("/", this.handleHomePage.bind(this));
+    this.app.use("/api", this.proxy(this.cfg.backend));
 
     const { middlewares, port, afterListen, connectWebSocket } = await this.getRsBuildServer();
     this.app.use(middlewares);
