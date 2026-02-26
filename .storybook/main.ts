@@ -1,7 +1,7 @@
 import type { StorybookConfig } from 'storybook-react-rsbuild';
 import { mergeRsbuildConfig } from '@rsbuild/core';
 
-/** Расширяет правило для CSS, чтобы обрабатывать и .pcss (как в rsbuild.config.ts) */
+/** Расширяет правило для CSS, чтобы обрабатывать и .pcss (как в rsbuild.config.js) */
 function extendCssRuleForPcss(config: import('@rsbuild/core').RsbuildConfig) {
   const rules = config.module?.rules ?? [];
   for (const rule of rules) {

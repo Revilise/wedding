@@ -1,6 +1,6 @@
 import { Server } from "./server.js";
 import { createRsbuild } from "@rsbuild/core";
-import rsbuildConfig from "./rsbuild.config.ts";
+import rsbuildConfig from "./rsbuild.config.js";
 import { PortalServer } from "@openagenda/react-portal-ssr/server";
 import { PortalContext } from "@openagenda/react-portal-ssr";
 
