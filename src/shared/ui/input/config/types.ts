@@ -1,10 +1,14 @@
 import type {IComponent} from "@shared/types/component.ts";
 import type {OnEventHandlers} from "@shared/types/utils.ts";
-import type {HTMLProps} from "react";
+import type {HTMLProps, Ref} from "react";
 
-export interface Iinput extends IComponent {
+type InputHandlers = OnEventHandlers<HTMLProps<HTMLInputElement>>;
+
+export interface Iinput extends IComponent, InputHandlers {
   type?: "text" | "email" | "password" | "tel",
   label?: string,
+  name?: string,
   value?: string | number,
-  handlers?: OnEventHandlers<HTMLProps<HTMLInputElement>>
+  error?: string,
+  ref?: Ref<HTMLInputElement>,
 }

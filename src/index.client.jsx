@@ -13,7 +13,7 @@ prepareClientPortals()
 
 if (process.env.NODE_ENV === "development") {
   const { worker } = await import("./app/msw/browser.js");
-  worker.start();
+  worker.start({ onUnhandledRequest: "bypass" });
 }
 
 if (container.hasChildNodes()) {

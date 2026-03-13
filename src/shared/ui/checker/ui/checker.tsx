@@ -11,6 +11,8 @@ export const Checker: FC<IChecker> = ({
   type = "checkbox",
   label,
   value,
+  ref,
+  ...handlers
 }) => {
   const { bem } = useBEM("checker")
 
@@ -22,11 +24,13 @@ export const Checker: FC<IChecker> = ({
        <span className={bem("pseudo")}/>
        {label && <span className={bem("label")}>{label}</span>}
        <input
+          ref={ref}
           className={bem("value")}
           name={name}
           type={type}
           value={value}
           checked={isChecked}
+          {...handlers}
        />
      </motion.label>
   )

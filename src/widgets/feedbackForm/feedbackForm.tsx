@@ -1,60 +1,128 @@
-import type {IFeedbackForm} from "@widgets/feedbackForm/types.ts";
-import {type FC, useId} from "react";
+import type {FeedbackFormData, IFeedbackForm} from "@widgets/feedbackForm/types.ts";
+import {type FC, useCallback, useEffect, useId, useState} from "react";
 import {useBEM} from "@lib/bem";
-import {Form, FormStep} from "@ui/form";
+import {Form, FormControls, FormStep} from "@ui/form";
 import {Input} from "@ui/input";
 import {CheckerGroup} from "@ui/checkerGroup";
 import {Button} from "@ui/button";
-import {Grid} from "@ui/grid";
+import {type SubmitHandler, useForm} from "react-hook-form";
+import {Locale} from "@shared/const/locale.ts";
 import {API, API_ENDPOINTS} from "@shared/const";
+import {request} from "@lib/request";
+import {Popover} from "@ui/popover";
+import {usePopover} from "@ui/popover/lib/usePopover.tsx";
+import {useCountdown} from "@lib/countdown";
+
+const defaultValues: FeedbackFormData = {
+  alcohol: undefined,
+  allergy: "",
+  introduction: "",
+  name: "",
+  step: "",
+  visit: undefined
+}
 
 export const FeedbackForm: FC<IFeedbackForm> = ({
   extraCN,
   utilCN,
+  id,
 }) => {
-  const { bem } = useBEM("feedback");
-  const id = useId();
+  const uid = useId();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset: resetForm,
+  } = useForm({ defaultValues });
+
+  const [ activeStep, setActiveStep ] = useState("0");
+  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(5);
+  const { close: closePopover } = usePopover(id);
+
+  const onSubmit: SubmitHandler<FeedbackFormData> = async (data) => {
+    const { step, success } = await request({...data, step: activeStep}, { url: `${API}${API_ENDPOINTS.feedback}`, method: "post" });
+    setActiveStep(step);
+
+    if (step === "2" && success) {
+      startCountdown();
+    }
+  }
+
+  useEffect(() => {
+    if (isEnd) {
+      closePopover();
+      resetForm();
+      resetCountdown();
+
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setActiveStep("0");
+    }
+  }, [isEnd]);
 
   return (
-     <div className={bem("", { extraCN, utilCN })}>
-       <Form url={`${API}${API_ENDPOINTS}`}>
+     <Popover id={id}>
+       <Form
+          extraCN={{ isFeedback: true, ...extraCN }}
+          utilCN={utilCN}
+          activeStepId={activeStep}
+          onSubmit={handleSubmit(onSubmit)}
+       >
+         <FormStep
+            key={`${uid}-0`}
+            id={"0"}
+         >
+           <Input
+              label={"Фамилия Имя"}
+              error={errors.name?.message as string}
+              {...register("name", { required: Locale.form.invalid.requiredField })}
+           />
+           <Input
+              label={"Забавно представьтесь в 1-2 предложениях."}
+              error={errors.introduction?.message as string}
+              {...register("introduction", { required: Locale.form.invalid.requiredField })}
+           />
+           <CheckerGroup
+              label={"Вы придёте?"}
+              type={"radio"}
+              error={errors.visit?.message as string}
+              options={[
+                { label: "Да", value: "yes", ...register("visit", { required: Locale.form.invalid.requiredChoice }) },
+                { label: "Нет", value: "no", ...register("visit", { required: Locale.form.invalid.requiredChoice }) },
+              ]}
+           />
 
-         <FormStep key={`${id}-0`} id={"0"}>
-           <Grid extraCN={{ isGap8: true }} utilCN={["mb-24"]}>
-             <Input label={"Фамилия Имя"} />
-             <Input label={"Забавно представьтесь в 1-2 предложениях."} />
-             <CheckerGroup
-                label={"Вы придёте?"}
-                type={"radio"}
-                options={[
-                  { name: "visit", label: "Да", value: "yes" },
-                  { name: "visit", label: "Нет", value: "no" }
-                ]}
-             />
-           </Grid>
-
-           <Button>
-             Отправить
-           </Button>
+           <FormControls>
+             <Button>
+               Отправить
+             </Button>
+           </FormControls>
          </FormStep>
 
-         <FormStep key={`${id}-1`} id={"1"}>
-           <Grid extraCN={{ isGap8: true }} utilCN={["mb-24"]}>
-             <Input label={"Есть ли у вас аллергия на какие-либо продукты? Если да, то на какие?"} />
-             <Input label={"Собираетесь ли вы употреблять алкоголь?"} />
-           </Grid>
-           <Button>
-             Отправить
-           </Button>
+         <FormStep key={`${uid}-1`} id={"1"}>
+           <Input name={"allergy"} label={"Есть ли у вас аллергия на какие-либо продукты? Если да, то на какие?"} />
+           <CheckerGroup
+              label={"Собираетесь ли вы употреблять алкоголь?"}
+              type={"radio"}
+              error={errors.alcohol?.message as string}
+              options={[
+                { label: "Да", value: "yes", ...register("alcohol", { required: activeStep === "1" && Locale.form.invalid.requiredChoice }) },
+                { label: "Нет", value: "no", ...register("alcohol", { required: activeStep === "1" && Locale.form.invalid.requiredChoice }) },
+              ]}
+           />
+
+           <FormControls>
+             <Button>
+               Отправить
+             </Button>
+           </FormControls>
          </FormStep>
 
-         <FormStep key={`${id}-2`} id={"success"}>
-           <p>Спасибо, мы получили</p>
-         </FormStep>
-         <FormStep key={`${id}-3`} id={"error"}>
-           <p>Произошла ошибка, попробуйте позже</p>
+         <FormStep extraCN={{ isSuccess: true }} key={`${uid}-2`} id={"2"}>
+           <p className={"h4"}>Анкета успешно отправлена!</p>
+           <span>Форма сама закроется через {time} сек...</span>
          </FormStep>
        </Form>
-     </div>
+     </Popover>
   )
 }

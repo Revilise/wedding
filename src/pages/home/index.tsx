@@ -194,9 +194,7 @@ export const HomePage = () => {
                Пройти опрос
              </Button>
 
-             <Popover id={feedbackSection.popoverId}>
-               <FeedbackForm/>
-             </Popover>
+             <FeedbackForm id={feedbackSection.popoverId} />
            </GridItem>
          </Grid>
        </Section>

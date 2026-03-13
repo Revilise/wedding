@@ -2,6 +2,8 @@ import {createContext} from "react";
 import type {IFormContext} from "@ui/form/config/types.ts";
 
 export const ctx = createContext<IFormContext>({
-  bem: () => "",
+  bem() {
+    return "";
+  },
   activeStepId: "0"
 });

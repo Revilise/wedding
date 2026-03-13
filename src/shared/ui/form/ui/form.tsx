@@ -1,4 +1,4 @@
-import {type FC, useState} from "react";
+import {type FC, useCallback} from "react";
 import type {IForm} from "@ui/form/config/types.ts";
 import {useBEM} from "@lib/bem";
 import { ctx as FormContext } from "../config/ctx";
@@ -7,20 +7,15 @@ import {AnimatePresence} from "motion/react";
 export const Form: FC<IForm> = ({
   extraCN,
   utilCN,
-  url,
-  children
+  children,
+  activeStepId = "0",
+   ...props
 }) => {
   const { bem } = useBEM("form");
-  const [ activeStepId, setActiveId ] = useState<string>("0");
-
-  function handleSubmit(e: SubmitEvent) {}
 
   return (
-     <FormContext.Provider value={{ activeStepId, bem }}>
-         <form
-            className={bem("", {extraCN, utilCN})}
-            onSubmit={(e) => handleSubmit(e)}
-         >
+     <FormContext.Provider value={{ bem, activeStepId }}>
+         <form className={bem("", {extraCN, utilCN})} {...props}>
            <AnimatePresence>
             {children}
            </AnimatePresence>

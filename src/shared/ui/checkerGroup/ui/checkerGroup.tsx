@@ -8,7 +8,9 @@ export const CheckerGroup: FC<ICheckerGroup> = ({
   utilCN,
   label,
   type = "checkbox",
-  options
+  options,
+  error,
+  ...handlers
 }) => {
   const { bem } = useBEM("checkerGroup");
   const id = useId();
@@ -16,9 +18,10 @@ export const CheckerGroup: FC<ICheckerGroup> = ({
   return (
      <div className={bem("", { extraCN, utilCN })}>
        {label && <span className={bem("label")}>{label}</span>}
-       <fieldset className={bem("options")}>
-         {options.map((option, idx) => <Checker key={`${id}-${idx}`} {...option} type={type} />)}
+       <fieldset className={bem("options")} {...handlers}>
+         {options.map((option, idx) => <Checker key={`${id}-${idx}`} type={type} {...option}  />)}
        </fieldset>
+       {error && <span className={bem("error", { utilCN: ["form-error"] })}>{error}</span>}
      </div>
   )
 }

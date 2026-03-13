@@ -14,6 +14,7 @@
   --popoverWrapperPadX: 4rem;
   --popoverWrapperPadY: 4rem;
   --popoverWrapperBorderRad: 3rem;
+  --popoverWrapperMinHeight: 65rem;
   
   position: fixed;
   width: var(--popoverWidth);
@@ -45,13 +46,21 @@
     padding-inline: var(--popoverWrapperPadX);
     padding-block: var(--popoverWrapperPadX);
     border-radius: var(--popoverWrapperBorderRad);
+    min-height: var(--popoverWrapperMinHeight);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    .form {
+      flex-grow: 1;
+    }
   }
   
   @media (--mobile) {
     --popoverPadX: 1rem;
     --popoverPadY: 1rem;
     --popoverWrapperHeight: 100%;
+    --popoverWrapperMinHeight: 100%;
   }
 }
 
