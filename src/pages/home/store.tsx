@@ -132,10 +132,10 @@ export const dressCodeSection = {
 }
 
 export const dressExamplesSection = {
-  heading: "бразы для вдохновения",
+  heading: "Образы для вдохновения",
   swiperCfg: {
     slidesPerView: "auto",
-    spaceBetween: 20,
+    spaceBetween: 20
   } satisfies SwiperOptions,
   images: [
     ManLook1,

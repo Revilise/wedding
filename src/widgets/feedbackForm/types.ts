@@ -1,7 +1,7 @@
 import type {IComponent} from "@shared/types/component.ts";
 
 export interface IFeedbackForm extends IComponent {
-  id: string,
+  id?: string,
 }
 
 export type FeedbackFormData = {

@@ -12,14 +12,15 @@ import {
   programSection,
   timePlaceSection
 } from "./store.tsx";
+import {POPOVER} from "@shared/const";
 import {Image} from "@ui/image";
 import {Grid, GridItem} from "@ui/grid";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Icon} from "@ui/icon";
 import {Button} from "@ui/button";
+
 import {FeedbackForm} from "@widgets/feedbackForm";
-import {Popover} from "@ui/popover";
-import {POPOVER} from "@shared/const";
+import {ScaleSuggest} from "@widgets/scaleSuggest";
 
 export const HomePage = () => {
   return (
@@ -198,6 +199,8 @@ export const HomePage = () => {
            </GridItem>
          </Grid>
        </Section>
+
+       {/*<ScaleSuggest />*/}
      </Layout>
   )
 }

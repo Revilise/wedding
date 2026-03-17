@@ -8,7 +8,7 @@
   /* wrapper */
   --popoverWrapperBg: var(--colorWhite);
   --popoverWrapperWidth: 100%;
-  --popoverWrapperMaxWidth: 960px;
+  --popoverWrapperMaxWidth: 120rem;
   --popoverWrapperHeight: min-content;
   --popoverWrapperMaxHeight: 100%;
   --popoverWrapperPadX: 4rem;
@@ -61,6 +61,11 @@
     --popoverPadY: 1rem;
     --popoverWrapperHeight: 100%;
     --popoverWrapperMinHeight: 100%;
+  }
+  
+  &--isPrompt {
+    --popoverWrapperMinHeight: min(100%, 400px);
+    --popoverWrapperHeight: fit-content;
   }
 }
 

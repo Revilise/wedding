@@ -22,7 +22,6 @@ class Observer implements IPopoverObserver {
    */
   notify(id: string, action: Actions) {
     const callback = this.collection.get(id);
-
     if (typeof callback === "function") {
       if (action === "show") {
         this.opened.add(id);

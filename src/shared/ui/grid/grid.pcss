@@ -22,6 +22,10 @@
   
   &--isAutoMin {
     --gridTemplColumns: 1fr min-content !important;
+    
+    @media (--mobile) {
+      --gridTemplColumns: 1fr;
+    }
   }
   
   &--isMinAuto {

@@ -1,6 +1,5 @@
 import type {FeedbackFormData, IFeedbackForm} from "@widgets/feedbackForm/types.ts";
-import {type FC, useCallback, useEffect, useId, useState} from "react";
-import {useBEM} from "@lib/bem";
+import {type FC, useEffect, useId, useState} from "react";
 import {Form, FormControls, FormStep} from "@ui/form";
 import {Input} from "@ui/input";
 import {CheckerGroup} from "@ui/checkerGroup";
@@ -23,9 +22,9 @@ const defaultValues: FeedbackFormData = {
 }
 
 export const FeedbackForm: FC<IFeedbackForm> = ({
+  id,
   extraCN,
   utilCN,
-  id,
 }) => {
   const uid = useId();
 
