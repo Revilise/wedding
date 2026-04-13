@@ -1,4 +1,4 @@
-import path from 'node:path';
+import path, {resolve} from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';

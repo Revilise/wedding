@@ -11,6 +11,7 @@ import {request} from "@lib/request";
 import {Popover} from "@ui/popover";
 import {usePopover} from "@ui/popover/lib/usePopover.tsx";
 import {useCountdown} from "@lib/countdown";
+import {toBoolean} from "@shared/lib";
 
 const defaultValues: FeedbackFormData = {
   alcohol: undefined,
@@ -40,7 +41,14 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
   const { close: closePopover } = usePopover(id);
 
   const onSubmit: SubmitHandler<FeedbackFormData> = async (data) => {
-    const { step, success } = await request({...data, step: activeStep}, { url: `${API}${API_ENDPOINTS.feedback}`, method: "post" });
+    const payload = {
+      ...data,
+      step: activeStep,
+      alcohol: toBoolean(data.alcohol),
+      visit: toBoolean(data.visit)
+    }
+
+    const { step, success } = await request(payload, { url: `${API}${API_ENDPOINTS.feedback}`, method: "post" });
     setActiveStep(step);
 
     if (step === "2" && success) {

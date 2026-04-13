@@ -3,6 +3,7 @@ import { createRsbuild } from "@rsbuild/core";
 import rsbuildConfig from "./rsbuild.config.js";
 import { PortalServer } from "@openagenda/react-portal-ssr/server";
 import { PortalContext } from "@openagenda/react-portal-ssr";
+import {resolve} from "node:path";
 
 /**
  * Development server for Rsbuild + React SSR application using OpenAgenda Portal SSR.
@@ -20,7 +21,11 @@ import { PortalContext } from "@openagenda/react-portal-ssr";
 export class DevServer extends Server {
 
   cfg = {
-    backend: "http://localhost:8000"
+    backend: "http://localhost:4000",
+    port: process.env.PORT || 3000,
+    rewrite: {
+      '^/': '/v1/'
+    },
   }
 
   /**
@@ -47,7 +52,8 @@ export class DevServer extends Server {
    */
   async start() {
     this.app.get("/", this.handleHomePage.bind(this));
-    this.app.use("/api", this.proxy(this.cfg.backend));
+
+    this.app.use("/api", this.proxy());
 
     const { middlewares, port, afterListen, connectWebSocket } = await this.getRsBuildServer();
     this.app.use(middlewares);
@@ -89,7 +95,7 @@ export class DevServer extends Server {
     }
 
     const rsbuild = await createRsbuild({ rsbuildConfig });
-    this.rsbuild = rsbuild.createDevServer();
+    this.rsbuild = await rsbuild.createDevServer();
 
     return this.rsbuild;
   }

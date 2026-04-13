@@ -1,5 +1,10 @@
 import type {bemOptions} from "@lib/bem/types.ts";
 
+export type bemArguments = {
+  blockCN: string,
+  options: Omit<bemOptions, "baseCN">
+}
+
 export function useBEM(baseClass: string) {
   return {
     bem(blockCN: string, options: Omit<bemOptions, "baseCN"> = {}) {

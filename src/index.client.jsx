@@ -11,7 +11,7 @@ if (!container) {
 
 prepareClientPortals()
 
-if (process.env.NODE_ENV === "development") {
+if (import.meta.env.MODE === "development" && import.meta.env.PUBLIC_USE_MSW) {
   const { worker } = await import("./app/msw/browser.js");
   worker.start({ onUnhandledRequest: "bypass" });
 }

@@ -43,8 +43,11 @@ export class ProdServer extends Server {
    * @type {ServerConfig}
    */
   cfg = {
-    backend: "http://localhost:8000",
+    backend: "http://localhost:4000",
     port: process.env.PORT || 3000,
+    rewrite: {
+      '^/': '/v1/'
+    },
     client: {
       dir: resolve(__dirname, 'dist/client'),
       manifest: resolve(__dirname, 'dist/client/manifest.json'),
@@ -70,6 +73,8 @@ export class ProdServer extends Server {
   start() {
     try {
       this.app.get("/", this.handleHomePage.bind(this));
+      this.app.use("/api", this.proxy());
+
       this.app.use(express.static(this.cfg.client.dir));
 
       this.server = this.app.listen(this.cfg.port, () => {

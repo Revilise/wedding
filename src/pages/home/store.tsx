@@ -48,7 +48,7 @@ export const inviteSection = {
 }
 
 export const timePlaceSection = {
-  heading: <>Время &<wbr/>Место</>,
+  heading: <>Время & <wbr/>Место</>,
   info: (
      <>
        <div>01.08.2026 в 12:00</div>
@@ -69,7 +69,6 @@ export const timePlaceSection = {
 
 export const programSection = {
   heading: "День",
-  content: "Мы подготовили активности для гостей и оставили время на отдых.",
   program: (
      <>
        <span className={"bold"}>Время</span>
@@ -122,12 +121,12 @@ export const dressCodeSection = {
     </>
   },
   palette: [
-    { color: "#3E4A34" },
-    { color: "#BBC298" },
-    { color: "#D9B27B" },
-    { color: "#F7B557" },
-    { color: "#688EB3" },
-    { color: "#D2603D" }
+    { hex: "#3E4A34", name: "Тёмно-оливковый" },
+    { hex: "#BBC298", name: "Шалфей" },
+    { hex: "#D9B27B", name: "Пшеничный" },
+    { hex: "#F7B557", name: "Янтарный" },
+    { hex: "#688EB3", name: "Стальной голубой" },
+    { hex: "#D2603D", name: "Терракотовый" }
   ]
 }
 
@@ -135,7 +134,7 @@ export const dressExamplesSection = {
   heading: "Образы для вдохновения",
   swiperCfg: {
     slidesPerView: "auto",
-    spaceBetween: 20
+    spaceBetween: 20,
   } satisfies SwiperOptions,
   images: [
     ManLook1,

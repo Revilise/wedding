@@ -12,41 +12,17 @@
     --gridTemplColumns: 1fr !important;
   }
   
-  &--isVariant1 {
-    --gridTemplColumns: 1fr 38rem;
-  }
-  
-  &--isVariant2 {
-    --gridTemplColumns: 38rem 1fr;
-  }
-  
-  &--isAutoMin {
-    --gridTemplColumns: 1fr min-content !important;
-    
-    @media (--mobile) {
-      --gridTemplColumns: 1fr;
-    }
-  }
-  
   &--isMinAuto {
     --gridTemplColumns: min-content 1fr !important;
   }
   
-  &--is2Columns {
-    --gridTemplColumns: repeat(2, 1fr) !important;
+  &--isAuto {
+    --gridTemplColumns: repeat(auto-fill, minmax(250px, 1fr)) !important;
   }
   
-  &--isOffset {
-    --gridTemplColumns: repeat(3, 1fr);
-    position: relative;
-    
-    grid-template-areas:
-        "area-1 area-1 area-2"
-        "area-1 area-1 area-3";
-    
-    @media (--tablet) {
-      --gridTemplColumns: 1fr;
-      grid-template-areas: "area-1" "area-3" "area-2";
+  &--isMob2Cols {
+    @media (--smallMobile) {
+      --gridTemplColumns: repeat(2, 1fr) !important;
     }
   }
   
@@ -56,8 +32,7 @@
     grid-auto-rows: 22.5rem;
     
     @media (--mobile) {
-      --gridTemplRows: repeat(2, 7rem);
-      grid-auto-rows: 7rem;
+      grid-auto-rows: auto;
     }
   }
   
@@ -86,25 +61,8 @@
       grid-column: span 3;
     }
     
-    &--isContent {
-      padding-block: 10rem;
-      padding-inline: 8rem;
-    }
-    
     &--isBorderRad32 {
       border-radius: 4rem;
-    }
-    
-    &--isPaletteColor {
-      padding: 2rem;
-      border-radius: 2rem;
-      display: flex;
-      place-items: end;
-      place-content: end;
-      
-      span {
-        filter: brightness(.5);
-      }
     }
   }
 }

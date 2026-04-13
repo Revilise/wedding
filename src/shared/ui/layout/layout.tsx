@@ -3,6 +3,7 @@
 import type { FC, ReactNode } from "react";
 import type { ILayout } from "./types.ts";
 import { Header } from "@ui/header";
+import { Footer } from "@ui/footer";
 import { ErrorBoundary } from "@features/errorBoundary";
 
 export const Layout: FC<ILayout> = ({ children }) => {
@@ -10,6 +11,7 @@ export const Layout: FC<ILayout> = ({ children }) => {
      <div className={"layout"}>
        <Header />
        {wrapChildrenWithBoundaries(children)}
+       <Footer />
      </div>
   )
 }

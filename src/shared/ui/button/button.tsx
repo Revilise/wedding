@@ -9,7 +9,11 @@ export const Button: FC<IButton> = ({
   href,
   extraAttrs,
   type = "button",
+  style,
+  label,
   children,
+  ref,
+  ...handlers
 }) => {
   const { bem } = useBEM("btn");
   const TagName = type === "link" ? motion.a : motion.button;
@@ -19,7 +23,11 @@ export const Button: FC<IButton> = ({
         className={bem("", { extraCN, utilCN })} href={href} {...extraAttrs}
         whileTap={{ y: 5 }}
         whileHover={{ scale: 1.02 }}
+        style={style}
+        ref={ref}
+        {...handlers}
      >
+       {label && <span className={bem("label")}>{label}</span>}
        {children}
      </TagName>
   )

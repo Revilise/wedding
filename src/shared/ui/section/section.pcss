@@ -4,6 +4,9 @@
   --sectionPadX: var(--viewport-padding);
   --sectionMarY: 0 10rem;
   
+  --sectionHeaderMaxWidth: var(--viewport-width);
+  --sectionHeaderMarBottom: 3rem;
+  
   --sectionWrapperMaxWidth: var(--viewport-width);
   --sectionWrapperPadX: 0;
   
@@ -20,12 +23,14 @@
   
   &__heading {
     max-width: var(--sectionHeaderMaxWidth);
+    margin-bottom: var(--sectionHeaderMarBottom);
     margin-inline: auto;
   }
   
   @media (--mobile) {
     --sectionMarY: 0 8rem;
-    --sectionWrapperPadX: 2rem;
+    --sectionPadX: 3rem;
+    --sectionWrapperPadX: 0;
   }
   
   &--isLarge {
@@ -39,32 +44,37 @@
     --sectionPadX: 0 !important;
   }
   
-  &--isFullBleed {
-    --sectionHeaderMaxWidth: var(--viewport-width);
-    --sectionWrapperMaxWidth: 100%;
-    
-    --sectionPadX: 2rem;
-    
-    @media (--mobile) {
-      --sectionWrapperPadX: 0
-    }
-    
-    .swiper {
-      .swiper-slide {
-        width: 37.5rem;
-      }
-    }
-    
-    .image {
-      width: 37.5rem;
-    }
-  }
-  
   &--isSweetGreyBg {
     --sectionBg: var(--colorSweetGrey30);
   }
   
   &--isWideVerticalPad {
     --sectionPadY: 10rem;
+  }
+
+  &--isDressCode & {
+    &__heading {
+      --sectionHeaderMarBottom: 3rem;
+    }
+    
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+  
+  &--isCommunication & {
+    &__wrapper {
+      --sectionWrapperTemplCols: 1fr min-content;
+      grid-template-columns: var(--sectionWrapperTemplCols);
+      display: grid;
+      gap: 3rem;
+      
+      @media (--smallMobile) {
+        --sectionWrapperTemplCols: 1fr;
+        place-items: center;
+      }
+    }
   }
 }
