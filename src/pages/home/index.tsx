@@ -15,7 +15,6 @@ import {
 import {POPOVER} from "@shared/const";
 import {Image} from "@ui/image";
 import {Grid, GridItem} from "@ui/grid";
-import {Swiper, SwiperSlide} from "swiper/react";
 import {Icon} from "@ui/icon";
 import {Button} from "@ui/button";
 import {FeedbackForm} from "@widgets/feedbackForm";
@@ -107,28 +106,29 @@ export const HomePage = () => {
        {/* Dress code */}
        <Section
           extraCN={{isDressCode: true}}
-          heading={<h2 className={"h2"}>{dressCodeSection.heading}</h2>}
+          heading={
+            <>
+              <h2 className={"h2"}>{dressCodeSection.heading}</h2>
+              <h4 className={"h4"}>{dressCodeSection.subTitle}</h4>
+            </>
+          }
        >
-         <h4 className={"h4"}>{dressCodeSection.subTitle}</h4>
-
-         <div>
-           <p className={"bold"}>{dressCodeSection.ladies.title}</p>
-           <p>{dressCodeSection.ladies.content}</p>
-         </div>
-
-         <div>
-           <p className={"bold"}>{dressCodeSection.gentlemen.title}</p>
-           <p>{dressCodeSection.gentlemen.content}</p>
+         <div className={"flex-column gap-16"}>
+           {dressCodeSection.content}
          </div>
 
          <Palette colors={dressCodeSection.palette}/>
+       </Section>
 
+       <Section
+          extraCN={{isDressCode: true}}
+       >
          <h4>{dressExamplesSection.heading}</h4>
 
-         <Grid extraCN={{ isAuto: true, isMob2Cols: true }}>
+         <Grid extraCN={{isAuto: true, isMob2Cols: true}}>
            {dressExamplesSection.images.map((image, idx) => (
               <GridItem key={`dress-example-${idx}`}>
-                <Image src={image} />
+                <Image src={image}/>
               </GridItem>
            ))}
          </Grid>
