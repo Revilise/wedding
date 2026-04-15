@@ -1,2 +1,2 @@
-import "./image.pcss";
-export { Image } from "./image.tsx";
+import './image.pcss';
+export { Image } from './image.tsx';

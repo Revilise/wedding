@@ -1,2 +1,2 @@
-import "./input.pcss";
-export { Input } from "./ui/input";
+import './input.pcss';
+export { Input } from './ui/input';

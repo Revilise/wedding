@@ -14,13 +14,12 @@
  *   }
  */
 @mixin --fluid-font() {
-  font-size: clamp(
-    var(--fluid-font-min, 2rem),
-    calc(
-      var(--fluid-font-min, 2rem)
-      + (var(--fluid-font-max, 2.5rem) - var(--fluid-font-min, 2rem))
-      * ((100vw - var(--fluid-min-vw, 40rem)) / (var(--fluid-max-vw, 150rem) - var(--fluid-min-vw, 40rem)))
-    ),
-    var(--fluid-font-max, 2.5rem)
-  );
+    font-size: clamp(
+        var(--fluid-font-min, 2rem),
+        calc(
+            var(--fluid-font-min, 2rem) + (var(--fluid-font-max, 2.5rem) - var(--fluid-font-min, 2rem)) *
+                ((100vw - var(--fluid-min-vw, 40rem)) / (var(--fluid-max-vw, 150rem) - var(--fluid-min-vw, 40rem)))
+        ),
+        var(--fluid-font-max, 2.5rem)
+    );
 }

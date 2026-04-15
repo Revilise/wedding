@@ -1,100 +1,107 @@
 .btn {
-  --btnPadX: 3rem;
-  --btnPadY: 2.25rem;
-  --btnWidth: auto;
-  --btnHeight: fit-content;
-  --btnBorderRad: 2rem;
-  --btnFontSize: var(--font-size);
-  
-  /* base */
-  --btnCurBg: var(--btnBg);
-  --btnCurBorderColor: transparent;
-  --btnCurColor: var(--colorBlackout);
-  
-  --btnBg: var(--colorAngoraWhite);
-  --btnBorderColor: transparent;
-  --btnColor: var(--colorBlackout);
-  
-  /* :hover */
-  --btnHoverBg: var(--colorSweetGrey);
-  --btnHoverBorderColor: transparent;
-  --btnHoverColor: var(--colorBlackout);
-  
-  /* :active */
-  --btnActiveBg: var(--colorSweetGrey30);
-  --btnActiveBorderColor: transparent;
-  --btnActiveColor: var(--colorBlackout);
-  
-  background: var(--btnCurBg);
-  padding-inline: var(--btnPadX);
-  padding-block: var(--btnPadY);
-  width: var(--btnWidth);
-  height: var(--btnHeight);
-  border-radius: var(--btnBorderRad);
-  border: var(--btnBorderColor) 0.125rem solid;
-  color: var(--btnCurColor);
-  font-family: var(--font-anonymous);
-  transition: background-color .2s, color .2s, border-color .2s;
-  font-size: var(--btnFontSize);
-  outline: none;
-  display: block;
-  cursor: pointer;
-  
-  &:hover, &.isHover, &--isHover {
-    --btnCurBg: var(--btnHoverBg);
-    --btnCurBorderColor: var(--btnHoverBorderColor);
-    --btnCurColor: var(--btnHoverColor);
-  }
-  
-  &:active, &.isActive, &--isActive {
-    --btnActiveBg: var(--btnActiveBg);
-    --btnCurBorderColor: var(--btnActiveBorderColor);
-    --btnCurColor: var(--btnActiveColor);
-  }
-  
-  * {
-    pointer-events: none;
-  }
-  
-  &--isQr {
-    --btnWidth: fit-content;
-    height: fit-content;
-    padding: 2rem;
-    border-radius: 3rem;
-    background-color: var(--colorWhite);
-  }
-  
-  &--isFit {
-    --btnWidth: fit-content;
-  }
-  
-  &--isClosePopover {
-    --btnBg: transparent;
-    --btnHoverBg: transparent;
-    --btnActiveBg: transparent;
-    
-    --btnHoverColor: var(--colorShinyCopper);
-    
-    --btnPadX: 2rem;
-    --btnPadY: 2rem;
-    --btnBorderRad: 100%;
-    aspect-ratio: 1;
-  }
-  
-  &--isNavLink {
-    --btnBg: transparent;
-    --btnHoverBg: transparent;
-    --btnActiveBg: transparent;
-    
-    --btnCurColor: var(--colorWhite);
-    --btnHoverColor: var(--colorCabbagePont);
-    
-    --btnPadX: 0;
-    --btnPadY: 0;
-    
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 30px;
-  }
+    --btnPadX: 3rem;
+    --btnPadY: 2.25rem;
+    --btnWidth: auto;
+    --btnHeight: fit-content;
+    --btnBorderRad: 2rem;
+    --btnFontSize: var(--font-size);
+
+    /* base */
+    --btnCurBg: var(--btnBg);
+    --btnCurBorderColor: transparent;
+    --btnCurColor: var(--colorBlackout);
+
+    --btnBg: var(--colorAngoraWhite);
+    --btnBorderColor: transparent;
+    --btnColor: var(--colorBlackout);
+
+    /* :hover */
+    --btnHoverBg: var(--colorSweetGrey);
+    --btnHoverBorderColor: transparent;
+    --btnHoverColor: var(--colorBlackout);
+
+    /* :active */
+    --btnActiveBg: var(--colorSweetGrey30);
+    --btnActiveBorderColor: transparent;
+    --btnActiveColor: var(--colorBlackout);
+
+    background: var(--btnCurBg);
+    padding-inline: var(--btnPadX);
+    padding-block: var(--btnPadY);
+    width: var(--btnWidth);
+    height: var(--btnHeight);
+    border-radius: var(--btnBorderRad);
+    border: var(--btnBorderColor) 0.125rem solid;
+    color: var(--btnCurColor);
+    font-family: var(--font-anonymous);
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+    font-size: var(--btnFontSize);
+    outline: none;
+    display: block;
+    cursor: pointer;
+
+    &:hover,
+    &.isHover,
+    &--isHover {
+        --btnCurBg: var(--btnHoverBg);
+        --btnCurBorderColor: var(--btnHoverBorderColor);
+        --btnCurColor: var(--btnHoverColor);
+    }
+
+    &:active,
+    &.isActive,
+    &--isActive {
+        --btnActiveBg: var(--btnActiveBg);
+        --btnCurBorderColor: var(--btnActiveBorderColor);
+        --btnCurColor: var(--btnActiveColor);
+    }
+
+    * {
+        pointer-events: none;
+    }
+
+    &--isQr {
+        --btnWidth: fit-content;
+        height: fit-content;
+        padding: 2rem;
+        border-radius: 3rem;
+        background-color: var(--colorWhite);
+    }
+
+    &--isFit {
+        --btnWidth: fit-content;
+    }
+
+    &--isClosePopover {
+        --btnBg: transparent;
+        --btnHoverBg: transparent;
+        --btnActiveBg: transparent;
+
+        --btnHoverColor: var(--colorShinyCopper);
+
+        --btnPadX: 2rem;
+        --btnPadY: 2rem;
+        --btnBorderRad: 100%;
+        aspect-ratio: 1;
+    }
+
+    &--isNavLink {
+        --btnBg: transparent;
+        --btnHoverBg: transparent;
+        --btnActiveBg: transparent;
+
+        --btnCurColor: var(--colorWhite);
+        --btnHoverColor: var(--colorCabbagePont);
+
+        --btnPadX: 0;
+        --btnPadY: 0;
+
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 30px;
+    }
 }

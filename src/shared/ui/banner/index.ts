@@ -1,2 +1,2 @@
-import "./banner.pcss";
-export { Banner } from "./banner.tsx";
+import './banner.pcss';
+export { Banner } from './banner.tsx';

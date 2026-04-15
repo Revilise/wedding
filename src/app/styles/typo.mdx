@@ -1,54 +1,30 @@
 import { Meta, Typeset } from '@storybook/addon-docs/blocks';
 
-<Meta title="Typography" />
+<Meta title='Typography' />
 
-<p className={"text"}>textblock - 22/30, anonymous</p>
-<p className={"text bold"}>textblock - 22/30, anonymous, bold</p>
+<p className={'text'}>textblock - 22/30, anonymous</p>
+<p className={'text bold'}>textblock - 22/30, anonymous, bold</p>
 
 **Font:** Angst
 
 **Weights:** 100 (bold)
 
-export const SampleText = "Не хочу завтра на работу";
+export const SampleText = 'Не хочу завтра на работу';
 
-<Typeset
-   fontSizes={[112, 64]}
-   fontFamily={"angst"}
-   sampleText={SampleText}
-/>
+<Typeset fontSizes={[112, 64]} fontFamily={'angst'} sampleText={SampleText} />
 
 **Font:** Source Serif Pro
 
 **Weights:** 400(regular), 700(bold)
 
-<Typeset
-   fontSizes={[75, 50]}
-   fontWeight={700}
-   fontFamily={"source-serif"}
-   sampleText={SampleText}
-/>
+<Typeset fontSizes={[75, 50]} fontWeight={700} fontFamily={'source-serif'} sampleText={SampleText} />
 
-<Typeset
-   fontSizes={[40, 32]}
-   fontWeight={400}
-   fontFamily={"source-serif"}
-   sampleText={SampleText}
-/>
+<Typeset fontSizes={[40, 32]} fontWeight={400} fontFamily={'source-serif'} sampleText={SampleText} />
 
 **Font:** Anonymous Pro
 
 **Weights:** 400(regular), 700(bold)
 
-<Typeset
-   fontSizes={[22]}
-   fontWeight={700}
-   fontFamily={"anonymous"}
-   sampleText={SampleText}
-/>
+<Typeset fontSizes={[22]} fontWeight={700} fontFamily={'anonymous'} sampleText={SampleText} />
 
-<Typeset
-   fontSizes={[22]}
-   fontWeight={400}
-   fontFamily={"anonymous"}
-   sampleText={SampleText}
-/>
+<Typeset fontSizes={[22]} fontWeight={400} fontFamily={'anonymous'} sampleText={SampleText} />
