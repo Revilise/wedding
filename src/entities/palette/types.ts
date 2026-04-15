@@ -1,12 +1,12 @@
-import type {IComponent} from "@shared/types/component.ts";
+import type { IComponent } from '@shared/types/component.ts';
 
 type Color = {
-  hex: string,
-  name: string,
-}
+    hex: string;
+    name: string;
+};
 
 export interface IPalette extends IComponent {
-  colors: Color[];
+    colors: Color[];
 }
 
 export interface IPaletteColor extends IComponent, Color {}

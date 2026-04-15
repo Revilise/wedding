@@ -1,6 +1,6 @@
-import { createContext } from "react";
-import type {bemOptions} from "@lib/bem/types.ts";
+import { createContext } from 'react';
+import type { bemOptions } from '@lib/bem/types.ts';
 
-export const context = createContext<{ bem: (blockCN: string, options: Omit<bemOptions, "baseCN">) => string }>({
-  bem: () => ""
+export const context = createContext<{ bem: (blockCN: string, options: Omit<bemOptions, 'baseCN'>) => string }>({
+    bem: () => '',
 });

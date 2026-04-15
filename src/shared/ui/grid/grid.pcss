@@ -1,74 +1,74 @@
 .grid {
-  --gridTemplColumns: auto;
-  --gridTemplRows: auto;
-  --gridGap: 3rem;
-  
-  display: grid;
-  grid-template-columns: var(--gridTemplColumns);
-  grid-template-rows: var(--gridTemplRows);
-  gap: var(--gridGap);
-  
-  @media (--mobile) {
-    --gridTemplColumns: 1fr !important;
-  }
-  
-  &--isMinAuto {
-    --gridTemplColumns: min-content 1fr !important;
-  }
-  
-  &--isAuto {
-    --gridTemplColumns: repeat(auto-fill, minmax(250px, 1fr)) !important;
-  }
-  
-  &--isMob2Cols {
-    @media (--smallMobile) {
-      --gridTemplColumns: repeat(2, 1fr) !important;
-    }
-  }
-  
-  &--isPalette {
-    --gridTemplColumns: repeat(3, 1fr);
-    --gridTemplRows: repeat(2, 22.5rem);
-    grid-auto-rows: 22.5rem;
-    
+    --gridTemplColumns: auto;
+    --gridTemplRows: auto;
+    --gridGap: 3rem;
+
+    display: grid;
+    grid-template-columns: var(--gridTemplColumns);
+    grid-template-rows: var(--gridTemplRows);
+    gap: var(--gridGap);
+
     @media (--mobile) {
-      grid-auto-rows: auto;
+        --gridTemplColumns: 1fr !important;
     }
-  }
-  
-  &--isGap8 {
-    --gridGap: 1rem;
-  }
-  
-  &__item {
-    &--isRowStart1 {
-      grid-row-start: 1;
+
+    &--isMinAuto {
+        --gridTemplColumns: min-content 1fr !important;
     }
-    
-    &--isRowEnd3 {
-      grid-row-end: 3;
+
+    &--isAuto {
+        --gridTemplColumns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
-    
-    &--isCol2 {
-      grid-column: 2;
+
+    &--isMob2Cols {
+        @media (--smallMobile) {
+            --gridTemplColumns: repeat(2, 1fr) !important;
+        }
     }
-    
-    &--isColSpan6 {
-      grid-column: span 6;
+
+    &--isPalette {
+        --gridTemplColumns: repeat(3, 1fr);
+        --gridTemplRows: repeat(2, 22.5rem);
+        grid-auto-rows: 22.5rem;
+
+        @media (--mobile) {
+            grid-auto-rows: auto;
+        }
     }
-    
-    &--isColSpan3 {
-      grid-column: span 3;
+
+    &--isGap8 {
+        --gridGap: 1rem;
     }
-    
-    &--isBorderRad32 {
-      border-radius: 4rem;
+
+    &__item {
+        &--isRowStart1 {
+            grid-row-start: 1;
+        }
+
+        &--isRowEnd3 {
+            grid-row-end: 3;
+        }
+
+        &--isCol2 {
+            grid-column: 2;
+        }
+
+        &--isColSpan6 {
+            grid-column: span 6;
+        }
+
+        &--isColSpan3 {
+            grid-column: span 3;
+        }
+
+        &--isBorderRad32 {
+            border-radius: 4rem;
+        }
     }
-  }
 }
 
 @for $i from 1 to 4 {
-  .grid__item--isArea-$i {
-    grid-area: area-$i;
-  }
+    .grid__item--isArea-$i {
+        grid-area: area-$i;
+    }
 }

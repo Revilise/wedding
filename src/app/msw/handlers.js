@@ -1,5 +1,3 @@
-import { feedbackFormApiHandlers } from "../../widgets/feedbackForm/api/handler.js";
+import { feedbackFormApiHandlers } from '../../widgets/feedbackForm/api/handler.js';
 
-export const handlers = [
-   ...feedbackFormApiHandlers,
-]
+export const handlers = [...feedbackFormApiHandlers];

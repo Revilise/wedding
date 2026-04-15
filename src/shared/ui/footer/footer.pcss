@@ -1,48 +1,48 @@
 .footer {
-  --footerBg: var(--colorCoolHazel);
-  --footerPadY: 60px;
-  --footerPadX: 24px;
-  
-  /* wrapper */
-  --footerWrapperMaxWidth: 100rem;
-  --footerWrapperTemplCol: repeat(3, 1fr);
-  --footerWrapperGap: 2rem;
-  
-  /* navigation */
-  --footerDisplay: grid;
-  --footerNavTemplCol: repeat(auto-fill, minmax(150px, 1fr));
-  --footerNavGap: 2rem;
-  
-  background: var(--footerBg);
-  padding-block: var(--footerPadY);
-  padding-inline: var(--footerPadX);
-  
-  &__wrapper {
-    max-width: var(--footerWrapperMaxWidth);
-    grid-template-columns: var(--footerWrapperTemplCol);
-    gap: var(--footerWrapperGap);
-    display: grid;
-    margin-inline: auto;
-    width: 100%;
-  }
-  
-  &__navigation {
-    display: var(--footerDisplay);
-    grid-template-columns: var(--footerNavTemplCol);
-    gap: var(--footerNavGap);
-    grid-column: 1 / -1;
-  }
-  
-  &__logoWrapper {
-    color: var(--colorWhite);
-    grid-area: 2 / -1;
-    display: flex;
-    width: 100%;
-    place-content: end;
-    place-items: end;
-    
-    .icon {
-      color:  inherit;
+    --footerBg: var(--colorCoolHazel);
+    --footerPadY: 60px;
+    --footerPadX: 24px;
+
+    /* wrapper */
+    --footerWrapperMaxWidth: 100rem;
+    --footerWrapperTemplCol: repeat(3, 1fr);
+    --footerWrapperGap: 2rem;
+
+    /* navigation */
+    --footerDisplay: grid;
+    --footerNavTemplCol: repeat(auto-fill, minmax(150px, 1fr));
+    --footerNavGap: 2rem;
+
+    background: var(--footerBg);
+    padding-block: var(--footerPadY);
+    padding-inline: var(--footerPadX);
+
+    &__wrapper {
+        max-width: var(--footerWrapperMaxWidth);
+        grid-template-columns: var(--footerWrapperTemplCol);
+        gap: var(--footerWrapperGap);
+        display: grid;
+        margin-inline: auto;
+        width: 100%;
     }
-  }
+
+    &__navigation {
+        display: var(--footerDisplay);
+        grid-template-columns: var(--footerNavTemplCol);
+        gap: var(--footerNavGap);
+        grid-column: 1 / -1;
+    }
+
+    &__logoWrapper {
+        color: var(--colorWhite);
+        grid-area: 2 / -1;
+        display: flex;
+        width: 100%;
+        place-content: end;
+        place-items: end;
+
+        .icon {
+            color: inherit;
+        }
+    }
 }

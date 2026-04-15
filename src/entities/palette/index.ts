@@ -1,2 +1,2 @@
-import "./palette.pcss"
-export { Palette } from "./palette.tsx";
+import './palette.pcss';
+export { Palette } from './palette.tsx';

@@ -1,22 +1,22 @@
 .palette {
-  --paletteGridCols: repeat(auto-fill, minmax(250px, 1fr));
-  
-  grid-template-columns: var(--paletteGridCols);
-  display: grid;
-  gap: 2.5rem;
-  
-  &__color {
-    padding: 2rem;
-    border-radius: 2rem;
-    display: flex;
-    place-items: end;
-    place-content: end;
-    height: 13rem;
-    flex-direction: column;
-    cursor: pointer;
-    
-    span {
-      filter: brightness(.5);
+    --paletteGridCols: repeat(auto-fill, minmax(250px, 1fr));
+
+    grid-template-columns: var(--paletteGridCols);
+    display: grid;
+    gap: 2.5rem;
+
+    &__color {
+        padding: 2rem;
+        border-radius: 2rem;
+        display: flex;
+        place-items: end;
+        place-content: end;
+        height: 13rem;
+        flex-direction: column;
+        cursor: pointer;
+
+        span {
+            filter: brightness(0.5);
+        }
     }
-  }
 }
