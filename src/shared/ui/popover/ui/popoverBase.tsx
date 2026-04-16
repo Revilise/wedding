@@ -40,11 +40,13 @@ export const PopoverBase: FC<IPopover> = ({ extraCN = {}, utilCN, id, children }
                         exit={{ opacity: 0, scale: 0 }}
                     >
                         <div className={bem('wrapper')}>
-                            <Button extraCN={{ isClosePopover: true }} extraAttrs={{ [POPOVER.HIDE]: id }}>
-                                <Icon name={'close'} />
-                            </Button>
+                           <div className={bem("content")}>
+                               <Button extraCN={{ isClosePopover: true }} extraAttrs={{ [POPOVER.HIDE]: id }}>
+                                   <Icon name={'close'} />
+                               </Button>
 
-                            {children}
+                               {children}
+                           </div>
                         </div>
                     </motion.div>
                 </>

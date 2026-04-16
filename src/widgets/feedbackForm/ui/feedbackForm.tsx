@@ -144,10 +144,10 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                     error={errors.introduction?.message}
                     {...register("introduction", { required: Locale.form.invalid.requiredField })}
                 />
-                <Input label={"Аллергия на продукты?"} {...register("allergy")} />
+                <Input label={"У вас есть аллергия на продукты?"} {...register("allergy")} />
                 <Input label={"Факт о паре?"} {...register("fact")} />
-                <Input label={"Песня-ассоциация?"} {...register("song")} />
-                <Input label={"История из жизни?"} {...register("history")} />
+                <Input label={"Песня-ассоциация с парой?"} {...register("song")} />
+                <Input label={"История, связанная с женихом или невестой?"} {...register("history")} />
 
                 <CheckerGroup
                     label={"Будете ли алкоголь?"}
