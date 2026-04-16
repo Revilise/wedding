@@ -1,4 +1,4 @@
-import type { IFormContext, IFormControls } from '@ui/form/config/types.ts';
+import type { IFormContext, IFormControls } from '../config/types';
 import { type FC, useContext } from 'react';
 import { ctx as FormContext } from '../config/ctx';
 

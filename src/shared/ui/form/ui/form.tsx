@@ -1,5 +1,5 @@
 import { type FC, useCallback } from 'react';
-import type { IForm } from '@ui/form/config/types.ts';
+import type { IForm } from '../config/types';
 import { useBEM } from '@lib/bem';
 import { ctx as FormContext } from '../config/ctx';
 import { AnimatePresence } from 'motion/react';

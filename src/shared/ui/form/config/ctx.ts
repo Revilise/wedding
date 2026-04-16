@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { IFormContext } from '@ui/form/config/types.ts';
+import type { IFormContext } from './types';
 
 export const ctx = createContext<IFormContext>({
     bem() {

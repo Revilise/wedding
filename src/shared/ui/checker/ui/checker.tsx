@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { IChecker } from '@ui/checker/config/types.ts';
+import type { IChecker } from '../config/types';
 import { useBEM } from '@lib/bem';
 import { motion } from 'motion/react';
 

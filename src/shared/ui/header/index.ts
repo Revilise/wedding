@@ -1,2 +1,3 @@
-import './header.pcss';
-export { Header } from './header';
+import "./header.pcss";
+
+export * from "./ui";

@@ -1,4 +1,5 @@
-import './form.pcss';
-export { Form } from './ui/form';
-export { FormStep } from './ui/formStep.tsx';
-export { FormControls } from './ui/formControls';
+import "./form.pcss";
+
+export * from "./ui";
+export * from "./config/ctx";
+export type { IForm, IFormContext, IFormControls, IFormStep } from "./config/types";

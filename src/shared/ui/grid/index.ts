@@ -1,3 +1,4 @@
 import './grid.pcss';
-export { Grid } from './ui/grid.tsx';
-export { GridItem } from './ui/gridItem.tsx';
+
+export * from "./ui";
+export type { IGrid, IGridItem } from "./config/types";

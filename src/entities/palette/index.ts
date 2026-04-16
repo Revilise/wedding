@@ -1,2 +1,4 @@
 import './palette.pcss';
-export { Palette } from './palette.tsx';
+export * from "./ui";
+export * from "./config/ctx";
+export type { IPalette, IPaletteColor } from "./config/types";

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { Iinput } from '@ui/input/config/types.ts';
+import type { Iinput } from '../config/types';
 import { useBEM } from '@lib/bem';
 
 export const Input: FC<Iinput> = ({ extraCN, utilCN, type = 'text', name, label, value, ref, error, ...handlers }) => {

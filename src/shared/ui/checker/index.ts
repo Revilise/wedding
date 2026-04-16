@@ -1,2 +1,4 @@
-import './checker.pcss';
-export { Checker } from './ui/checker.tsx';
+import "./checker.pcss";
+
+export * from "./ui";
+export type { IChecker } from "./config/types";

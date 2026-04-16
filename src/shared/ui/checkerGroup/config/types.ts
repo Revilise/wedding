@@ -1,5 +1,5 @@
 import type { IComponent } from '@shared/types/component.ts';
-import type { IChecker } from '@ui/checker/config/types.ts';
+import type { IChecker } from '@ui/checker';
 import type { HTMLProps } from 'react';
 import type { OnEventHandlers } from '@shared/types/utils.ts';
 

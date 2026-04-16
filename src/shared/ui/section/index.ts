@@ -1,2 +1,4 @@
-import './section.pcss';
-export { Section } from './section';
+import "./section.pcss";
+
+export * from "./ui";
+export type { ISection } from "./config/types";

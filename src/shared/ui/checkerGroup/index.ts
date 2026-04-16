@@ -1,2 +1,4 @@
-import './checkerGroup.pcss';
-export { CheckerGroup } from './ui/checkerGroup.tsx';
+import "./checkerGroup.pcss";
+
+export * from "./ui";
+export type { ICheckerGroup } from "./config/types";

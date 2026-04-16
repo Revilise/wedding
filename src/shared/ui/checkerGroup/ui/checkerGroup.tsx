@@ -1,5 +1,5 @@
 import { type FC, useId } from 'react';
-import type { ICheckerGroup } from '@ui/checkerGroup/config/types.ts';
+import type { ICheckerGroup } from '../config/types';
 import { useBEM } from '@lib/bem';
 import { Checker } from '@ui/checker';
 

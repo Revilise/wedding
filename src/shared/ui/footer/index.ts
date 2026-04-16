@@ -1,2 +1,4 @@
-import './footer.pcss';
-export { Footer } from './ui/footer.tsx';
+import "./footer.pcss";
+
+export * from "./ui";
+export type { IFooter } from "./config/types";

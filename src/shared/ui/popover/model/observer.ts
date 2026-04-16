@@ -1,4 +1,4 @@
-import type { IPopoverObserver } from '@ui/popover/config/types.ts';
+import type { IPopoverObserver } from '../config/types';
 import Scroll from '@lib/scroll';
 
 type Actions = 'show' | 'hide';

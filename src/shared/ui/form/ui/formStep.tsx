@@ -1,5 +1,5 @@
 import { type FC, useContext } from 'react';
-import type { IFormContext, IFormStep } from '@ui/form/config/types.ts';
+import type { IFormContext, IFormStep } from '../config/types';
 import { ctx as FormContext } from '../config/ctx';
 import { motion } from 'motion/react';
 

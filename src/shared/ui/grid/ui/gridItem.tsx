@@ -1,6 +1,6 @@
 import { useBEM } from '@lib/bem';
 import type { FC } from 'react';
-import type { IGridItem } from '@ui/grid/types.ts';
+import type { IGridItem } from '../config/types';
 
 export const GridItem: FC<IGridItem> = ({ extraCN, utilCN, style, children }) => {
     const { bem } = useBEM('grid');

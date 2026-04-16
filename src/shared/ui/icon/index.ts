@@ -1,4 +1,5 @@
-import './icon.pcss';
+import "./icon.pcss";
 
-export { Icon } from './icon.tsx';
-export { iconSpriteUrl, getIconSrc } from './sprite.ts';
+export * from "./ui";
+export * from "./lib";
+export type { IIcon } from "./config/types";

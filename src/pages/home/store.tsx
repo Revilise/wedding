@@ -8,7 +8,7 @@ import WomanLook1 from '@images/looks/woman-1.jpg';
 import WomanLook2 from '@images/looks/woman-2.jpg';
 import WomanLook3 from '@images/looks/woman-3.jpg';
 
-import type { IBanner } from '@ui/banner/types.ts';
+import type { IBanner } from '@ui/banner';
 import type { SwiperOptions } from 'swiper/types';
 
 export const heroSection = {

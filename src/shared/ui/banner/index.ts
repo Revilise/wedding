@@ -1,2 +1,4 @@
-import './banner.pcss';
-export { Banner } from './banner.tsx';
+import "./banner.pcss";
+
+export * from "./ui";
+export type { IBanner } from "./config/types";

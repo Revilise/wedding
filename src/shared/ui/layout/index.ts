@@ -1,2 +1,4 @@
-import './layout.pcss';
-export { Layout } from './layout';
+import "./layout.pcss";
+
+export * from "./ui";
+export type { ILayout } from "./config/types";
