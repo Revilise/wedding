@@ -16,35 +16,50 @@ import { API, API_ENDPOINTS } from "@shared/const";
 import { Locale } from "@shared/const/locale";
 import { toBoolean } from "@shared/lib";
 
-import type { FeedbackFormData, IFeedbackForm } from "../config/types";
+import type { FeedbackFormData, IFeedbackForm } from '../config/types';
+import { filterObject } from '@lib/object/filterObject.ts';
 
 const defaultValues: FeedbackFormData = {
-  alcohol: undefined,
-  allergy: "",
-  introduction: "",
-  name: "",
-  step: "",
   visit: undefined,
+  name: "",
+
+  introduction: "",
+  allergy: "",
+  alcohol: undefined,
+  step: "",
   fact: "",
   song: "",
   history: "",
-};
+}
 
-export const FeedbackForm: FC<IFeedbackForm> = ({ id, extraCN, utilCN }) => {
+export const FeedbackForm: FC<IFeedbackForm> = ({
+  id = "feedback-form",
+  extraCN,
+  utilCN
+}) => {
   const uid = useId();
+  const [activeStep, setActiveStep] = useState("0");
 
   const {
     register,
     handleSubmit,
+    trigger,
     formState: { errors },
     reset: resetForm,
-  } = useForm({ defaultValues });
+  } = useForm<FeedbackFormData>({ defaultValues });
 
-  const [activeStep, setActiveStep] = useState("0");
   const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(5);
   const { close: closePopover } = usePopover(id);
 
   const onSubmit: SubmitHandler<FeedbackFormData> = async (data) => {
+    // Валидируем только поля, относящиеся к текущему шагу перед отправкой
+    const fieldsToValidate = activeStep === "0"
+        ? ["name", "visit"]
+        : ["introduction", "alcohol"];
+
+    const isValid = await trigger(fieldsToValidate as never);
+    if (!isValid) return;
+
     const payload = {
       ...data,
       step: activeStep,
@@ -52,11 +67,22 @@ export const FeedbackForm: FC<IFeedbackForm> = ({ id, extraCN, utilCN }) => {
       visit: toBoolean(data.visit),
     };
 
-    const { step, success } = await request(payload, { url: `${API}${API_ENDPOINTS.feedback}`, method: "post" });
-    setActiveStep(step);
+    const filteredPayload = filterObject(payload, ({ value }) => value !== "")
 
-    if (step === "2" && success) {
-      startCountdown();
+    try {
+      const response = await request(filteredPayload, {
+        url: `${API}${API_ENDPOINTS.feedback}`,
+        method: "post"
+      });
+
+      const nextStep = response.step;
+      setActiveStep(nextStep);
+
+      if (nextStep === "2" && response.success) {
+        startCountdown();
+      }
+    } catch (error) {
+      console.error("Submission error", error);
     }
   };
 
@@ -65,97 +91,96 @@ export const FeedbackForm: FC<IFeedbackForm> = ({ id, extraCN, utilCN }) => {
       closePopover();
       resetForm();
       resetCountdown();
-
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveStep("0");
     }
   }, [isEnd]);
 
   return (
-    <Popover id={id}>
-      <Form
-        extraCN={{ isFeedback: true, ...extraCN }}
-        utilCN={utilCN}
-        activeStepId={activeStep}
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <FormStep key={`${uid}-0`} id={"0"}>
-          <Input
-            label={"Фамилия Имя"}
-            error={errors.name?.message as string}
-            {...register("name", { required: Locale.form.invalid.requiredField })}
-          />
-          <CheckerGroup
-            label={"Вы придёте?"}
-            type={"radio"}
-            error={errors.visit?.message as string}
-            options={[
-              {
-                label: "Да",
-                value: "yes",
-                ...register("visit", { required: Locale.form.invalid.requiredChoice }),
-              },
-              {
-                label: "Нет",
-                value: "no",
-                ...register("visit", { required: Locale.form.invalid.requiredChoice }),
-              },
-            ]}
-          />
+      <Popover id={id}>
+        <Form
+            extraCN={{ isFeedback: true, ...extraCN }}
+            utilCN={utilCN}
+            activeStepId={activeStep}
+            // Оборачиваем весь Form в onSubmit, чтобы обрабатывать Enter и кнопки
+            onSubmit={handleSubmit(onSubmit)}
+        >
+          {/* Шаг 0: Основная информация */}
+          {activeStep === "0" && (
+              <FormStep key={`${uid}-0`} id={"0"}>
+                <Input
+                    label={"Фамилия Имя"}
+                    error={errors.name?.message}
+                    {...register("name", { required: Locale.form.invalid.requiredField })}
+                />
+                <CheckerGroup
+                    label={"Вы придёте?"}
+                    type={"radio"}
+                    error={errors.visit?.message}
+                    options={[
+                      {
+                        label: "Да",
+                        value: "yes",
+                        ...register("visit", { required: Locale.form.invalid.requiredChoice }),
+                      },
+                      {
+                        label: "Нет",
+                        value: "no",
+                        ...register("visit", { required: Locale.form.invalid.requiredChoice }),
+                      },
+                    ]}
+                />
+                <FormControls>
+                  <Button type="submit">Далее</Button>
+                </FormControls>
+              </FormStep>
+          )}
 
-          <FormControls>
-            <Button>Отправить</Button>
-          </FormControls>
-        </FormStep>
+          {/* Шаг 1: Подробности */}
+          {activeStep === "1" && (
+              <FormStep key={`${uid}-1`} id={"1"}>
+                <Input
+                    label={"Забавно представьтесь в 1-2 предложениях."}
+                    error={errors.introduction?.message}
+                    {...register("introduction", { required: Locale.form.invalid.requiredField })}
+                />
+                <Input label={"Аллергия на продукты?"} {...register("allergy")} />
+                <Input label={"Факт о паре?"} {...register("fact")} />
+                <Input label={"Песня-ассоциация?"} {...register("song")} />
+                <Input label={"История из жизни?"} {...register("history")} />
 
-        <FormStep key={`${uid}-1`} id={"1"}>
-          <Input
-            label={"Забавно представьтесь в 1-2 предложениях."}
-            error={errors.introduction?.message as string}
-            {...register("introduction", { required: Locale.form.invalid.requiredField })}
-          />
+                <CheckerGroup
+                    label={"Будете ли алкоголь?"}
+                    type={"radio"}
+                    error={errors.alcohol?.message}
+                    options={[
+                      {
+                        label: "Да",
+                        value: "yes",
+                        ...register("alcohol", { required: Locale.form.invalid.requiredChoice }),
+                      },
+                      {
+                        label: "Нет",
+                        value: "no",
+                        ...register("alcohol", { required: Locale.form.invalid.requiredChoice }),
+                      },
+                    ]}
+                />
+                <FormControls>
+                  <Button type="submit">Отправить</Button>
+                </FormControls>
+              </FormStep>
+          )}
 
-          <Input label={"Есть ли у вас аллергия на какие-либо продукты? Если да, то на какие?"} {...register("allergy")} />
-
-          <Input label={"Какой факт вы можете расказать о женихе/невесте?"} {...register("fact")} />
-
-          <Input label={"С какой песней ассоциируется пара?"} {...register("song")} />
-
-          <Input label={"Вспомните историю, связанную с женихом/невестой"} {...register("history")} />
-
-          <CheckerGroup
-            label={"Собираетесь ли вы употреблять алкоголь?"}
-            type={"radio"}
-            error={errors.alcohol?.message as string}
-            options={[
-              {
-                label: "Да",
-                value: "yes",
-                ...register("alcohol", {
-                  required: activeStep === "1" && Locale.form.invalid.requiredChoice,
-                }),
-              },
-              {
-                label: "Нет",
-                value: "no",
-                ...register("alcohol", {
-                  required: activeStep === "1" && Locale.form.invalid.requiredChoice,
-                }),
-              },
-            ]}
-          />
-
-          <FormControls>
-            <Button>Отправить</Button>
-          </FormControls>
-        </FormStep>
-
-        <FormStep extraCN={{ isSuccess: true }} key={`${uid}-2`} id={"2"}>
-          <p className={"h4"}>Анкета успешно отправлена!</p>
-          <span>Форма сама закроется через {time} сек...</span>
-        </FormStep>
-      </Form>
-    </Popover>
+          {/* Шаг 2: Успех */}
+          {activeStep === "2" && (
+              <FormStep extraCN={{ isSuccess: true }} key={`${uid}-2`} id={"2"}>
+                <p className={"h4"}>Анкета успешно отправлена!</p>
+                <span>Форма закроется через {time} сек...</span>
+              </FormStep>
+          )}
+        </Form>
+      </Popover>
   );
 };
 

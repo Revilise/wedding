@@ -1,10 +1,16 @@
-import { type FC, useCallback } from 'react';
+import { type FC } from 'react';
 import type { IForm } from '../config/types';
 import { useBEM } from '@lib/bem';
 import { ctx as FormContext } from '../config/ctx';
 import { AnimatePresence } from 'motion/react';
 
-export const Form: FC<IForm> = ({ extraCN, utilCN, children, activeStepId = '0', ...props }) => {
+export const Form: FC<IForm> = ({
+    extraCN,
+    utilCN,
+    children,
+    activeStepId = '0',
+    ...props
+}) => {
     const { bem } = useBEM('form');
 
     return (

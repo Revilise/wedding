@@ -3,7 +3,12 @@ import type { IFormContext, IFormStep } from '../config/types';
 import { ctx as FormContext } from '../config/ctx';
 import { motion } from 'motion/react';
 
-export const FormStep: FC<IFormStep> = ({ extraCN, utilCN, id = '0', children }) => {
+export const FormStep: FC<IFormStep> = ({
+    extraCN,
+    utilCN,
+    id = '0',
+    children,
+}) => {
     const { bem, activeStepId } = useContext<IFormContext>(FormContext);
 
     return (
