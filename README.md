@@ -12,6 +12,11 @@ npm install
 
 Start the dev server, and the app will be available at [http://localhost:3000](http://localhost:3000).
 
+### Environment
+
+- **Dev**: copy `dev.env.example` to `dev.env`
+- **Prod (local)**: copy `prod.env.example` to `prod.env` and run `npm run start:local`
+
 ```bash
 npm run dev
 ```

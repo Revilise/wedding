@@ -43,10 +43,10 @@ export class ProdServer extends Server {
      * @type {ServerConfig}
      */
     cfg = {
-        backend: 'http://localhost:4000',
-        port: process.env.PORT || 3000,
+        backend: process.env.BACKEND_URL || 'http://localhost:4000',
+        port: Number(process.env.APP_PORT || process.env.PORT || 3000),
         rewrite: {
-            '^/': 'api/v1/',
+            '^/': process.env.API_REWRITE || 'api/v1/',
         },
         client: {
             dir: resolve(__dirname, 'dist/client'),

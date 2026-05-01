@@ -17,3 +17,7 @@ dist/
 
 *storybook.log
 storybook-static
+
+prod.env
+dev.env
+.env

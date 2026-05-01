@@ -48,7 +48,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
     reset: resetForm,
   } = useForm<FeedbackFormData>({ defaultValues });
 
-  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(5);
+  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(2);
   const { close: closePopover } = usePopover(id);
 
   const onSubmit: SubmitHandler<FeedbackFormData> = async (data) => {

@@ -80,17 +80,11 @@ export const programSection = {
     program: (
         <>
             <span className={'bold'}>Время</span>
-            <span className={'bold'}>Событие</span>
-            <span>10:00</span>
-            <span>Трансфер до места</span>
-            <span>10:00</span>
-            <span>Welcome, сбор гостей</span>
-            <span>13:00</span>
-            <span>Церемония</span>
+            <span className={'bold'}></span>
             <span>14:00</span>
-            <span>Банкет</span>
-            <span>19:00</span>
-            <span>Торт и танцы</span>
+            <span>Сбор в ресторане</span>
+            <span>15:00</span>
+            <span>Церемония</span>
         </>
     ),
     image: {

@@ -20,10 +20,10 @@ import { resolve } from 'node:path';
  */
 export class DevServer extends Server {
     cfg = {
-        backend: 'http://localhost:4000',
-        port: process.env.PORT || 3000,
+        backend: process.env.BACKEND_URL || 'http://localhost:4000',
+        port: Number(process.env.APP_PORT || process.env.PORT || 3000),
         rewrite: {
-            '^/': 'api/v1/',
+            '^/': process.env.API_REWRITE || 'v1/',
         },
     };
 
