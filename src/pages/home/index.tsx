@@ -62,20 +62,12 @@ export const HomePage = () => {
             </Section>
 
             {/* Program/Timing */}
-            <Section>
+            <Section
+                extraCN={{ isImageBg: true }}
+                style={{ backgroundImage: `url(${programSection.image.src})`, backgroundPosition: "bottom" }}
+            >
                 <Grid extraCN={{ isOffset: true }}>
-                    <GridItem
-                        utilCN={['p-24']}
-                        extraCN={{
-                            isContent: true,
-                        }}
-                    >
-                        <h2 className={'h2'}>{programSection.heading}</h2>
-                    </GridItem>
-
-                    <GridItem extraCN={{ isBorderRad32: true }}>
-                        <Image extraCN={{ isHeight280: true }} src={programSection.image.src} />
-                    </GridItem>
+                    <h2 className={'h2'}>{programSection.heading}</h2>
 
                     <GridItem
                         utilCN={['p-24']}
@@ -96,8 +88,8 @@ export const HomePage = () => {
                 </Grid>
             </Section>
 
-            <Section>
-                <Grid extraCN={{ isVariant2: true }}>
+            <Section id={"gi"}>
+                <Grid extraCN={{ is2Cols: true, isAlignCenter: true }}>
                     <GridItem>
                         <Image {...giftsSection.image} />
                     </GridItem>

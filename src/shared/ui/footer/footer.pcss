@@ -1,7 +1,7 @@
 .footer {
-    --footerBg: var(--colorCoolHazel);
-    --footerPadY: 60px;
-    --footerPadX: 24px;
+    --footerBg: var(--colorOliveDrab);
+    --footerPadY: 3rem;
+    --footerPadX: var(--viewport-padding);
 
     /* wrapper */
     --footerWrapperMaxWidth: 100rem;
@@ -9,8 +9,7 @@
     --footerWrapperGap: 2rem;
 
     /* navigation */
-    --footerDisplay: grid;
-    --footerNavTemplCol: repeat(auto-fill, minmax(150px, 1fr));
+    --footerNavDisplay: flex;
     --footerNavGap: 2rem;
 
     background: var(--footerBg);
@@ -27,9 +26,10 @@
     }
 
     &__navigation {
-        display: var(--footerDisplay);
-        grid-template-columns: var(--footerNavTemplCol);
+        display: var(--footerNavDisplay);
+        max-width: min(350px, 100%);
         gap: var(--footerNavGap);
+        flex-wrap: wrap;
         grid-column: 1 / -1;
     }
 

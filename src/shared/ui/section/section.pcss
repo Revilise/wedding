@@ -9,6 +9,7 @@
 
     --sectionWrapperMaxWidth: var(--viewport-width);
     --sectionWrapperPadX: 0;
+    --sectionWrapperPadY: 0;
 
     background: var(--sectionBg);
     padding-inline: var(--sectionPadX);
@@ -18,7 +19,9 @@
     &__wrapper {
         max-width: var(--sectionWrapperMaxWidth);
         padding-inline: var(--sectionWrapperPadX);
+        padding-block: var(--sectionWrapperPadY);
         margin-inline: auto;
+        overflow: hidden;
     }
 
     &__heading {
@@ -42,6 +45,16 @@
         --sectionWrapperMaxWidth: 100%;
         --sectionWrapperPadX: 0 !important;
         --sectionPadX: 0 !important;
+    }
+    
+    &--isImageBg {
+        --sectionWrapperPadY: 4rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        * {
+            color: var(--colorWhite);
+        }
     }
 
     &--isSweetGreyBg {
@@ -71,7 +84,7 @@
             display: grid;
             gap: 3rem;
 
-            @media (--smallMobile) {
+            @media (--mobile) {
                 --sectionWrapperTemplCols: 1fr;
                 place-items: center;
             }

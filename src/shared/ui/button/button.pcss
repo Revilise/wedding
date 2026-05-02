@@ -44,6 +44,7 @@
     place-content: center;
     place-items: center;
     cursor: pointer;
+    text-decoration: none;
 
     &:hover,
     &.isHover,
@@ -96,14 +97,26 @@
         --btnActiveBg: transparent;
 
         --btnCurColor: var(--colorWhite);
-        --btnHoverColor: var(--colorCabbagePont);
+        --btnHoverColor: var(--colorCoolHazel);
+        --btnActiveColor: var(--colorCoolHazel);
 
         --btnPadX: 0;
         --btnPadY: 0;
-
-        text-decoration: none;
-        font-weight: 800;
+        
+        font-weight: bold;
         font-size: 22px;
         line-height: 30px;
+        white-space: nowrap;
+    }
+    
+    &--isLogoLink {
+        --btnBg: transparent;
+        --btnHoverBg: transparent;
+        --btnActiveBg: transparent;
+        
+        --btnPadX: 0;
+        --btnPadY: 0;
+        
+        font-weight: bold;
     }
 }

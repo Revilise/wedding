@@ -23,3 +23,18 @@
         var(--fluid-font-max, 2.5rem)
     );
 }
+
+/**
+    Рисует вертикальный сепаратор основанный на псевдо-элементе
+ */
+@mixin --separator() {
+    position: relative;
+    
+    &:after {
+        content: "";
+        display: block;
+        height: var(--separatorHeight, auto);
+        width: var(--sepratatorWidth, 1px);
+        background: var(--separatorColor, currentColor);
+    }
+}

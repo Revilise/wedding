@@ -19,6 +19,18 @@
     &--isAuto {
         --gridTemplColumns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
+    
+    &--is2Cols {
+        --gridTemplColumns: repeat(2, 1fr);
+        
+        @media (--mobile) {
+            --gridTemplColumns: 1fr;
+        }
+    }
+    
+    &--isAlignCenter {
+        align-items: center;
+    }
 
     &--isMob2Cols {
         @media (--smallMobile) {

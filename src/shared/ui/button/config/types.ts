@@ -2,6 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, Ref } from 
 
 import type { IComponent } from "@shared/types/component";
 import type { OnEventHandlers } from "@shared/types/utils";
+import type { MotionConfigContextProps } from 'motion';
 
 type ButtonEvents = OnEventHandlers<ButtonHTMLAttributes<HTMLButtonElement>>;
 type AnchorEvents = OnEventHandlers<AnchorHTMLAttributes<HTMLAnchorElement>>;
@@ -14,5 +15,6 @@ export interface IButton extends IComponent, Handlers {
   label?: string;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"] | "link";
   ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
+  motion: MotionConfigContextProps | boolean,
 }
 

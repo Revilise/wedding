@@ -1,16 +1,19 @@
 .header {
-    --headerBg: rgba(255, 255, 255, 0.5);
+    --headerBg: rgba(255, 255, 255, 0.7);
     --headerColor: var(--colorCabbagePont);
     --headerJustifyContent: space-between;
-    --headerPadX: var(--viewport-padding);
+    --headerPadX: calc(var(--viewport-padding));
     --headerPadY: 2rem;
     /* wrapper */
+    
     /* info */
     --headerInfoDisplay: flex;
-
+    /* mixin separator */
+    --separatorColor: var(--headerColor);
+    --separatorHeight: 1.75rem;
+    
     background: var(--headerBg);
     padding-block: var(--headerPadY);
-    padding-inline: var(--headerPadX);
     backdrop-filter: blur(0.375rem);
     position: sticky;
     width: 100%;
@@ -20,6 +23,7 @@
     border-bottom: 0.125rem solid rgba(255, 255, 255, 0.3);
 
     &__wrapper {
+        padding-inline: var(--headerPadX);
         justify-content: var(--headerJustifyContent);
         max-width: var(--fluid-max-vw);
         margin-inline: auto;
@@ -31,9 +35,31 @@
         color: var(--headerColor);
         gap: 3rem;
         align-items: center;
+        font-weight: bold;
+        
+        @media (--tablet) {
+            grid-template-columns: min-content auto;
+            gap: .5rem 2rem;
+            
+            & :nth-last-child(1) {
+                grid-column: 1 / -1;
+            }
+        }
     }
-
+    
+    &__dateTime {
+        display: flex;
+        place-items: center;
+        gap: 2rem;
+        @apply --separator;
+    }
+    
     @media (--tablet) {
+        --separatorColor: none;
+        --headerInfoDisplay: grid;
+    }
+    
+    @media (--mobile) {
         --headerInfoDisplay: none;
         --headerJustifyContent: center;
     }

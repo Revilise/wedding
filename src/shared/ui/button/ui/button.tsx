@@ -16,6 +16,7 @@ export const Button: FC<IButton> = ({
   label,
   children,
   ref,
+  motion: motionProps = { whileTap: { y: 5 }, whileHover: { scale: 1.02 } },
   ...handlers
 }) => {
   const { bem } = useBEM("btn");
@@ -26,10 +27,9 @@ export const Button: FC<IButton> = ({
       className={bem("", { extraCN, utilCN })}
       href={href}
       {...extraAttrs}
-      whileTap={{ y: 5 }}
-      whileHover={{ scale: 1.02 }}
       style={style}
       ref={ref}
+      {...motionProps}
       {...handlers}
     >
       {label && <span className={bem("label")}>{label}</span>}
