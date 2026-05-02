@@ -85,7 +85,12 @@ export const HomePage = () => {
                         }}
                     >
                         <Grid extraCN={{ isMinAuto: true }} utilCN={['fullWidth']}>
-                            {programSection.program}
+                            {programSection.program.map(([time, label]) => (
+                                <>
+                                    <span>{time}</span>
+                                    <span>{label}</span>
+                                </>
+                            ))}
                         </Grid>
                     </GridItem>
                 </Grid>
