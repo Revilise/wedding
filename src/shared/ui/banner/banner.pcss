@@ -6,6 +6,8 @@
     --bannerSlidePadY: 2%;
     /* corner */
     --bannerCornerPad: 0 3rem;
+    /* title */
+    --bannerTitleAlign: left;
 
     border-radius: var(--bannerSlideBorderRad);
     height: var(--bannerHeight);
@@ -49,6 +51,14 @@
         place-items: center;
         right: -0.125rem;
         bottom: -0.125rem;
+        
+        @media (--mobile) {
+            display: none;
+        }
+    }
+    
+    &__title {
+        text-align: var(--bannerTitleAlign);
     }
 
     @media (--tablet) {
@@ -56,6 +66,7 @@
     }
 
     @media (--smallMobile) {
-        --bannerHeight: 80vh;
+        --bannerHeight: 60vh;
+        --bannerTitleAlign: center;
     }
 }
