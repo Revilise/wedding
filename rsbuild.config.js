@@ -1,6 +1,7 @@
 import path, { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@rsbuild/core';
+import { pluginImageCompress } from '@rsbuild/plugin-image-compress';
 import { pluginReact } from '@rsbuild/plugin-react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -8,7 +9,11 @@ const root = path.resolve(__dirname, 'src');
 
 // Docs: https://rsbuild.rs/config/
 export default defineConfig({
-    plugins: [pluginReact()],
+    plugins: [
+        pluginReact(),
+        // Сжатие JPEG/PNG/ICO в production (dev без изменений)
+        pluginImageCompress(),
+    ],
     output: {
         manifest: true,
     },
