@@ -9,6 +9,7 @@ import {
     dressCodeSection,
     dressExamplesSection,
     feedbackSection,
+    footerNavigation,
     giftsSection,
     heroSection,
     inviteSection,
@@ -26,7 +27,7 @@ import { Palette } from '@entities/palette';
 
 export const HomePage = () => {
     return (
-        <Layout>
+        <Layout footerNavigation={footerNavigation}>
             {/* Hero Banner */}
             <Section extraCN={{ isLarge: true }}>
                 <Banner {...heroSection.banner} />
@@ -45,7 +46,7 @@ export const HomePage = () => {
             </Section>
 
             {/* Time & Place */}
-            <Section>
+            <Section id={timePlaceSection.anchorId}>
                 <Grid>
                     <Grid extraCN={{ isVariant2: true }}>
                         <h2 className={'h2'}>{timePlaceSection.heading}</h2>
@@ -65,6 +66,7 @@ export const HomePage = () => {
 
             {/* Program/Timing */}
             <Section
+                id={programSection.anchorId}
                 extraCN={{ isImageBg: true }}
                 style={{ backgroundImage: `url(${programSection.image.src})`, backgroundPosition: "bottom" }}
             >
@@ -90,7 +92,7 @@ export const HomePage = () => {
                 </Grid>
             </Section>
 
-            <Section id={"gi"}>
+            <Section id={giftsSection.anchorId}>
                 <Grid extraCN={{ is2Cols: true, isAlignCenter: true }}>
                     <GridItem>
                         <Image {...giftsSection.image} />
@@ -105,6 +107,7 @@ export const HomePage = () => {
 
             {/* Dress code */}
             <Section
+                id={dressCodeSection.anchorId}
                 extraCN={{ isDressCode: true }}
                 heading={
                     <>
@@ -130,7 +133,7 @@ export const HomePage = () => {
                 </Grid>
             </Section>
 
-            <Section extraCN={{ isCommunication: true, isSweetGreyBg: true, isWideVerticalPad: true }}>
+            <Section id={communitySection.anchorId} extraCN={{ isCommunication: true, isSweetGreyBg: true, isWideVerticalPad: true }}>
                 <div className={'flex-column gap-32'}>
                     <h2 className={'h2'}>{communitySection.heading}</h2>
                     <p>Присоединяйтесь к нашему телеграмм-каналу - будем делиться фото и видео с праздника</p>
@@ -146,7 +149,7 @@ export const HomePage = () => {
                 </Button>
             </Section>
 
-            <Section heading={<h2>{feedbackSection.heading}</h2>}>
+            <Section id={feedbackSection.anchorId} heading={<h2>{feedbackSection.heading}</h2>}>
                 <Grid extraCN={{ isVariant2: true }}>
                     <Image src={feedbackSection.image} />
 

@@ -8,12 +8,12 @@ import { Header } from "@ui/header";
 
 import type { ILayout } from "../config/types";
 
-export const Layout: FC<ILayout> = ({ children }) => {
+export const Layout: FC<ILayout> = ({ children, footerNavigation = [] }) => {
   return (
     <div className={"layout"}>
       <Header />
       {wrapChildrenWithBoundaries(children)}
-      <Footer />
+      <Footer navigation={footerNavigation} />
     </div>
   );
 };

@@ -16,6 +16,25 @@ import ImageSberQr from "@images/qr/sber-qr.png";
 import type { IBanner } from '@ui/banner';
 import type { SwiperOptions } from 'swiper/types';
 
+/** Якоря секций главной: `id` у `<Section>` и хэши ссылок в футере. */
+export const homeSectionAnchors = {
+    timePlace: 'timing',
+    program: 'program',
+    dressCode: 'dress-code',
+    feedback: 'form',
+    telegram: 'telegram',
+    gifts: 'gifts',
+} as const;
+
+export const footerNavigation: ReadonlyArray<{ href: string; label: string }> = [
+    { href: `#${homeSectionAnchors.timePlace}`, label: 'Время и место' },
+    { href: `#${homeSectionAnchors.program}`, label: 'Программа' },
+    { href: `#${homeSectionAnchors.dressCode}`, label: 'Дресс-код' },
+    { href: `#${homeSectionAnchors.feedback}`, label: 'Анкета' },
+    { href: `#${homeSectionAnchors.telegram}`, label: 'Телеграм' },
+    { href: `#${homeSectionAnchors.gifts}`, label: 'Подарки' },
+];
+
 export const heroSection = {
     banner: {
         slides: [
@@ -48,7 +67,7 @@ export const heroSection = {
 export const inviteSection = {
     heading: 'Дорогие родные и близкие!',
     content:
-        'Приглашаем вас на нашу свадьбу. Будьте с нами, станьте свидетелями этого светлого события, где мы обещаем друг другу вечную поддержку и радость в повседневности.',
+        'Мы приглашаем вас разделить с нами день свадьбы. Приходите быть рядом и свидетелями этого тёплого, светлого события',
     image: {
         extraCN: { isFullHeight: true },
         src: ExampleImage2 as string,
@@ -56,6 +75,7 @@ export const inviteSection = {
 };
 
 export const timePlaceSection = {
+    anchorId: homeSectionAnchors.timePlace,
     heading: (
         <>
             Время & <wbr />
@@ -82,6 +102,7 @@ export const timePlaceSection = {
 
 
 export const programSection = {
+    anchorId: homeSectionAnchors.program,
     heading: 'Программа',
     program: [
         ["14:00", "Сбор гостей & welcome"],
@@ -99,6 +120,7 @@ export const programSection = {
 };
 
 export const giftsSection = {
+    anchorId: homeSectionAnchors.gifts,
     heading: 'Подарки',
     qr: ImageSberQr,
     content: (
@@ -116,6 +138,7 @@ export const giftsSection = {
 };
 
 export const dressCodeSection = {
+    anchorId: homeSectionAnchors.dressCode,
     heading: 'Dress Code',
     subTitle: <>Итальянское лето</>,
     description:
@@ -154,6 +177,7 @@ export const dressExamplesSection = {
 };
 
 export const communitySection = {
+    anchorId: homeSectionAnchors.telegram,
     heading: 'Telegram',
     qrCode: {
         link: 'https://t.me/+qUT-GT5l6PAzNzEy',
@@ -163,6 +187,7 @@ export const communitySection = {
 };
 
 export const feedbackSection = {
+    anchorId: homeSectionAnchors.feedback,
     heading: 'Анкета',
     image: ExampleImage2 as string,
     popoverId: 'anketa',

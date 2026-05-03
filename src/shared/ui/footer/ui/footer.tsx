@@ -1,11 +1,10 @@
 import type { FC } from 'react';
 import type { IFooter } from '../config/types.ts';
 import { useBEM } from '@lib/bem';
-import { navigation } from '../api/mock.ts';
 import { Button } from '@ui/button';
 import { Icon } from '@ui/icon';
 
-export const Footer: FC<IFooter> = ({ extraCN, utilCN }) => {
+export const Footer: FC<IFooter> = ({ extraCN, utilCN, navigation = [] }) => {
     const { bem } = useBEM('footer');
 
     return (
