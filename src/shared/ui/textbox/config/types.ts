@@ -2,14 +2,14 @@ import type { IComponent } from '@shared/types/component.ts';
 import type { OnEventHandlers } from '@shared/types/utils.ts';
 import type { HTMLProps, Ref } from 'react';
 
-type InputHandlers = OnEventHandlers<HTMLProps<HTMLInputElement>>;
+type TextboxHandlers = OnEventHandlers<HTMLProps<HTMLTextAreaElement>>;
 
-export interface Iinput extends IComponent, InputHandlers {
+export interface Itextbox extends IComponent, TextboxHandlers {
     autocomplete?: boolean;
-    type?: 'text' | 'email' | 'password' | 'tel';
     label?: string;
     name?: string;
-    value?: string | number;
+    value?: string;
     error?: string;
-    ref?: Ref<HTMLInputElement>;
+    ref?: Ref<HTMLTextAreaElement>;
+    rows?: number;
 }

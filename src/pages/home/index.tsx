@@ -1,5 +1,6 @@
 'use server';
 
+import { Fragment } from 'react';
 import { Layout } from '@ui/layout';
 import { Section } from '@ui/section';
 import { Banner } from '@ui/banner';
@@ -20,8 +21,8 @@ import { Grid, GridItem } from '@ui/grid';
 import { Icon } from '@ui/icon';
 import { Button } from '@ui/button';
 import { FeedbackForm } from '@widgets/feedbackForm';
+import { SurveyReminder } from '@widgets/surveyReminder';
 import { Palette } from '@entities/palette';
-import { SurveyReminder } from './surveyReminder.tsx';
 
 export const HomePage = () => {
     return (
@@ -79,10 +80,10 @@ export const HomePage = () => {
                     >
                         <Grid extraCN={{ isMinAuto: true }} utilCN={['fullWidth']}>
                             {programSection.program.map(([time, label]) => (
-                                <>
+                                <Fragment key={time}>
                                     <span>{time}</span>
                                     <span>{label}</span>
-                                </>
+                                </Fragment>
                             ))}
                         </Grid>
                     </GridItem>
@@ -159,7 +160,7 @@ export const HomePage = () => {
                 </Grid>
             </Section>
 
-            <SurveyReminder isOpen={true} />
+            <SurveyReminder id={feedbackSection.popoverId} isOpen />
         </Layout>
     );
 };

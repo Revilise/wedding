@@ -1,28 +1,28 @@
 import type { FC } from 'react';
-import type { Iinput } from '../config/types';
+import type { Itextbox } from '../config/types';
 import { useBEM } from '@lib/bem';
 
-export const Input: FC<Iinput> = ({
+export const Textbox: FC<Itextbox> = ({
     extraCN,
     utilCN,
-    type = 'text',
     name,
     label,
     value,
     ref,
     error,
+    rows = 4,
     autocomplete = false,
     ...handlers
 }) => {
-    const { bem } = useBEM('input');
+    const { bem } = useBEM('textbox');
 
     return (
         <label className={bem('', { extraCN, utilCN })}>
             {label && <span className={bem('label')}>{label}</span>}
-            <input
+            <textarea
                 ref={ref}
                 name={name}
-                type={type}
+                rows={rows}
                 className={bem('value')}
                 value={value}
                 aria-invalid={!!error}

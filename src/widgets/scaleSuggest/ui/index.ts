@@ -1,2 +1,0 @@
-export { ScaleSuggest } from "./scaleSuggest";
-

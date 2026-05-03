@@ -6,15 +6,11 @@ import type { FC } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 
-export const DialogBox: FC<IDialogBox> = ({ extraCN, utilCN, isOpen, children, actions }) => {
+// @ts-expect-error — пакет без типов; нужен для SSR в связке с PortalServer (как у Popover).
+import { Portal } from '@openagenda/react-portal-ssr';
+
+const DialogBoxPortal: FC<IDialogBox> = ({ extraCN, utilCN, isOpen, children, actions }) => {
     const { bem } = useBEM('dialog-box');
-
-    const portalRoot =
-        typeof document !== 'undefined' ? document.getElementById('portal') || document.body : null;
-
-    if (!portalRoot) {
-        return null;
-    }
 
     return createPortal(
         <AnimatePresence initial={false}>
@@ -43,6 +39,12 @@ export const DialogBox: FC<IDialogBox> = ({ extraCN, utilCN, isOpen, children, a
                 </div>
             )}
         </AnimatePresence>,
-        portalRoot,
+        document.getElementById('portal') || document.body,
     );
 };
+
+export const DialogBox: FC<IDialogBox> = props => (
+    <Portal>
+        <DialogBoxPortal {...props} />
+    </Portal>
+);

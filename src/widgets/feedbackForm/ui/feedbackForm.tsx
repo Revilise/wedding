@@ -8,6 +8,7 @@ import { Button } from "@ui/button";
 import { CheckerGroup } from "@ui/checkerGroup";
 import { Form, FormControls, FormStep } from "@ui/form";
 import { Input } from "@ui/input";
+import { Textbox } from "@ui/textbox";
 import { Popover, usePopover } from "@ui/popover";
 
 import { useCountdown } from "@lib/countdown";
@@ -30,6 +31,7 @@ const defaultValues: FeedbackFormData = {
   fact: "",
   song: "",
   history: "",
+  comment: ""
 }
 
 export const FeedbackForm: FC<IFeedbackForm> = ({
@@ -139,7 +141,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
           {/* Шаг 1: Подробности */}
           {activeStep === "1" && (
               <FormStep key={`${uid}-1`} id={"1"}>
-                <Input
+                <Textbox
                     label={"Забавно представьтесь в 1-2 предложениях."}
                     error={errors.introduction?.message}
                     {...register("introduction", { required: Locale.form.invalid.requiredField })}
@@ -147,7 +149,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                 <Input label={"У вас есть аллергия на продукты?"} {...register("allergy")} />
                 <Input label={"Факт о паре?"} {...register("fact")} />
                 <Input label={"Песня-ассоциация с парой?"} {...register("song")} />
-                <Input label={"История, связанная с женихом или невестой?"} {...register("history")} />
+                <Textbox label={"История, связанная с женихом или невестой?"} {...register("history")} />
 
                 <CheckerGroup
                     label={"Будете ли алкоголь?"}
@@ -166,6 +168,9 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                       },
                     ]}
                 />
+
+                <Textbox label={"Комментарии"} {...register("comment")} />
+
                 <FormControls>
                   <Button type="submit">Отправить</Button>
                 </FormControls>

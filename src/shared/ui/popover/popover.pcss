@@ -14,7 +14,7 @@
     --popoverWrapperPadX: 2rem;
     --popoverWrapperPadY: 4rem;
     
-    --popoverWrapperBorderRad: 3rem;
+    --popoverWrapperBorderRad: 2rem;
     --popoverWrapperMinHeight: 65rem;
 
     position: fixed;
@@ -47,24 +47,23 @@
         padding-block: var(--popoverWrapperPadY);
         padding-inline: var(--popoverWrapperPadX);
         
+        min-height: var(--popoverWrapperMinHeight);
+        max-height: var(--popoverWrapperMaxHeight);
+        overflow-y: auto;
+        
         position: relative;
     }
     
     &__content {
         width: var(--popoverWrapperWidth);
         max-width: var(--popoverWrapperMaxWidth);
-        
-        min-height: var(--popoverWrapperMinHeight);
-        max-height: var(--popoverWrapperMaxHeight);
-        
        
         padding-inline: var(--popoverWrapperPadX);
         padding-block: var(--popoverWrapperPadX);
         
-        
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
+        
         
         scrollbar-gutter: stable;
         

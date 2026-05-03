@@ -17,6 +17,7 @@ export type FeedbackStep2 = {
   fact: string;
   song: string;
   history: string;
+  comment: string;
 }
 
 export type FeedbackFormData = FeedbackStep1 & FeedbackStep2;
