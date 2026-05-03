@@ -21,6 +21,7 @@ import { Icon } from '@ui/icon';
 import { Button } from '@ui/button';
 import { FeedbackForm } from '@widgets/feedbackForm';
 import { Palette } from '@entities/palette';
+import { SurveyReminder } from './surveyReminder.tsx';
 
 export const HomePage = () => {
     return (
@@ -157,6 +158,8 @@ export const HomePage = () => {
                     <FeedbackForm id={feedbackSection.popoverId} />
                 </Grid>
             </Section>
+
+            <SurveyReminder isOpen={true} />
         </Layout>
     );
 };

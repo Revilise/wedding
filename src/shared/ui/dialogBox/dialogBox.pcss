@@ -1,0 +1,136 @@
+/* Мобиле: карточка по центру + затемнённый blur-фон. Десктоп/планшет: нижняя «стеклянная» полоска без полноэкранного затемнения */
+
+.dialog-box {
+    --dialog-accent: var(--colorShinyCopper);
+    --dialog-radius-mob: 4rem;
+    --dialog-radius-desk: 20rem;
+
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-inline: var(--viewport-padding);
+    padding-block: var(--viewport-padding);
+    pointer-events: none;
+
+    @media (--mobile) {
+        align-items: center;
+    }
+
+    &__backdrop {
+        pointer-events: auto;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: var(--colorBlackout30);
+        backdrop-filter: blur(10px);
+
+        @media (min-width: 769px) {
+            display: none;
+        }
+    }
+
+    &__panel {
+        pointer-events: auto;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: min(200rem, 100%);
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.5rem 3rem;
+
+        padding-block: 2.5rem;
+        padding-inline: 4rem;
+
+        border-radius: var(--dialog-radius-desk);
+        background: rgba(255, 255, 255, 0.78);
+        border: 0.125rem solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0.5rem 2rem rgba(30, 30, 30, 0.1);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+
+        @media (--mobile) {
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 3rem;
+            max-width: min(72rem, 100%);
+
+            padding-block: 4rem;
+            padding-inline: 3rem;
+
+            border-radius: var(--dialog-radius-mob);
+            background: var(--colorWhite);
+            border: none;
+            box-shadow: 0 0.75rem 3rem rgba(30, 30, 30, 0.14);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+    }
+
+    &__body {
+        color: var(--colorBlackout);
+        font-family: var(--font-anonymous);
+        text-align: left;
+        flex: 1;
+        min-width: 0;
+
+        @media (--mobile) {
+            text-align: center;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2rem 3rem;
+        flex-shrink: 0;
+
+        @media (--mobile) {
+            justify-content: center;
+        }
+    }
+
+    /* Кнопки макета: «Анкета» — текст, «Уже да» — outline */
+    .btn--isDialogGhost {
+        --btnBg: transparent;
+        --btnHoverBg: transparent;
+        --btnActiveBg: transparent;
+        --btnCurColor: var(--dialog-accent);
+        --btnHoverColor: var(--colorRedStage);
+        --btnActiveColor: var(--colorRedStage);
+        --btnBorderColor: transparent;
+        --btnPadX: 2rem;
+        --btnPadY: 1.5rem;
+        --btnBorderRad: 2rem;
+        text-decoration: none;
+        font-weight: 400;
+    }
+
+    .btn--isDialogOutline {
+        --btnBg: transparent;
+        --btnHoverBg: rgba(223, 129, 71, 0.08);
+        --btnActiveBg: rgba(223, 129, 71, 0.14);
+        --btnCurColor: var(--dialog-accent);
+        --btnHoverColor: var(--dialog-accent);
+        --btnActiveColor: var(--dialog-accent);
+        --btnBorderColor: var(--dialog-accent);
+        --btnHoverBorderColor: var(--dialog-accent);
+        --btnActiveBorderColor: var(--dialog-accent);
+        --btnPadX: 3rem;
+        --btnPadY: 2rem;
+        --btnBorderRad: 2rem;
+        font-weight: 400;
+    }
+}
