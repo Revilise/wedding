@@ -1,12 +1,15 @@
+import { useCallback } from 'react';
+
 import PopoverObserver from '../model/observer.ts';
 
 export const usePopover = (id: string) => {
-    return {
-        close() {
-            return PopoverObserver.notify(id, 'hide');
-        },
-        open() {
-            return PopoverObserver.notify(id, 'show');
-        },
-    };
+    const close = useCallback(() => {
+        PopoverObserver.notify(id, 'hide');
+    }, [id]);
+
+    const open = useCallback(() => {
+        PopoverObserver.notify(id, 'show');
+    }, [id]);
+
+    return { close, open };
 };

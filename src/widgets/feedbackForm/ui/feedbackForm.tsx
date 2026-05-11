@@ -1,7 +1,6 @@
 "use client";
 
-import type { FC } from "react";
-import { useEffect, useId, useState } from "react";
+import { type FC, useEffect, useId, useState } from 'react';
 import { useForm, type SubmitHandler } from "react-hook-form";
 
 import { Button } from "@ui/button";
@@ -19,6 +18,7 @@ import { toBoolean } from "@shared/lib";
 
 import type { FeedbackFormData, IFeedbackForm } from '../config/types';
 import { filterObject } from '@lib/object/filterObject.ts';
+import { useFeedback } from '@widgets/feedbackForm/lib/useFeedback.tsx';
 
 const defaultValues: FeedbackFormData = {
   visit: undefined,
@@ -32,6 +32,11 @@ const defaultValues: FeedbackFormData = {
   song: "",
   history: "",
   comment: ""
+}
+
+const validation: Record<string, (keyof FeedbackFormData)[]> = {
+  "0": ["name", "visit"],
+  "1": ["introduction", "alcohol"]
 }
 
 export const FeedbackForm: FC<IFeedbackForm> = ({
@@ -52,50 +57,46 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
 
   const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(2);
   const { close: closePopover } = usePopover(id);
+  const { updateFeedback } = useFeedback();
 
   const onSubmit: SubmitHandler<FeedbackFormData> = async (data) => {
-    // Валидируем только поля, относящиеся к текущему шагу перед отправкой
-    const fieldsToValidate = activeStep === "0"
-        ? ["name", "visit"]
-        : ["introduction", "alcohol"];
+    if (!await trigger(validation[activeStep])) return;
 
-    const isValid = await trigger(fieldsToValidate as never);
-    if (!isValid) return;
-
-    const payload = {
+    const payload = filterObject({
       ...data,
       step: activeStep,
       alcohol: toBoolean(data.alcohol),
       visit: toBoolean(data.visit),
-    };
+    }, ({ value }) => value !== "")
 
-    const filteredPayload = filterObject(payload, ({ value }) => value !== "")
-
-    try {
-      const response = await request(filteredPayload, {
-        url: `${API}${API_ENDPOINTS.feedback}`,
-        method: "post"
-      });
-
-      const nextStep = response.step;
-      setActiveStep(nextStep);
-
-      if (nextStep === "2" && response.success) {
-        startCountdown();
-      }
-    } catch (error) {
-      console.error("Submission error", error);
-    }
+    request(payload, { url: `${API}${API_ENDPOINTS.feedback}`, method: "post" })
+        .then(onSuccess)
+        .catch(onFail);
   };
 
-  useEffect(() => {
-    if (isEnd) {
-      closePopover();
-      resetForm();
-      resetCountdown();
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setActiveStep("0");
+  const onSuccess = (resp: { step: string, success: boolean }) => {
+    const nextStep = resp.step;
+    setActiveStep(nextStep);
+
+    if (nextStep === "2" && resp.success) {
+      startCountdown();
+      updateFeedback(true);
     }
+  }
+
+  const onFail = (error: Error) => {
+    console.error("Submission error", error);
+  }
+
+  useEffect(() => {
+    if (!isEnd) return;
+
+    closePopover();
+    resetForm();
+    resetCountdown();
+    setActiveStep("0");
+    // Срабатывает один раз при переходе таймера в конец; reset/countdown не мемоизированы.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- см. выше
   }, [isEnd]);
 
   return (

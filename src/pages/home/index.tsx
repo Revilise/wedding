@@ -34,21 +34,22 @@ export const HomePage = () => {
             </Section>
 
             {/* Invite guests */}
-            <Section extraCN={{ isWelcome: true }} heading={<h2 className={'h2'}>{inviteSection.heading}</h2>}>
-                <Grid extraCN={{ isVariant1: true }}>
+            <Section extraCN={{ isWelcome: true }}
+                     heading={<h2 className={'h2'}>{inviteSection.heading}</h2>}>
+                <Grid>
                     <GridItem>
                         <p>{inviteSection.content}</p>
                     </GridItem>
-                    <GridItem>
-                        <Image {...inviteSection.image} />
-                    </GridItem>
+                    {/*<GridItem>*/}
+                    {/*    <Image {...inviteSection.image} />*/}
+                    {/*</GridItem>*/}
                 </Grid>
             </Section>
 
             {/* Time & Place */}
             <Section id={timePlaceSection.anchorId}>
                 <Grid>
-                    <Grid extraCN={{ isVariant2: true }}>
+                    <Grid>
                         <h2 className={'h2'}>{timePlaceSection.heading}</h2>
                         <div>{timePlaceSection.info}</div>
                     </Grid>
@@ -151,7 +152,7 @@ export const HomePage = () => {
 
             <Section id={feedbackSection.anchorId} heading={<h2>{feedbackSection.heading}</h2>}>
                 <Grid extraCN={{ isVariant2: true }}>
-                    <Image src={feedbackSection.image} />
+                    {/*<Image src={feedbackSection.image} />*/}
 
                     {feedbackSection.content}
 

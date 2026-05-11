@@ -1,5 +1,3 @@
-import ExampleImage from '@images/banner-flowers.jpg';
-import ExampleImage2 from '@images/image-oranges.jpg';
 import LocationImage from '@images/location.jpg';
 import ManLook1 from '@images/looks/man-1.jpg';
 import ManLook2 from '@images/looks/man-2.jpg';
@@ -8,8 +6,10 @@ import WomanLook1 from '@images/looks/woman-1.jpg';
 import WomanLook2 from '@images/looks/woman-2.jpg';
 import WomanLook3 from '@images/looks/woman-3.jpg';
 
-import ImageSunset from "@images/banners/sunset.jpg";
-import ImageLeavesSky from "@images/banners/leaves.jpg";
+import Banner1 from "@images/banners/we-2.jpg";
+import Banner2 from "@images/banners/banner-2-blured.jpg";
+
+import Cover2 from "@images/banners/gift.jpg";
 
 import ImageSberQr from "@images/qr/sber-qr.png";
 
@@ -40,7 +40,7 @@ export const heroSection = {
         slides: [
             {
                 image: {
-                    src: ExampleImage as string,
+                    src: Banner1 as string,
                 },
                 title: (
                     <>
@@ -70,7 +70,7 @@ export const inviteSection = {
         'Мы приглашаем вас разделить с нами день свадьбы. Приходите быть рядом и свидетелями этого тёплого, светлого события',
     image: {
         extraCN: { isFullHeight: true },
-        src: ExampleImage2 as string,
+        // src: ExampleImage2 as string,
     },
 };
 
@@ -89,7 +89,7 @@ export const timePlaceSection = {
         </>
     ),
     image: {
-        extraCN: { isHeight280: true },
+        extraCN: { "isAspect[300/470]": true },
         src: LocationImage as string,
     },
     extraInfo: (
@@ -115,7 +115,7 @@ export const programSection = {
         ["20:00", "Финал"]
     ],
     image: {
-        src: ImageLeavesSky as string,
+        src: Banner2 as string,
     },
 };
 
@@ -133,7 +133,7 @@ export const giftsSection = {
     ),
     image: {
         extraCN: { isFullHeight: true, "isAspect[300/470]": true },
-        src: ExampleImage2 as string,
+        src: Cover2 as string,
     },
 };
 
@@ -189,7 +189,7 @@ export const communitySection = {
 export const feedbackSection = {
     anchorId: homeSectionAnchors.feedback,
     heading: 'Анкета',
-    image: ExampleImage2 as string,
+    // image: ExampleImage2 as string,
     popoverId: 'anketa',
     content: (
         <>

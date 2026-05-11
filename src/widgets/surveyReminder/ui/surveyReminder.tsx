@@ -1,24 +1,33 @@
 "use client";
 
-import type { FC } from "react";
-import { useState } from "react";
+import { type FC, useEffect, useState } from 'react';
 
 import { POPOVER } from "@shared/const";
 import { Button } from "@ui/button";
 import { DialogBox } from "@ui/dialogBox";
+import PopoverObserver from '@ui/popover/model/observer.ts';
 
 import type { ISurveyReminder } from "../config/types";
+import { useFeedback } from '@widgets/feedbackForm/lib/useFeedback.tsx';
 
 export const SurveyReminder: FC<ISurveyReminder> = ({
-    isOpen = true,
     id,
     extraCN,
     utilCN,
     extraAttrs,
     style,
 }) => {
+    const { isFeedbackSent } = useFeedback();
+
     const [dismissed, setDismissed] = useState(false);
-    const visible = isOpen && !dismissed;
+    const [isSurveyPopoverOpen, setIsSurveyPopoverOpen] = useState(false);
+
+    useEffect(() => {
+        PopoverObserver.subscribe(id, setIsSurveyPopoverOpen);
+        return () => PopoverObserver.unsubscribe(id, setIsSurveyPopoverOpen);
+    }, [id]);
+
+    const visible = !isFeedbackSent && !isSurveyPopoverOpen && !dismissed;
 
     return (
         <DialogBox

@@ -8,29 +8,33 @@ type Actions = 'show' | 'hide';
  * Позволяет подписывать функции на обновления, уведомлять по идентификатору или всех сразу.
  */
 class Observer implements IPopoverObserver {
-    collection = new Map<string, (value: boolean) => void>();
-    opened = new Set();
+    collection = new Map<string, Set<(value: boolean) => void>>();
+    opened = new Set<string>();
 
     constructor() {
         this.collection = new Map();
     }
 
     /**
-     * Уведомляет одного подписчика об изменении состояния.
+     * Уведомляет подписчиков об изменении состояния.
      * id — уникальный идентификатор popover'а.
      * action — действие: "show" или "hide".
      */
     notify(id: string, action: Actions) {
-        const callback = this.collection.get(id);
-        if (typeof callback === 'function') {
-            if (action === 'show') {
-                this.opened.add(id);
-                Scroll.fix();
-                callback(true);
-            } else {
-                this.opened.delete(id);
-                Scroll.toggle(this.opened.size > 0);
-                callback(false);
+        const callbacks = this.collection.get(id);
+        if (!callbacks?.size) return;
+
+        if (action === 'show') {
+            this.opened.add(id);
+            Scroll.fix();
+            for (const cb of callbacks) {
+                cb(true);
+            }
+        } else {
+            this.opened.delete(id);
+            Scroll.toggle(this.opened.size > 0);
+            for (const cb of callbacks) {
+                cb(false);
             }
         }
     }
@@ -40,7 +44,7 @@ class Observer implements IPopoverObserver {
      * action — действие, применяемое ко всем подписчикам.
      */
     notifyAll(action: Actions) {
-        const ids = this.collection.keys();
+        const ids = [...this.collection.keys()];
 
         for (const id of ids) {
             this.notify(id, action);
@@ -53,15 +57,30 @@ class Observer implements IPopoverObserver {
      * callback — функция, вызываемая при уведомлении.
      */
     subscribe(id: string, callback: (value: boolean) => void) {
-        this.collection.set(id, callback);
+        let set = this.collection.get(id);
+        if (!set) {
+            set = new Set();
+            this.collection.set(id, set);
+        }
+        set.add(callback);
     }
 
     /**
-     * Удаляет подписчика по его id.
-     * id — идентификатор popover'а, который нужно удалить из коллекции.
+     * Удаляет подписчика.
+     * Если передан callback — снимает только его; иначе удаляет всех подписчиков для id.
      */
-    unsubscribe(id: string) {
-        this.collection.delete(id);
+    unsubscribe(id: string, callback?: (value: boolean) => void) {
+        const set = this.collection.get(id);
+        if (!set) return;
+
+        if (callback) {
+            set.delete(callback);
+            if (set.size === 0) {
+                this.collection.delete(id);
+            }
+        } else {
+            this.collection.delete(id);
+        }
     }
 }
 

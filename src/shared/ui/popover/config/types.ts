@@ -13,5 +13,5 @@ export interface IPopoverProvider {
 
 export interface IPopoverObserver {
     subscribe: (id: string, callback: (value: boolean) => void) => void;
-    unsubscribe: (id: string) => void;
+    unsubscribe: (id: string, callback?: (value: boolean) => void) => void;
 }

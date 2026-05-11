@@ -15,12 +15,13 @@ export const PopoverBase: FC<IPopover> = ({ extraCN = {}, utilCN, id, children }
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        PopoverObserver.subscribe(id, (value: boolean) => setIsOpen(value));
+        const onOpenChange = (value: boolean) => setIsOpen(value);
+        PopoverObserver.subscribe(id, onOpenChange);
 
         return function () {
-            PopoverObserver.unsubscribe(id);
+            PopoverObserver.unsubscribe(id, onOpenChange);
         };
-    }, []);
+    }, [id]);
 
     return createPortal(
         <AnimatePresence initial={false}>
