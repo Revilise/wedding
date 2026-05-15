@@ -1,4 +1,4 @@
-import Cover2 from '@images/banners/gift.jpg';
+import Cover2 from '@images/banners/mail-gift.jpg';
 
 import { homeSectionAnchors } from '../../config/sectionAnchors.ts';
 

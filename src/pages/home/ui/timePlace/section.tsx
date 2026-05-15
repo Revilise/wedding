@@ -8,7 +8,7 @@ export const TimePlaceSection = () => (
         extraCN={{ isTimePlace: true, isLarge: true }}
         id={timePlaceSection.anchorId}
     >
-        <Flex extraCN={{ isColumn: true, isGap3: true, isPadY3: true }} utilCN={["align-right"]}>
+        <Flex extraCN={{ isColumn: true, isGap3: true, isPadY3: true, isJustifyCenter: true }} utilCN={["align-right"]}>
             <h2 className={'h2'}>{timePlaceSection.heading}</h2>
             <div className={"align-right"}>{timePlaceSection.info}</div>
         </Flex>
