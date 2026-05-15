@@ -1,72 +1,49 @@
 .banner {
     --bannerHeight: 58.75rem;
-    /* slide */
-    --bannerSlideBorderRad: 4rem;
-    --bannerSlidePadX: 5%;
-    --bannerSlidePadY: 2%;
-    /* corner */
-    --bannerCornerPad: 0 3rem;
+    --bannerBorderRad: 4rem;
+    --bannerTextColor: var(--colorWhite);
+    
+    /* content */
+    --bannerContentPad: 8rem;
+    --bannerContentZIndex: 1;
+
     /* title */
-    --bannerTitleAlign: left;
-
-    border-radius: var(--bannerSlideBorderRad);
+    --bannerTitlePad: 6rem;
+    --bannerZindex: 1;
+    
+    border-radius: var(--bannerBorderRad);
     height: var(--bannerHeight);
+    color: var(--bannerTextColor);
     overflow: hidden;
-
-    &__slide {
-        height: var(--bannerHeight) !important;
-
-        position: relative;
-
-        img,
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+    position: relative;
+    
+    img,
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
-
-    &__slideContent {
-        padding-inline: var(--bannerSlidePadX);
-        padding-block: var(--bannerSlidePadY);
-        position: absolute;
+    
+    &__content {
+        padding: var(--bannerContentPad);
+        z-index: var(--bannerContentZIndex);
         display: flex;
-        justify-content: start;
         flex-direction: column;
-        inset: 0;
-    }
-
-    &__corner {
-        background-color: var(--background-color);
-        mask-image: url('../../../../public/masks/mask-1.svg');
-        mask-repeat: no-repeat;
-        mask-position: right;
+        place-content: end;
+        place-items: end;
         position: absolute;
-        overflow: hidden;
-        mask-size: cover;
-        padding: var(--bannerCornerPad);
-        aspect-ratio: 1;
-        display: flex;
-        place-content: center;
-        place-items: center;
-        right: -0.125rem;
-        bottom: -0.125rem;
-        
-        @media (--mobile) {
-            display: none;
-        }
+        inset: 0;
     }
     
     &__title {
-        text-align: var(--bannerTitleAlign);
+        padding: var(--bannerTitlePad);
+        z-index: var(--bannerZindex);
+        position: absolute;
+        inset: 0;
     }
-
-    @media (--tablet) {
-        --bannerHeight: 60vh;
-    }
-
-    @media (--smallMobile) {
-        --bannerTitleAlign: center;
+    
+    @media (--mobile) {
+        --bannerContentPad: 6rem;
     }
 }

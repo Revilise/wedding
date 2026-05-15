@@ -52,6 +52,8 @@
         overflow-y: auto;
         
         position: relative;
+        display: flex;
+        flex-direction: column;
     }
     
     &__content {
@@ -61,14 +63,13 @@
         padding-inline: var(--popoverWrapperPadX);
         padding-block: var(--popoverWrapperPadX);
         
-        display: flex;
-        flex-direction: column;
-        
-        
+        align-content: center;
         scrollbar-gutter: stable;
+        height: 100%;
+        flex-grow: 1;
         
         .form {
-            flex-grow: 1;
+            flex: 1 1 auto;
         }
     }
 

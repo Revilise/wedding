@@ -55,7 +55,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
     reset: resetForm,
   } = useForm<FeedbackFormData>({ defaultValues });
 
-  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(2);
+  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(300);
   const { close: closePopover } = usePopover(id);
   const { updateFeedback } = useFeedback();
 
@@ -95,8 +95,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
     resetForm();
     resetCountdown();
     setActiveStep("0");
-    // Срабатывает один раз при переходе таймера в конец; reset/countdown не мемоизированы.
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- см. выше
+
   }, [isEnd]);
 
   return (

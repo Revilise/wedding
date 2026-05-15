@@ -109,7 +109,7 @@ export class DevServer extends Server {
      */
     async handleHomePage(req, res, next) {
         try {
-            const html = await this.renderTemplate();
+            const html = this.injectSiteOriginIntoHtml(await this.renderTemplate(), req);
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(html);
         } catch (err) {

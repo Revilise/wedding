@@ -1,170 +1,29 @@
 'use server';
 
-import { Fragment } from 'react';
 import { Layout } from '@ui/layout';
-import { Section } from '@ui/section';
-import { Banner } from '@ui/banner';
 import {
-    communitySection,
-    dressCodeSection,
-    dressExamplesSection,
-    feedbackSection,
-    footerNavigation,
-    giftsSection,
-    heroSection,
-    inviteSection,
-    programSection,
-    timePlaceSection,
-} from './store.tsx';
-import { POPOVER } from '@shared/const';
-import { Image } from '@ui/image';
-import { Grid, GridItem } from '@ui/grid';
-import { Icon } from '@ui/icon';
-import { Button } from '@ui/button';
-import { FeedbackForm } from '@widgets/feedbackForm';
-import { SurveyReminder } from '@widgets/surveyReminder';
-import { Palette } from '@entities/palette';
+    CommunitySection,
+    DressCodeSection,
+    DressExamplesSection,
+    FeedbackSection,
+    GiftsSection,
+    WelcomeSection,
+    ProgramSection,
+    TimePlaceSection,
+} from './ui';
+import { footerNavigation } from './config/footerNavigation.ts';
 
 export const HomePage = () => {
     return (
         <Layout footerNavigation={footerNavigation}>
-            {/* Hero Banner */}
-            <Section extraCN={{ isLarge: true }}>
-                <Banner {...heroSection.banner} />
-            </Section>
-
-            {/* Invite guests */}
-            <Section extraCN={{ isWelcome: true }}
-                     heading={<h2 className={'h2'}>{inviteSection.heading}</h2>}>
-                <Grid>
-                    <GridItem>
-                        <p>{inviteSection.content}</p>
-                    </GridItem>
-                    {/*<GridItem>*/}
-                    {/*    <Image {...inviteSection.image} />*/}
-                    {/*</GridItem>*/}
-                </Grid>
-            </Section>
-
-            {/* Time & Place */}
-            <Section id={timePlaceSection.anchorId}>
-                <Grid>
-                    <Grid>
-                        <h2 className={'h2'}>{timePlaceSection.heading}</h2>
-                        <div>{timePlaceSection.info}</div>
-                    </Grid>
-
-                    <a
-                        target={'_blank'}
-                        href={
-                            'https://yandex.ru/maps/2/saint-petersburg/house/ulitsa_savushkina_21/Z0kYdA9lQUYAQFtjfXV5d3xkbQ==/?ll=30.286220%2C59.986136&z=17.6'
-                        }
-                    >
-                        <Image {...timePlaceSection.image} />
-                    </a>
-                </Grid>
-            </Section>
-
-            {/* Program/Timing */}
-            <Section
-                id={programSection.anchorId}
-                extraCN={{ isImageBg: true }}
-                style={{ backgroundImage: `url(${programSection.image.src})`, backgroundPosition: "bottom" }}
-            >
-                <Grid extraCN={{ isOffset: true }}>
-                    <h2 className={'h2'}>{programSection.heading}</h2>
-
-                    <GridItem
-                        utilCN={['p-24']}
-                        extraCN={{
-                            isBorderRad32: true,
-                            isContent: true,
-                        }}
-                    >
-                        <Grid extraCN={{ isMinAuto: true }} utilCN={['fullWidth']}>
-                            {programSection.program.map(([time, label]) => (
-                                <Fragment key={time}>
-                                    <span>{time}</span>
-                                    <span>{label}</span>
-                                </Fragment>
-                            ))}
-                        </Grid>
-                    </GridItem>
-                </Grid>
-            </Section>
-
-            <Section id={giftsSection.anchorId}>
-                <Grid extraCN={{ is2Cols: true, isAlignCenter: true }}>
-                    <GridItem>
-                        <Image {...giftsSection.image} />
-                    </GridItem>
-
-                    <GridItem utilCN={['flex-column gap-32 align-right']}>
-                        <h2 className={'h2'}>{giftsSection.heading}</h2>
-                        {giftsSection.content}
-                    </GridItem>
-                </Grid>
-            </Section>
-
-            {/* Dress code */}
-            <Section
-                id={dressCodeSection.anchorId}
-                extraCN={{ isDressCode: true }}
-                heading={
-                    <>
-                        <h2 className={'h2'}>{dressCodeSection.heading}</h2>
-                        <h4 className={'h4'}>{dressCodeSection.subTitle}</h4>
-                    </>
-                }
-            >
-                <div className={'flex-column gap-16'}>{dressCodeSection.content}</div>
-
-                <Palette colors={dressCodeSection.palette} />
-            </Section>
-
-            <Section extraCN={{ isDressCode: true }}>
-                <h4>{dressExamplesSection.heading}</h4>
-
-                <Grid extraCN={{ isAuto: true, isMob2Cols: true }}>
-                    {dressExamplesSection.images.map((image, idx) => (
-                        <GridItem key={`dress-example-${idx}`}>
-                            <Image src={image} />
-                        </GridItem>
-                    ))}
-                </Grid>
-            </Section>
-
-            <Section id={communitySection.anchorId} extraCN={{ isCommunication: true, isSweetGreyBg: true, isWideVerticalPad: true }}>
-                <div className={'flex-column gap-32'}>
-                    <h2 className={'h2'}>{communitySection.heading}</h2>
-                    <p>Присоединяйтесь к нашему телеграмм-каналу - будем делиться фото и видео с праздника</p>
-                </div>
-
-                <Button
-                    extraCN={{ isQr: true }}
-                    href={communitySection.qrCode.link}
-                    type={'link'}
-                    extraAttrs={{ target: '_blank' }}
-                >
-                    <Icon {...communitySection.qrCode} />
-                </Button>
-            </Section>
-
-            <Section id={feedbackSection.anchorId} heading={<h2>{feedbackSection.heading}</h2>}>
-                <Grid extraCN={{ isVariant2: true }}>
-                    {/*<Image src={feedbackSection.image} />*/}
-
-                    {feedbackSection.content}
-
-                    <Button extraCN={{ isFit: true }} extraAttrs={{ [POPOVER.SHOW]: feedbackSection.popoverId }}>
-                        Пройти опрос
-                    </Button>
-
-                    <FeedbackForm id={feedbackSection.popoverId} />
-                </Grid>
-            </Section>
-
-            <SurveyReminder id={feedbackSection.popoverId} isOpen />
+            <WelcomeSection />
+            <TimePlaceSection />
+            <ProgramSection />
+            <GiftsSection />
+            <DressCodeSection />
+            <DressExamplesSection />
+            <CommunitySection />
+            <FeedbackSection />
         </Layout>
     );
 };

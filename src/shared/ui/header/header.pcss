@@ -1,6 +1,6 @@
 .header {
-    --headerBg: rgba(255, 255, 255, 0.7);
-    --headerColor: var(--colorCabbagePont);
+    --headerBg: rgba(255, 255, 255, 0);
+    --headerColor: var(--colorBlackout);
     --headerJustifyContent: space-between;
     --headerPadX: calc(var(--viewport-padding));
     --headerPadY: 2rem;
@@ -14,13 +14,12 @@
     
     background: var(--headerBg);
     padding-block: var(--headerPadY);
-    backdrop-filter: blur(0.375rem);
+    backdrop-filter: blur(1.375rem);
     position: sticky;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 100;
-    border-bottom: 0.125rem solid rgba(255, 255, 255, 0.3);
 
     &__wrapper {
         padding-inline: var(--headerPadX);

@@ -23,4 +23,19 @@
         max-height: 58.75rem;
         width: 100%;
     }
+    
+    &--isAspect\[390\/450\] {
+        aspect-ratio: 390 / 450;
+        max-height: 60rem;
+    }
+
+    /* Естественная высота для masonry-колонок (MasonryFlow) */
+    &--isMasonryFlow {
+        width: 100%;
+
+        img {
+            height: auto;
+            display: block;
+        }
+    }
 }

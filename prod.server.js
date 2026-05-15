@@ -1,4 +1,3 @@
-import { Server } from './server.js';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readFileSync } from 'node:fs';
@@ -7,6 +6,8 @@ import { pathToFileURL } from 'url';
 import { PortalServer } from '@openagenda/react-portal-ssr/server';
 import { PortalContext } from '@openagenda/react-portal-ssr';
 import express from 'express';
+
+import { Server } from './server.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -138,7 +139,7 @@ export class ProdServer extends Server {
      */
     async handleHomePage(req, res, next) {
         try {
-            const html = await this.renderTemplate();
+            const html = this.injectSiteOriginIntoHtml(await this.renderTemplate(), req);
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(html);
         } catch (err) {

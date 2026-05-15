@@ -6,7 +6,7 @@
     --fluid-margin: calc((100% - var(--viewport-width)) / 2);
     --background-color: var(--colorWhite);
     --viewport-padding: 4rem;
-    --viewport-width: 100rem;
+    --viewport-width: 106rem;
 
     --fluid-min-vw: 40rem;
     --fluid-max-vw: 160rem;
@@ -67,6 +67,20 @@ address {
     font-style: normal;
 }
 
+.h0 {
+    font-size: 14rem;
+    line-height: 1;
+    font-family: var(--font-angst);
+    
+    @media (--tablet) {
+        font-size: 10rem;
+    }
+    
+    @media (--mobile) {
+        font-size: 5rem;
+    }
+}
+
 h1,
 .h1,
 h2,
@@ -82,9 +96,10 @@ h5,
 
 h1,
 .h1 {
-    font-family: var(--font-angst);
+    font-family: var(--font-source-serif);
     font-size: 14rem;
     line-height: 1;
+    font-weight: normal;
 
     @media (--mobile) {
         font-size: 6.75rem;
@@ -126,8 +141,17 @@ h4,
     font-weight: normal;
 }
 
+a:not([class]) {
+    color: var(--colorBurntSienna);
+    font-weight: bold;
+}
+
 mark {
     background: var(--colorCoolHazel);
+}
+
+.special {
+    font-family: var(--font-angst);
 }
 
 .text {

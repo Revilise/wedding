@@ -1,0 +1,18 @@
+.flex {
+    --flexDirection: row;
+    --flexWrap: nowrap;
+    --flexGap: 1rem;
+
+    display: flex;
+    flex-direction: var(--flexDirection);
+    flex-wrap: var(--flexWrap);
+    gap: var(--flexGap);
+    
+    &--isColumn {
+        --flexDirection: column;
+    }
+    
+    &--isGap3 {
+        --flexGap: 3rem;
+    }
+}
