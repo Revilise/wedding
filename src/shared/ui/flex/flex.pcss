@@ -2,11 +2,13 @@
     --flexDirection: row;
     --flexWrap: nowrap;
     --flexGap: 1rem;
+    --flexPadY: 0;
 
     display: flex;
     flex-direction: var(--flexDirection);
     flex-wrap: var(--flexWrap);
     gap: var(--flexGap);
+    padding-block: var(--flexPad);
     
     &--isColumn {
         --flexDirection: column;
@@ -14,5 +16,9 @@
     
     &--isGap3 {
         --flexGap: 3rem;
+    }
+    
+    &--isPadY3 {
+        --flexPad: 3rem;
     }
 }

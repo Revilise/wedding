@@ -3,7 +3,7 @@ import { heroSection } from './mock.tsx';
 import { Banner } from '@ui/banner';
 
 export const WelcomeSection = () => (
-    <Section extraCN={{ isWelcome: true, isLarge: true }}>
+    <Section extraCN={{ isWelcome: true, isLarge: true, isMobFull: true }}>
         <Banner
             title={heroSection.names}
             image={heroSection.image}

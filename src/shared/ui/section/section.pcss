@@ -57,11 +57,19 @@
         --sectionWrapperMaxWidth: var(--fluid-max-vw);
         --sectionWrapperPadX: 0 !important;
     }
-
+    
     &--isFull {
         --sectionWrapperMaxWidth: 100%;
         --sectionWrapperPadX: 0 !important;
         --sectionPadX: 0 !important;
+    }
+    
+    &--isMobFull {
+        @media (--mobile) {
+            --sectionWrapperMaxWidth: 100%;
+            --sectionWrapperPadX: 0 !important;
+            --sectionPadX: 0 !important;
+        }
     }
     
     &--isImageBg {
@@ -121,6 +129,16 @@
     
     &--isTimePlace {
         --sectionHeaderDirection: row;
+        --sectionWrapperTemplCols: 4fr 8fr;
+        --sectionWrapperGap: 32px;
+        
+        @media (--tablet) {
+            --sectionWrapperTemplCols: 1fr 2fr;
+        }
+        
+        @media (--mobile) {
+            --sectionWrapperTemplCols: 1fr;
+        }
     }
     
     &--isTimePlace & {

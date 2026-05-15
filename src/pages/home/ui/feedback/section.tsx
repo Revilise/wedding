@@ -14,7 +14,7 @@ export const FeedbackSection = () => (
 
                 {feedbackSection.content}
 
-                <Button extraCN={{ isFit: true }} extraAttrs={{ [POPOVER.SHOW]: feedbackSection.popoverId }}>
+                <Button extraCN={{ isFit: true, isOutline: true }} extraAttrs={{ [POPOVER.SHOW]: feedbackSection.popoverId }}>
                     Пройти опрос
                 </Button>
 

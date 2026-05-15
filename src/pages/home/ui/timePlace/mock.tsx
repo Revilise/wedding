@@ -4,12 +4,7 @@ import { homeSectionAnchors } from '../../config/sectionAnchors.ts';
 
 export const timePlaceSection = {
     anchorId: homeSectionAnchors.timePlace,
-    heading: (
-        <>
-            Время & <wbr />
-            Место
-        </>
-    ),
+    heading: <>Время & <br />Место</>,
     info: (
         <>
             <div>01.08.2026 в 14:00</div>

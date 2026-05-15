@@ -55,7 +55,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
     reset: resetForm,
   } = useForm<FeedbackFormData>({ defaultValues });
 
-  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(300);
+  const { start: startCountdown, reset: resetCountdown, time, isEnd } = useCountdown(2);
   const { close: closePopover } = usePopover(id);
   const { updateFeedback } = useFeedback();
 
@@ -133,7 +133,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                     ]}
                 />
                 <FormControls>
-                  <Button type="submit">Далее</Button>
+                  <Button extraCN={{ isOutline: true }} type="submit">Далее</Button>
                 </FormControls>
               </FormStep>
           )}
@@ -172,7 +172,7 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                 <Textbox label={"Комментарии"} {...register("comment")} />
 
                 <FormControls>
-                  <Button type="submit">Отправить</Button>
+                  <Button extraCN={{ isOutline: true }} type="submit">Отправить</Button>
                 </FormControls>
               </FormStep>
           )}
