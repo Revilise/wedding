@@ -1,1 +1,0 @@
-export { SurveyReminder } from "./surveyReminder";

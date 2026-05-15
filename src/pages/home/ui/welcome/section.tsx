@@ -14,19 +14,5 @@ export const WelcomeSection = () => (
                 </>
             )}
         />
-
-        {/*<Flex*/}
-        {/*    extraCN={{ isColumn: true, isGap3: true }}*/}
-        {/*>*/}
-        {/*    <p className={'special'}>{heroSection.names}</p>*/}
-        {/*    <h1 className={'h1'}>{heroSection.title}</h1>*/}
-        {/*    <p>{heroSection.description}</p>*/}
-        {/*</Flex>*/}
-
-        {/*<Image*/}
-        {/*    alt={heroSection.image.alt}*/}
-        {/*    extraCN={{ 'isAspect[300/470]': true }}*/}
-        {/*    src={heroSection.image.src}*/}
-        {/*/>*/}
     </Section>
 );
