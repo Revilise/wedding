@@ -20,6 +20,7 @@ export const CommunitySection = () => (
             extraAttrs={{ target: '_blank' }}
         >
             <Icon {...communitySection.qrCode} />
+            <span>Нажмите, чтобы присоединиться</span>
         </Button>
     </Section>
 );
