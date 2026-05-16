@@ -7,4 +7,5 @@ export const API = '/api';
 
 export const API_ENDPOINTS = {
     feedback: '/feedback',
+    suggestion: "/suggestion",
 };

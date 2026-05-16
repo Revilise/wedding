@@ -6,3 +6,4 @@ export { DressCodeSection } from './dressCode/section.tsx';
 export { DressExamplesSection } from './dressExamples/section.tsx';
 export { CommunitySection } from './community/section.tsx';
 export { FeedbackSection } from './feedback/section.tsx';
+export { SuggestionsSection } from "./suggestions/section.tsx";

@@ -10,7 +10,6 @@ export const FeedbackSection = () => (
     <>
         <Section id={feedbackSection.anchorId} heading={<h2>{feedbackSection.heading}</h2>}>
             <Grid extraCN={{ isVariant2: true }}>
-                {/*<Image src={feedbackSection.image} />*/}
 
                 {feedbackSection.content}
 

@@ -9,7 +9,7 @@ import {
     GiftsSection,
     WelcomeSection,
     ProgramSection,
-    TimePlaceSection,
+    TimePlaceSection, SuggestionsSection,
 } from './ui';
 import { footerNavigation } from './config/footerNavigation.ts';
 
@@ -24,6 +24,7 @@ export const HomePage = () => {
             <DressExamplesSection />
             <CommunitySection />
             <FeedbackSection />
+            <SuggestionsSection />
         </Layout>
     );
 };

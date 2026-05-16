@@ -12,6 +12,7 @@ export const Textbox: FC<Itextbox> = ({
     error,
     rows = 4,
     autocomplete = false,
+    placeholder,
     ...handlers
 }) => {
     const { bem } = useBEM('textbox');
@@ -26,6 +27,7 @@ export const Textbox: FC<Itextbox> = ({
                 className={bem('value')}
                 value={value}
                 aria-invalid={!!error}
+                placeholder={placeholder}
                 {...handlers}
                 autoComplete={autocomplete ? 'on' : 'off'}
             />

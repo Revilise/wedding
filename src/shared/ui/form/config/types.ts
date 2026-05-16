@@ -16,7 +16,12 @@ export interface IFormControls extends IComponent {
     children?: ReactNode;
 }
 
+export interface IFormMessage extends IComponent {
+    children?: ReactNode;
+}
+
 export interface IFormContext {
     bem: BemFc;
     activeStepId: string;
 }
+

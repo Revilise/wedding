@@ -12,4 +12,5 @@ export interface Itextbox extends IComponent, TextboxHandlers {
     error?: string;
     ref?: Ref<HTMLTextAreaElement>;
     rows?: number;
+    placeholder?: string;
 }

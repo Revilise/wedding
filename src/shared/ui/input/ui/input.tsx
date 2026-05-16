@@ -12,6 +12,7 @@ export const Input: FC<Iinput> = ({
     ref,
     error,
     autocomplete = false,
+    placeholder,
     ...handlers
 }) => {
     const { bem } = useBEM('input');
@@ -26,6 +27,7 @@ export const Input: FC<Iinput> = ({
                 className={bem('value')}
                 value={value}
                 aria-invalid={!!error}
+                placeholder={placeholder}
                 {...handlers}
                 autoComplete={autocomplete ? 'on' : 'off'}
             />

@@ -29,6 +29,7 @@ export const Button: FC<IButton> = ({
       {...extraAttrs}
       style={style}
       ref={ref}
+      type={type}
       {...motionProps}
       {...handlers}
     >
