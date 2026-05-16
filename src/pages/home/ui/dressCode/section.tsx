@@ -16,5 +16,7 @@ export const DressCodeSection = () => (
         <div className={'flex-column gap-16'}>{dressCodeSection.content}</div>
 
         <Palette colors={dressCodeSection.palette} />
+
+        <p>При подборе образов покажите эту палитру консультатам/стилистам в магазине.</p>
     </Section>
 );

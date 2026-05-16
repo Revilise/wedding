@@ -22,9 +22,9 @@ export const dressCodeSection = {
     palette: [
         { hex: '#3E4A34', name: 'Тёмно-оливковый' },
         { hex: '#BBC298', name: 'Шалфей' },
-        { hex: '#D9B27B', name: 'Пшеничный' },
+        { hex: '#D9B27B', name: 'Пшеничный (песочный)' },
         { hex: '#F7B557', name: 'Янтарный' },
-        { hex: '#688EB3', name: 'Стальной голубой' },
-        { hex: '#D2603D', name: 'Терракотовый' },
+        { hex: '#688EB3', name: 'Голубой' },
+        { hex: '#cb7e64', name: 'Светло-терракотовый' },
     ],
 };
