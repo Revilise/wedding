@@ -154,9 +154,12 @@
     &--isSuggestions {
         --sectionPadX: 0;
         
-        --sectionHeadingPadX: 2rem;
         --sectionWrapperPadY: 2rem;
         --sectionWrapperPadX: 2rem;
+        
+        @media (--tablet) {
+            --sectionHeadingPadX: 3rem;
+        }
     }
     
     &--isSuggestions & {
