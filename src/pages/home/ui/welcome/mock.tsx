@@ -1,10 +1,10 @@
-import Banner1 from '@images/banners/banner.jpg';
+import RingsImage from "@images/banners/rings.jpg";
 
 export const heroSection = {
     names: <span className={"h0 opacity[50]"}>Анастасия<br/>& Георгий</span>,
     image: {
         alt: 'Анастасия и Георгий',
-        src: Banner1 as string,
+        src: RingsImage as string,
     },
     title: (
         <>

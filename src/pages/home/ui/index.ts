@@ -7,3 +7,4 @@ export { DressExamplesSection } from './dressExamples/section.tsx';
 export { CommunitySection } from './community/section.tsx';
 export { FeedbackSection } from './feedback/section.tsx';
 export { SuggestionsSection } from "./suggestions/section.tsx";
+export { GallerySection } from "./gallery/section.tsx";

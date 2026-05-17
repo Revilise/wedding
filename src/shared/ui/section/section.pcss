@@ -56,14 +56,14 @@
         --sectionPadX: 3rem;
         --sectionWrapperPadX: 0;
     }
-
+    
     &--isLarge {
         --sectionWrapperMaxWidth: var(--fluid-max-vw);
         --sectionWrapperPadX: 0 !important;
     }
     
     &--isFull {
-        --sectionWrapperMaxWidth: 100%;
+        --sectionWrapperMaxWidth: 1920px;
         --sectionWrapperPadX: 0 !important;
         --sectionPadX: 0 !important;
     }
@@ -167,5 +167,10 @@
             border: 1px solid var(--colorSweetGrey);
             border-radius: 3rem;
         }
+    }
+    
+    &--isGallery {
+        --sectionWrapperDisplay: block;
+        --sectionPadY: 0;
     }
 }
