@@ -7,6 +7,8 @@
     --sectionHeaderMaxWidth: var(--viewport-width);
     --sectionHeaderMarBottom: 3rem;
     --sectionHeaderDirection: column;
+    --sectionHeadingPadX: 0;
+    --sectionHeadingPadY: 0;
     
     --sectionWrapperDisplay: grid;
     --sectionWrapperTemplCols: 1fr;
@@ -38,6 +40,8 @@
         max-width: var(--sectionHeaderMaxWidth);
         margin-bottom: var(--sectionHeaderMarBottom);
         flex-direction: var(--sectionHeaderDirection);
+        padding-inline: var(--sectionHeadingPadX);
+        padding-block: var(--sectionHeadingPadY);
         gap: 16px;
         margin-inline: auto;
         display: flex;
@@ -148,6 +152,9 @@
     }
     
     &--isSuggestions {
+        --sectionPadX: 0;
+        
+        --sectionHeadingPadX: 2rem;
         --sectionWrapperPadY: 2rem;
         --sectionWrapperPadX: 2rem;
     }

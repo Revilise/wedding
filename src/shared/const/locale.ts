@@ -3,6 +3,7 @@ export const Locale = {
         invalid: {
             requiredField: 'Нужно заполнить',
             requiredChoice: 'Нужно что-то выбрать',
+            tooLong: "Максимальная длина:"
         },
     },
 };

@@ -17,6 +17,7 @@ import { Locale } from '@shared/const/locale';
 
 import type { ISuggestForm, SuggestFormData } from '../config/types';
 import { Flex } from '@ui/flex';
+import { VALIDATION_RULES } from '@ui/form/config/const.ts';
 
 const defaultValues: SuggestFormData = {
     name: '',
@@ -141,25 +142,37 @@ export const SuggestForm: FC<ISuggestForm> = ({ extraCN, utilCN }) => {
                     <Input
                         label="Фамилия Имя"
                         error={errors.name?.message}
-                        {...register('name', { required: Locale.form.invalid.requiredField })}
+                        {...register('name', {
+                            ...VALIDATION_RULES.requiredField,
+                            ...VALIDATION_RULES.maxLength(50)
+                        })}
                     />
                     <Textbox
                         label="Предложение"
                         placeholder="я хочу спеть, станцевать или сделать что-то необычное"
                         error={errors.suggestion?.message}
-                        {...register('suggestion', { required: Locale.form.invalid.requiredField })}
+                        {...register('suggestion', {
+                            ...VALIDATION_RULES.requiredField,
+                            ...VALIDATION_RULES.maxLength(250),
+                        })}
                     />
                     <Input
                         label="Сколько нужно времени"
                         placeholder="5-7 минут или чуть больше"
                         error={errors.duration?.message}
-                        {...register('duration', { required: Locale.form.invalid.requiredField })}
+                        {...register('duration', {
+                            ...VALIDATION_RULES.requiredField,
+                            ...VALIDATION_RULES.maxLength(50),
+                        })}
                     />
                     <Input
                         label="Что для этого понадобится"
                         placeholder="Гитара, колонки, телевизор"
                         error={errors.requirements?.message}
-                        {...register('requirements', { required: Locale.form.invalid.requiredField })}
+                        {...register('requirements', {
+                            ...VALIDATION_RULES.requiredField,
+                            ...VALIDATION_RULES.maxLength(250),
+                        })}
                     />
                     <CheckerGroup
                         label="Участники"
@@ -170,14 +183,14 @@ export const SuggestForm: FC<ISuggestForm> = ({ extraCN, utilCN }) => {
                                 label: 'Я один',
                                 value: 'alone',
                                 ...register('participants', {
-                                    required: Locale.form.invalid.requiredChoice,
+                                    ...VALIDATION_RULES.requiredChoice,
                                 }),
                             },
                             {
                                 label: 'С командой',
                                 value: 'team',
                                 ...register('participants', {
-                                    required: Locale.form.invalid.requiredChoice,
+                                    ...VALIDATION_RULES.requiredChoice,
                                 }),
                             },
                         ]}
@@ -192,7 +205,8 @@ export const SuggestForm: FC<ISuggestForm> = ({ extraCN, utilCN }) => {
                                         key={field.id}
                                         error={errors.teamMembers?.[index]?.fullName?.message}
                                         {...register(`teamMembers.${index}.fullName`, {
-                                            required: Locale.form.invalid.requiredField,
+                                            ...VALIDATION_RULES.requiredField,
+                                            ...VALIDATION_RULES.maxLength(50)
                                         })}
                                     />
                                     <Button utilCN={["mt-36"]} onClick={() => deleteTeamMember(field.id)}>-</Button>

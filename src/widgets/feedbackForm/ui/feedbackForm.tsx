@@ -13,12 +13,12 @@ import { Popover, usePopover } from "@ui/popover";
 import { useCountdown } from "@lib/countdown";
 import { request } from "@lib/request";
 import { API, API_ENDPOINTS } from "@shared/const";
-import { Locale } from "@shared/const/locale";
 import { toBoolean } from "@shared/lib";
 
 import type { FeedbackFormData, IFeedbackForm } from '../config/types';
 import { filterObject } from '@lib/object/filterObject.ts';
 import { useFeedback } from '@widgets/feedbackForm/lib/useFeedback.tsx';
+import { VALIDATION_RULES } from '@ui/form/config/const.ts';
 
 const defaultValues: FeedbackFormData = {
   visit: undefined,
@@ -113,7 +113,12 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                 <Input
                     label={"Фамилия Имя"}
                     error={errors.name?.message}
-                    {...register("name", { required: Locale.form.invalid.requiredField })}
+                    {...register("name",
+                        {
+                          ...VALIDATION_RULES.requiredField,
+                          ...VALIDATION_RULES.maxLength(50)
+                        }
+                    )}
                 />
                 <CheckerGroup
                     label={"Вы придёте?"}
@@ -123,12 +128,16 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                       {
                         label: "Да",
                         value: "yes",
-                        ...register("visit", { required: Locale.form.invalid.requiredChoice }),
+                        ...register("visit", {
+                          ...VALIDATION_RULES.requiredChoice
+                        }),
                       },
                       {
                         label: "Нет",
                         value: "no",
-                        ...register("visit", { required: Locale.form.invalid.requiredChoice }),
+                        ...register("visit", {
+                          ...VALIDATION_RULES.requiredChoice
+                        }),
                       },
                     ]}
                 />
@@ -144,12 +153,39 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                 <Textbox
                     label={"Забавно представьтесь в 1-2 предложениях."}
                     error={errors.introduction?.message}
-                    {...register("introduction", { required: Locale.form.invalid.requiredField })}
+                    {...register("introduction", {
+                      ...VALIDATION_RULES.requiredField,
+                      ...VALIDATION_RULES.maxLength(250)
+                    })}
                 />
-                <Input label={"У вас есть аллергия на продукты?"} {...register("allergy")} />
-                <Input label={"Факт о паре?"} {...register("fact")} />
-                <Input label={"Песня-ассоциация с парой?"} {...register("song")} />
-                <Textbox label={"История, связанная с женихом или невестой?"} {...register("history")} />
+                <Input
+                    label={"У вас есть аллергия на продукты?"}
+                    error={errors.allergy?.message}
+                    { ...register("allergy", {
+                      ...VALIDATION_RULES.maxLength(160)
+                    })}
+                />
+                <Input
+                    label={"Факт о паре?"}
+                    error={errors.fact?.message}
+                    { ...register("fact", {
+                      ...VALIDATION_RULES.maxLength(250)
+                    })}
+                />
+                <Input
+                    label={"Песня-ассоциация с парой?"}
+                    error={errors.song?.message}
+                    {...register("song", {
+                      ...VALIDATION_RULES.maxLength(100)
+                    })}
+                />
+                <Textbox
+                    label={"История, связанная с женихом или невестой?"}
+                    error={errors.history?.message}
+                    {...register("history", {
+                      ...VALIDATION_RULES.maxLength(500)
+                    })}
+                />
 
                 <CheckerGroup
                     label={"Будете ли алкоголь?"}
@@ -159,17 +195,27 @@ export const FeedbackForm: FC<IFeedbackForm> = ({
                       {
                         label: "Да",
                         value: "yes",
-                        ...register("alcohol", { required: Locale.form.invalid.requiredChoice }),
+                        ...register("alcohol", {
+                          ...VALIDATION_RULES.requiredChoice
+                        }),
                       },
                       {
                         label: "Нет",
                         value: "no",
-                        ...register("alcohol", { required: Locale.form.invalid.requiredChoice }),
+                        ...register("alcohol", {
+                          ...VALIDATION_RULES.requiredChoice
+                        }),
                       },
                     ]}
                 />
 
-                <Textbox label={"Комментарии"} {...register("comment")} />
+                <Textbox
+                    label={"Комментарии"}
+                    error={errors.comment?.message}
+                    {...register("comment", {
+                      ...VALIDATION_RULES.maxLength(250)
+                    })}
+                />
 
                 <FormControls>
                   <Button extraCN={{ isOutline: true }} type="submit">Отправить</Button>
