@@ -8,6 +8,7 @@ export const seatingPlanSection = {
         src: SeatingPlanSvg,
         alt: "План банкетного зала"
     },
+    subtitle: "Показать список гостей",
     tables: [
         {
             guests: [
