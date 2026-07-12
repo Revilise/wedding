@@ -16,7 +16,7 @@ export const Input: FC<Iinput> = ({
     ...handlers
 }) => {
     const { bem } = useBEM('input');
-    console.log(error);
+
     return (
         <label className={bem('', { extraCN, utilCN })}>
             {label && <span className={bem('label')}>{label}</span>}

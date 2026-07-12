@@ -17,6 +17,7 @@
         "build-storybook": "storybook build"
     },
     "dependencies": {
+        "@fancyapps/ui": "^6.1.14",
         "@openagenda/react-portal-ssr": "^1.0.3",
         "express": "^5.2.1",
         "http-proxy-middleware": "^3.0.5",

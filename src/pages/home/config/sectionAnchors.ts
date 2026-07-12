@@ -6,4 +6,5 @@ export const homeSectionAnchors = {
     feedback: 'form',
     telegram: 'telegram',
     gifts: 'gifts',
+    searingPlan: 'searing-plan',
 } as const;

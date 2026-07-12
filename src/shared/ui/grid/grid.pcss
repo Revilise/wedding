@@ -28,6 +28,14 @@
         }
     }
     
+    &--is3Cols {
+        --gridTemplColumns: repeat(3, 1fr);
+        
+        @media (--mobile) {
+            --gridTemplColumns: 1fr;
+        }
+    }
+    
     &--isAlignCenter {
         align-items: center;
     }

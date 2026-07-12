@@ -1,0 +1,60 @@
+.zoom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    &--isOutline & {
+        &__container {
+            border: 1px solid var(--colorBlackout30);
+            border-radius: 2rem;
+            padding: 2rem;
+        }
+    }
+    
+    &__container {
+        width: 100%;
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    &__image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    &__controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    &__btn {
+        --zoomBtnSize: 4rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--zoomBtnSize);
+        height: var(--zoomBtnSize);
+        border-radius: 50%;
+        border: 0.125rem solid var(--colorSweetGrey);
+        background: var(--colorAngoraWhite);
+        color: var(--colorBlackout);
+        font-size: 2rem;
+        line-height: 1;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s;
+        user-select: none;
+
+        &:hover {
+            background: var(--colorSweetGrey);
+        }
+
+        &:active {
+            background: var(--colorSweetGrey30);
+        }
+    }
+}
