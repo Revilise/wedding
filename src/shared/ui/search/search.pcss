@@ -1,0 +1,80 @@
+.search {
+    min-width: 0;
+    & > label {
+        display: block;
+        font-family: var(--font-source-serif);
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+    }
+    &__input {
+        position: relative;
+    }
+    &__input input {
+        width: 100%;
+        min-height: 52px;
+        padding: 1.5rem 5.5rem 1.5rem 1.5rem;
+        border: 1px solid var(--wedding-line);
+        border-radius: 4px;
+        background: var(--wedding-paper);
+        color: var(--wedding-ink);
+        font: 16px var(--font-anonymous);
+    }
+    &__input input::-webkit-search-cancel-button {
+        appearance: none;
+    }
+    &__input button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 44px;
+        border: 0;
+        background: transparent;
+        color: var(--wedding-muted);
+        font-size: 3rem;
+        cursor: pointer;
+    }
+    &__count {
+        margin-block: 2rem 1rem;
+        font-size: 1.5rem;
+        color: var(--wedding-muted);
+    }
+    &__results {
+        max-height: 44rem;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--wedding-line) transparent;
+    }
+    &__results ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    &__empty {
+        padding-block: 3rem;
+        font-size: 1.75rem;
+    }
+    &__empty p {
+        margin-block: 1rem 2rem;
+        color: var(--wedding-muted);
+    }
+    &__empty button {
+        padding: 1rem;
+        min-height: 44px;
+        border: 1px solid var(--wedding-line);
+        background: var(--wedding-surface);
+        font: inherit;
+        color: var(--wedding-ink);
+        cursor: pointer;
+    }
+    button:focus-visible,
+    input:focus-visible {
+        outline: 2px solid var(--wedding-sage);
+        outline-offset: -2px;
+    }
+}
+@media (max-width: 900px) {
+    .search__results {
+        max-height: 32rem;
+    }
+}
