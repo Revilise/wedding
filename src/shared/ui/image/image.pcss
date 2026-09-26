@@ -24,7 +24,7 @@
         max-height: 58.75rem;
         width: 100%;
     }
-    
+
     &--isAspect\[390\/450\] {
         aspect-ratio: 390 / 450;
         max-height: 60rem;
@@ -38,7 +38,7 @@
             height: auto;
             display: block;
         }
-        
+
         @media (--mobile) {
             aspect-ratio: 1;
             img {
@@ -46,4 +46,9 @@
             }
         }
     }
+}
+
+body .image {
+    --imageBorderRad: 4px;
+    border-radius: 4px;
 }

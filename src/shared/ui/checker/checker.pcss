@@ -56,3 +56,27 @@
         display: none;
     }
 }
+
+body .checker:has(input:focus-visible) {
+    outline: 2px solid var(--wedding-sage);
+    outline-offset: 5px;
+}
+body .checker {
+    --checkerBg: var(--wedding-surface);
+    --checkerCheckedBg: var(--wedding-sage);
+    --checkerBorderRad: 0.75rem;
+    position: relative;
+}
+body .checker__value {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+    body .checker {
+        transform: none !important;
+    }
+}

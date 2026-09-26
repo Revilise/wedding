@@ -74,7 +74,7 @@
         background-color: var(--colorWhite);
         flex-direction: column;
         text-align: center;
-        
+
         span {
             width: min-content;
         }
@@ -108,37 +108,85 @@
 
         --btnPadX: 0;
         --btnPadY: 0;
-        
+
         font-weight: bold;
         font-size: 22px;
         line-height: 30px;
         white-space: nowrap;
     }
-    
+
     &--isLogoLink {
         --btnBg: transparent;
         --btnHoverBg: transparent;
         --btnActiveBg: transparent;
-        
+
         --btnPadX: 0;
         --btnPadY: 0;
-        
+
         font-weight: bold;
     }
-    
+
     &--isOutline {
         --color: var(--colorOliveDrab);
-        
+
         --btnBg: transparent;
         --btnHoverBg: var(--color);
-        
+
         --btnColor: var(--color);
         --btnHoverColor: var(--colorWhite);
         --btnActiveColor: var(--colorWhite);
-        
+
         --btnBorderColor: var(--color);
-        
+
         border-width: 2px;
         font-weight: bold;
+    }
+}
+
+body .btn {
+    --btnBorderRad: 0.75rem;
+    --btnBg: var(--wedding-surface);
+    --btnHoverBg: #e2e6dc;
+    --btnActiveBg: #d9dfd2;
+    --btnFontSize: 1.875rem;
+    min-height: 48px;
+    font-weight: 500;
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        border-color 220ms ease;
+}
+body .btn--isOutline {
+    --color: var(--wedding-sage);
+    --btnBg: transparent;
+    --btnCurColor: var(--wedding-sage);
+    --btnHoverBg: var(--wedding-sage);
+    border-width: 1px;
+}
+body .btn--isOutline:hover {
+    --btnCurColor: white;
+}
+body .btn--isClosePopover,
+body .btn--isLogoLink,
+body .btn--isNavLink {
+    --btnBg: transparent;
+    --btnHoverBg: transparent;
+}
+body .btn--isNavLink {
+    font-size: 1.875rem;
+    white-space: normal;
+    justify-content: start;
+    text-underline-offset: 6px;
+}
+body .btn--isNavLink:hover {
+    text-decoration: underline;
+}
+body .btn--isQr {
+    background: white;
+    border-radius: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+    body .btn {
+        transform: none !important;
     }
 }

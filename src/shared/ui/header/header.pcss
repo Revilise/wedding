@@ -5,13 +5,13 @@
     --headerPadX: calc(var(--viewport-padding));
     --headerPadY: 2rem;
     /* wrapper */
-    
+
     /* info */
     --headerInfoDisplay: flex;
     /* mixin separator */
     --separatorColor: var(--headerColor);
     --separatorHeight: 1.75rem;
-    
+
     background: var(--headerBg);
     padding-block: var(--headerPadY);
     backdrop-filter: blur(1.375rem);
@@ -35,31 +35,51 @@
         gap: 3rem;
         align-items: center;
         font-weight: bold;
-        
+
         @media (--tablet) {
             grid-template-columns: min-content auto;
-            gap: .5rem 2rem;
-            
+            gap: 0.5rem 2rem;
+
             & :nth-last-child(1) {
                 grid-column: 1 / -1;
             }
         }
     }
-    
+
     &__dateTime {
         display: flex;
         place-items: center;
         gap: 2rem;
         @apply --separator;
     }
-    
+
     @media (--tablet) {
         --separatorColor: none;
         --headerInfoDisplay: grid;
     }
-    
+
     @media (--mobile) {
         --headerInfoDisplay: none;
         --headerJustifyContent: center;
     }
+}
+
+.layout .header {
+    --headerBg: rgba(250, 248, 243, 0.94);
+    --headerPadY: 1.75rem;
+    border-bottom: 1px solid var(--wedding-line);
+}
+.header .header__wrapper {
+    align-items: center;
+}
+.header .header__info {
+    font-size: 1.625rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+}
+.header .btn--isLogoLink {
+    font-family: var(--font-source-serif);
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--wedding-sage);
 }

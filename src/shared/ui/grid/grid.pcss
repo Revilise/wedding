@@ -19,23 +19,23 @@
     &--isAuto {
         --gridTemplColumns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
-    
+
     &--is2Cols {
         --gridTemplColumns: repeat(2, 1fr);
-        
+
         @media (--mobile) {
             --gridTemplColumns: 1fr;
         }
     }
-    
+
     &--is3Cols {
         --gridTemplColumns: repeat(3, 1fr);
-        
+
         @media (--mobile) {
             --gridTemplColumns: 1fr;
         }
     }
-    
+
     &--isAlignCenter {
         align-items: center;
     }
@@ -56,7 +56,6 @@
         }
     }
 
-    
     &--isGap8 {
         --gridGap: 1rem;
     }
@@ -92,4 +91,8 @@
     .grid__item--isArea-$i {
         grid-area: area-$i;
     }
+}
+
+body .grid__item--isBorderRad32 {
+    border-radius: 8px;
 }

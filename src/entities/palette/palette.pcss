@@ -1,22 +1,144 @@
 .palette {
-    --paletteGridCols: repeat(auto-fill, minmax(250px, 1fr));
-
-    grid-template-columns: var(--paletteGridCols);
     display: grid;
-    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(3rem, 5vw, 8rem);
+    padding: clamp(2rem, 4vw, 6rem);
+    background: var(--wedding-surface);
+    border: 1px solid var(--wedding-line);
+    border-radius: 8px;
 
-    &__color {
-        padding: 2rem;
-        border-radius: 2rem;
-        display: flex;
-        place-items: end;
-        place-content: end;
-        height: 13rem;
-        flex-direction: column;
+    &__wheel {
+        position: relative;
+        width: 100%;
+        max-width: 52rem;
+        margin: auto;
+    }
+    &__wheel svg {
+        display: block;
+        width: 100%;
+        overflow: visible;
+    }
+    &__sector {
         cursor: pointer;
-
-        span {
-            filter: brightness(0.5);
+        transform-origin: 200px 200px;
+        transition:
+            transform 250ms ease,
+            filter 250ms ease;
+        &[aria-pressed='true'] {
+            transform: scale(1.055);
+            filter: drop-shadow(0 3px 3px #292e2826);
         }
+        &:focus-visible {
+            outline: none;
+            stroke: var(--wedding-ink);
+            stroke-width: 2;
+        }
+    }
+    &__caption {
+        position: absolute;
+        inset: 28%;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+        strong {
+            font-family: var(--font-source-serif);
+            font-size: clamp(2.4rem, 2.5vw, 3.5rem);
+            line-height: 1.1;
+        }
+    }
+    &__eyebrow {
+        font-size: 1.25rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--wedding-muted);
+    }
+    &__hex {
+        font-size: 1.5rem;
+        letter-spacing: 0.06em;
+    }
+    &__details > p:first-of-type {
+        font-family: var(--font-source-serif);
+        font-size: 4rem;
+        margin-block: 1rem 2rem;
+    }
+    &__legend {
+        display: grid;
+        gap: 0.5rem;
+    }
+    &__legend button {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: left;
+        padding: 1rem;
+        min-height: 44px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background: transparent;
+        color: var(--wedding-ink);
+        font: inherit;
+        font-size: 1.75rem;
+        cursor: pointer;
+        &[aria-pressed='true'] {
+            background: var(--wedding-paper);
+            border-color: var(--wedding-line);
+        }
+        span {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    }
+    &__hint {
+        color: var(--wedding-muted);
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+    &__copy {
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid var(--wedding-sage);
+        padding: 1rem 0;
+        min-height: 44px;
+        color: var(--wedding-sage);
+        font: inherit;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    &__status {
+        display: block;
+        min-height: 2.5rem;
+        font-size: 1.5rem;
+    }
+    button:focus-visible {
+        outline: 2px solid var(--wedding-sage);
+        outline-offset: 3px;
+    }
+}
+@media (max-width: 640px) {
+    .palette {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .palette__wheel {
+        max-width: 40rem;
+    }
+    .palette__legend {
+        grid-template-columns: 1fr 1fr;
+    }
+    .palette__legend button {
+        font-size: 1.5rem;
+        gap: 1rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .palette__sector {
+        transition: none;
     }
 }

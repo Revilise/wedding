@@ -3,3 +3,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body :is(a, button, input, textarea, select):focus-visible {
+    outline: 2px solid var(--wedding-sage);
+    outline-offset: 5px;
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

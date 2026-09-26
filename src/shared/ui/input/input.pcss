@@ -32,3 +32,18 @@
         --inputBorderColor: var(--colorRedStage);
     }
 }
+
+body .input {
+    --inputBg: var(--wedding-paper);
+    --inputBorderColor: var(--wedding-line);
+    --inputBorderRad: 0.75rem;
+}
+body .input__value {
+    font-weight: 400;
+    min-width: 0;
+    width: 100%;
+}
+body .input__value:focus {
+    scale: 1;
+    border-color: var(--wedding-sage);
+}
