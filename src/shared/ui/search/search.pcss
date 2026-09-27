@@ -22,17 +22,10 @@
     &__input input::-webkit-search-cancel-button {
         appearance: none;
     }
-    &__input button {
+    &__clear {
         position: absolute;
         right: 0;
         top: 0;
-        height: 100%;
-        width: 44px;
-        border: 0;
-        background: transparent;
-        color: var(--wedding-muted);
-        font-size: 3rem;
-        cursor: pointer;
     }
     &__count {
         margin-block: 2rem 1rem;
@@ -58,16 +51,7 @@
         margin-block: 1rem 2rem;
         color: var(--wedding-muted);
     }
-    &__empty button {
-        padding: 1rem;
-        min-height: 44px;
-        border: 1px solid var(--wedding-line);
-        background: var(--wedding-surface);
-        font: inherit;
-        color: var(--wedding-ink);
-        cursor: pointer;
-    }
-    button:focus-visible,
+
     input:focus-visible {
         outline: 2px solid var(--wedding-sage);
         outline-offset: -2px;

@@ -1,0 +1,152 @@
+.card {
+    --cardDisplay: grid;
+    --cardGridTemplCol: 1fr;
+
+    --cardImagesOrder: 0;
+    --cardImagesArea: 1;
+
+    --cardTagsArea: auto;
+
+    --cardHeadingFontFamily: inherit;
+    --cardHeadingFontSize: inherit;
+    --cardHeadingFontWeight: inherit;
+    --cardHeadingLineHeight: normal;
+    --cardHeadingMarginBottom: 0;
+    --cardContentMaxWidth: none;
+    --cardContentColor: inherit;
+    --cardContentFontSize: inherit;
+    --cardContentLineHeight: normal;
+
+    display: var(--cardDisplay);
+    grid-template-columns: var(--cardGridTemplCol);
+    flex-direction: column;
+    min-width: 0;
+
+    &__images {
+        grid-area: var(--cardImagesArea);
+        width: 100%;
+    }
+
+    &__heading {
+        font-family: var(--cardHeadingFontFamily);
+        font-size: var(--cardHeadingFontSize);
+        font-weight: var(--cardHeadingFontWeight);
+        line-height: var(--cardHeadingLineHeight);
+        margin-bottom: var(--cardHeadingMarginBottom);
+    }
+
+    &__content {
+        max-width: var(--cardContentMaxWidth);
+        color: var(--cardContentColor);
+        font-size: var(--cardContentFontSize);
+        line-height: var(--cardContentLineHeight);
+    }
+
+    &__tags {
+        grid-area: var(--cardTagsArea);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &--isLookFullscreen,
+    &--isLook {
+        --cardImagesOrder: -1;
+        --cardContentColor: var(--wedding-muted);
+        --cardContentFontSize: 1.875rem;
+        --cardContentLineHeight: 1.65;
+        --cardPadding: clamp(2rem, 3vw, 3rem);
+        --cardBg: var(--wedding-paper);
+        --cardBorderColor: var(--wedding-line);
+        --cardBorderColorCur: var(--cardBorderColor);
+        --cardBorderColorHover: var(--wedding-sage);
+        --cardRadius: 2rem;
+        --cardImageBg: var(--wedding-surface);
+        --cardHeadingColor: var(--wedding-ink);
+        --cardTitleSize: clamp(3rem, 3vw, 4rem);
+
+        height: 100%;
+        gap: 2rem;
+        padding: var(--cardPadding);
+        border: 1px solid var(--cardBorderColorCur);
+        border-radius: var(--cardRadius);
+        background: var(--cardBg);
+        transition: border-color 220ms ease;
+
+        &.isHover,
+        &:hover,
+        &:focus-within {
+            --cardBorderColorCur: var(--cardBorderColorHover);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
+    &--isLookFullscreen &,
+    &--isLook & {
+        &__images {
+            display: grid;
+            place-items: center;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border-radius: calc(var(--cardRadius) / 2);
+            background: var(--cardImageBg);
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+        }
+
+        &__heading {
+            color: var(--cardHeadingColor);
+
+            .h3 {
+                font-size: var(--cardTitleSize);
+                line-height: 1.2;
+                text-wrap: pretty;
+            }
+        }
+
+        &__footer {
+            margin-top: auto;
+            padding-top: 1rem;
+
+            .btn {
+                --btnWidth: 100%;
+                --btnPadX: 2rem;
+                --btnPadY: 1.5rem;
+                --btnFontSize: 1.75rem;
+                --btnBorderRad: 1rem;
+            }
+        }
+    }
+
+    &--isLookFullscreen {
+        --cardTagsArea: 1 / 1;
+        --cardImagesArea: 1 / 1;
+    }
+    
+    &--isLookFullscreen & {
+        &__images {
+            max-height: 100%;
+        }
+
+        &__image {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        &__tags {
+
+        }
+    }
+}

@@ -3,63 +3,116 @@
     --btnPadY: 2.25rem;
     --btnWidth: auto;
     --btnHeight: fit-content;
-    --btnBorderRad: 2rem;
-    --btnFontSize: var(--font-size);
+    --btnMinHeight: 48px;
+    --btnBorderRad: 0.75rem;
+    --btnBorderWidth: 0.125rem;
+    --btnFontSize: 1.875rem;
+    --btnFontWeight: 500;
+    --btnLineHeight: normal;
+    --btnFlexDirection: row;
+    --btnJustifyContent: center;
+    --btnTextAlign: center;
+    --btnWhiteSpace: normal;
+    --btnTextUnderlineOffset: auto;
+    --btnLabelWidth: auto;
+    --btnGap: 0;
+    --btnDisplay: flex;
+    --btnMinWidth: 0;
+    --btnBorderBottomWidth: var(--btnBorderWidth);
+    --btnFontFamily: var(--font-anonymous);
+    --btnCursor: pointer;
+    --btnUserSelect: auto;
+    --btnFocusColor: var(--wedding-sage);
+    --btnFocusOffset: 5px;
+    --btnSwatchSize: 2rem;
+    --btnSwatchBorderRad: 50%;
 
-    /* base */
-    --btnCurBg: var(--btnBg);
-    --btnCurBorderColor: transparent;
-    --btnCurColor: var(--colorBlackout);
+    --btnBg: var(--wedding-surface);
+    --btnBgCur: var(--btnBg);
+    --btnBgHover: #e2e6dc;
+    --btnBgActive: #d9dfd2;
 
-    --btnBg: var(--colorAngoraWhite);
     --btnBorderColor: transparent;
+    --btnBorderColorCur: var(--btnBorderColor);
+    --btnBorderColorHover: var(--btnBorderColor);
+    --btnBorderColorActive: var(--btnBorderColor);
+
     --btnColor: var(--colorBlackout);
+    --btnColorCur: var(--btnColor);
+    --btnColorHover: var(--colorBlackout);
+    --btnColorActive: var(--colorBlackout);
 
-    /* :hover */
-    --btnHoverBg: var(--colorSweetGrey);
-    --btnHoverBorderColor: transparent;
-    --btnHoverColor: var(--colorBlackout);
+    --btnTextDecoration: none;
+    --btnTextDecorationCur: var(--btnTextDecoration);
+    --btnTextDecorationHover: var(--btnTextDecoration);
+    --btnTextDecorationActive: var(--btnTextDecorationHover);
 
-    /* :active */
-    --btnActiveBg: var(--colorSweetGrey30);
-    --btnActiveBorderColor: transparent;
-    --btnActiveColor: var(--colorBlackout);
-
-    background: var(--btnCurBg);
+    background: var(--btnBgCur);
     padding-inline: var(--btnPadX);
     padding-block: var(--btnPadY);
     width: var(--btnWidth);
+    min-width: var(--btnMinWidth);
     height: var(--btnHeight);
+    min-height: var(--btnMinHeight);
     border-radius: var(--btnBorderRad);
-    border: var(--btnBorderColor) 0.125rem solid;
-    color: var(--btnCurColor);
-    font-family: var(--font-anonymous);
-    transition:
-        background-color 0.2s,
-        color 0.2s,
-        border-color 0.2s;
+    border: var(--btnBorderWidth) solid var(--btnBorderColorCur);
+    border-bottom-width: var(--btnBorderBottomWidth);
+    color: var(--btnColorCur);
+    font-family: var(--btnFontFamily);
     font-size: var(--btnFontSize);
+    font-weight: var(--btnFontWeight);
+    line-height: var(--btnLineHeight);
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        border-color 220ms ease;
     outline: none;
-    display: flex;
+    display: var(--btnDisplay);
+    flex-direction: var(--btnFlexDirection);
     place-content: center;
+    justify-content: var(--btnJustifyContent);
     place-items: center;
-    cursor: pointer;
-    text-decoration: none;
+    gap: var(--btnGap);
+    cursor: var(--btnCursor);
+    user-select: var(--btnUserSelect);
+    text-align: var(--btnTextAlign);
+    white-space: var(--btnWhiteSpace);
+    text-decoration: var(--btnTextDecorationCur);
+    text-underline-offset: var(--btnTextUnderlineOffset);
 
-    &:hover,
-    &.isHover,
-    &--isHover {
-        --btnCurBg: var(--btnHoverBg);
-        --btnCurBorderColor: var(--btnHoverBorderColor);
-        --btnCurColor: var(--btnHoverColor);
+    &__swatch {
+        width: var(--btnSwatchSize);
+        height: var(--btnSwatchSize);
+        border-radius: var(--btnSwatchBorderRad);
+        flex-shrink: 0;
     }
 
-    &:active,
+    &.isFocusVisible,
+    &:focus-visible {
+        outline: 2px solid var(--btnFocusColor);
+        outline-offset: var(--btnFocusOffset);
+    }
+
+    &__label {
+        width: var(--btnLabelWidth);
+    }
+
+    &.isHover,
+    &:hover,
+    &--isHover {
+        --btnBgCur: var(--btnBgHover);
+        --btnBorderColorCur: var(--btnBorderColorHover);
+        --btnColorCur: var(--btnColorHover);
+        --btnTextDecorationCur: var(--btnTextDecorationHover);
+    }
+
     &.isActive,
+    &:active,
     &--isActive {
-        --btnActiveBg: var(--btnActiveBg);
-        --btnCurBorderColor: var(--btnActiveBorderColor);
-        --btnCurColor: var(--btnActiveColor);
+        --btnBgCur: var(--btnBgActive);
+        --btnBorderColorCur: var(--btnBorderColorActive);
+        --btnColorCur: var(--btnColorActive);
+        --btnTextDecorationCur: var(--btnTextDecorationActive);
     }
 
     * {
@@ -68,125 +121,272 @@
 
     &--isQr {
         --btnWidth: fit-content;
-        height: fit-content;
-        padding: 2rem;
-        border-radius: 3rem;
-        background-color: var(--colorWhite);
-        flex-direction: column;
-        text-align: center;
-
-        span {
-            width: min-content;
-        }
+        --btnPadX: 2rem;
+        --btnPadY: 2rem;
+        --btnBorderRad: 8px;
+        --btnBg: var(--colorWhite);
+        --btnBgHover: var(--btnBg);
+        --btnBgActive: var(--btnBg);
+        --btnFlexDirection: column;
+        --btnLabelWidth: min-content;
     }
 
     &--isFit {
         --btnWidth: fit-content;
     }
 
+    &--isSize24 {
+        --btnHeight: 3rem;
+        --btnPadX: 2rem;
+    }
+
     &--isClosePopover {
         --btnBg: transparent;
-        --btnHoverBg: transparent;
-        --btnActiveBg: transparent;
-
-        --btnHoverColor: var(--colorShinyCopper);
-
+        --btnBgHover: transparent;
+        --btnBgActive: transparent;
+        --btnColorHover: var(--colorShinyCopper);
         --btnPadX: 2rem;
         --btnPadY: 2rem;
-        --btnBorderRad: 100%;
+
         aspect-ratio: 1;
     }
 
     &--isNavLink {
         --btnBg: transparent;
-        --btnHoverBg: transparent;
-        --btnActiveBg: transparent;
-
-        --btnCurColor: var(--colorWhite);
-        --btnHoverColor: var(--colorCoolHazel);
-        --btnActiveColor: var(--colorCoolHazel);
-
+        --btnBgHover: transparent;
+        --btnBgActive: transparent;
+        --btnColor: var(--colorWhite);
+        --btnColorHover: var(--colorCoolHazel);
+        --btnColorActive: var(--colorCoolHazel);
         --btnPadX: 0;
         --btnPadY: 0;
-
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 30px;
-        white-space: nowrap;
+        --btnLineHeight: 30px;
+        --btnJustifyContent: start;
+        --btnTextUnderlineOffset: 6px;
+        --btnTextDecorationHover: underline;
     }
 
     &--isLogoLink {
         --btnBg: transparent;
-        --btnHoverBg: transparent;
-        --btnActiveBg: transparent;
-
+        --btnBgHover: transparent;
+        --btnBgActive: transparent;
         --btnPadX: 0;
         --btnPadY: 0;
-
-        font-weight: bold;
     }
 
     &--isOutline {
-        --color: var(--colorOliveDrab);
-
         --btnBg: transparent;
-        --btnHoverBg: var(--color);
+        --btnBgHover: var(--wedding-sage);
+        --btnColor: var(--wedding-sage);
+        --btnColorHover: var(--colorWhite);
+        --btnColorActive: var(--colorWhite);
+        --btnBorderColor: var(--wedding-sage);
+        --btnBorderWidth: 1px;
+        --btnBgSelected: var(--btnBgHover);
+        --btnColorSelected: var(--btnColorHover);
+        --btnBorderColorSelected: var(--btnBorderColor);
 
-        --btnColor: var(--color);
-        --btnHoverColor: var(--colorWhite);
-        --btnActiveColor: var(--colorWhite);
-
-        --btnBorderColor: var(--color);
-
-        border-width: 2px;
-        font-weight: bold;
+        &.isSelected,
+        &[aria-pressed='true'] {
+            --btnBgCur: var(--btnBgSelected);
+            --btnColorCur: var(--btnColorSelected);
+            --btnBorderColorCur: var(--btnBorderColorSelected);
+        }
     }
-}
 
-body .btn {
-    --btnBorderRad: 0.75rem;
-    --btnBg: var(--wedding-surface);
-    --btnHoverBg: #e2e6dc;
-    --btnActiveBg: #d9dfd2;
-    --btnFontSize: 1.875rem;
-    min-height: 48px;
-    font-weight: 500;
-    transition:
-        background-color 220ms ease,
-        color 220ms ease,
-        border-color 220ms ease;
-}
-body .btn--isOutline {
-    --color: var(--wedding-sage);
-    --btnBg: transparent;
-    --btnCurColor: var(--wedding-sage);
-    --btnHoverBg: var(--wedding-sage);
-    border-width: 1px;
-}
-body .btn--isOutline:hover {
-    --btnCurColor: white;
-}
-body .btn--isClosePopover,
-body .btn--isLogoLink,
-body .btn--isNavLink {
-    --btnBg: transparent;
-    --btnHoverBg: transparent;
-}
-body .btn--isNavLink {
-    font-size: 1.875rem;
-    white-space: normal;
-    justify-content: start;
-    text-underline-offset: 6px;
-}
-body .btn--isNavLink:hover {
-    text-decoration: underline;
-}
-body .btn--isQr {
-    background: white;
-    border-radius: 8px;
-}
-@media (prefers-reduced-motion: reduce) {
-    body .btn {
+    &--isPaletteOption {
+        --btnPadX: 1rem;
+        --btnPadY: 1rem;
+        --btnMinHeight: 44px;
+        --btnBorderWidth: 1px;
+        --btnBorderRad: 4px;
+        --btnBg: transparent;
+        --btnBgHover: var(--btnBg);
+        --btnBgActive: var(--btnBgHover);
+        --btnColor: var(--wedding-ink);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnFontFamily: inherit;
+        --btnFontSize: 1.75rem;
+        --btnGap: 1.5rem;
+        --btnTextAlign: left;
+        --btnJustifyContent: start;
+        --btnBgSelected: var(--wedding-paper);
+        --btnBorderColorSelected: var(--wedding-line);
+        --btnFocusOffset: 3px;
+        &[aria-pressed='true'] {
+            --btnBgCur: var(--btnBgSelected);
+            --btnBorderColorCur: var(--btnBorderColorSelected);
+        }
+        @media (max-width: 640px) {
+            --btnFontSize: 1.5rem;
+            --btnGap: 1rem;
+        }
+    }
+
+    &--isTextLink {
+        --btnPadX: 0;
+        --btnPadY: 1rem;
+        --btnMinHeight: 44px;
+        --btnBorderWidth: 0;
+        --btnBorderRad: 0;
+        --btnBg: transparent;
+        --btnBgHover: var(--btnBg);
+        --btnBgActive: var(--btnBgHover);
+        --btnColor: var(--wedding-sage);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnDisplay: inline-flex;
+        --btnBorderBottomWidth: 1px;
+        --btnBorderColor: var(--wedding-sage);
+        --btnFontFamily: inherit;
+        --btnFontSize: 1.5rem;
+        --btnFocusOffset: 3px;
+    }
+
+    &--isSearchClear {
+        --btnPadX: 0;
+        --btnPadY: 0;
+        --btnMinHeight: 0;
+        --btnBorderWidth: 0;
+        --btnBorderRad: 0;
+        --btnBg: transparent;
+        --btnBgHover: var(--btnBg);
+        --btnBgActive: var(--btnBgHover);
+        --btnColor: var(--wedding-muted);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnWidth: 44px;
+        --btnHeight: 100%;
+        --btnFontSize: 3rem;
+        --btnFocusOffset: -2px;
+    }
+
+    &--isSearchReset {
+        --btnPadX: 1rem;
+        --btnPadY: 1rem;
+        --btnMinHeight: 44px;
+        --btnBorderWidth: 1px;
+        --btnBorderRad: 0;
+        --btnBg: var(--wedding-surface);
+        --btnBgHover: var(--btnBg);
+        --btnBgActive: var(--btnBgHover);
+        --btnColor: var(--wedding-ink);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnDisplay: inline-flex;
+        --btnBorderColor: var(--wedding-line);
+        --btnFontFamily: inherit;
+        --btnFontSize: inherit;
+        --btnFocusOffset: -2px;
+    }
+
+    &--isZoom {
+        --btnPadX: 0;
+        --btnPadY: 0;
+        --btnMinHeight: 44px;
+        --btnBorderWidth: 0.125rem;
+        --btnBorderRad: 50%;
+        --btnBg: var(--wedding-paper);
+        --btnBgHover: var(--colorSweetGrey);
+        --btnBgActive: var(--colorSweetGrey30);
+        --btnColor: var(--colorBlackout);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnWidth: 4rem;
+        --btnHeight: 4rem;
+        --btnMinWidth: 44px;
+        --btnBorderColor: var(--wedding-line);
+        --btnFontSize: 2rem;
+        --btnLineHeight: 1;
+        --btnUserSelect: none;
+        --btnFocusOffset: -2px;
+    }
+
+    &--isGuest {
+        --btnPadX: 1rem;
+        --btnPadY: 1.5rem;
+        --btnMinHeight: 52px;
+        --btnBorderWidth: 0;
+        --btnBorderRad: 0;
+        --btnBg: transparent;
+        --btnBgHover: var(--wedding-surface);
+        --btnBgActive: var(--btnBgHover);
+        --btnColor: var(--wedding-ink);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnWidth: 100%;
+        --btnBorderBottomWidth: 1px;
+        --btnBorderColor: var(--wedding-line);
+        --btnGap: 1.5rem;
+        --btnJustifyContent: space-between;
+        --btnTextAlign: left;
+        --btnFontSize: 1.75rem;
+        --btnBgSelected: var(--wedding-surface);
+        --btnFocusOffset: -2px;
+        &[aria-pressed='true'] {
+            --btnBgCur: var(--btnBgSelected);
+        }
+    }
+
+    &--isAccordion {
+        --btnPadX: 0;
+        --btnPadY: 2.5rem;
+        --btnMinHeight: 0;
+        --btnBorderWidth: 0;
+        --btnBorderRad: 0;
+        --btnBg: transparent;
+        --btnBgHover: var(--btnBg);
+        --btnBgActive: var(--btnBgHover);
+        --btnColor: var(--colorBlackout);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
+        --btnFontWeight: 400;
+        --btnWidth: 100%;
+        --btnGap: 2rem;
+        --btnJustifyContent: space-between;
+        --btnTextAlign: left;
+        --btnFontSize: var(--font-size);
+    }
+
+    &--isDialogGhost {
+        --btnBg: transparent;
+        --btnBgHover: transparent;
+        --btnBgActive: transparent;
+        --btnColor: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnColorHover: var(--colorRedStage);
+        --btnColorActive: var(--colorRedStage);
+        --btnBorderColor: transparent;
+        --btnPadX: 2rem;
+        --btnPadY: 1.5rem;
+        --btnBorderRad: 2rem;
+        --btnTextDecoration: none;
+        --btnFontWeight: 400;
+    }
+
+    &--isDialogOutline {
+        --btnBg: transparent;
+        --btnBgHover: rgba(223, 129, 71, 0.08);
+        --btnBgActive: rgba(223, 129, 71, 0.14);
+        --btnColor: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnColorHover: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnColorActive: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnBorderColor: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnBorderColorHover: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnBorderColorActive: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnPadX: 3rem;
+        --btnPadY: 2rem;
+        --btnBorderRad: 2rem;
+        --btnFontWeight: 400;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
         transform: none !important;
     }
 }

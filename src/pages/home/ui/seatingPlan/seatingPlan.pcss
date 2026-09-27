@@ -29,12 +29,7 @@
     .zoom__image {
         width: 100%;
     }
-    .zoom__btn {
-        min-width: 44px;
-        min-height: 44px;
-        background: var(--wedding-paper);
-        border-color: var(--wedding-line);
-    }
+
     &__hint {
         margin-block: 2rem 3rem;
         color: var(--wedding-muted);
@@ -73,26 +68,7 @@
         min-width: 0;
         padding: clamp(2rem, 3vw, 4rem);
     }
-    &__guest {
-        display: flex;
-        justify-content: space-between;
-        gap: 1.5rem;
-        align-items: center;
-        width: 100%;
-        padding: 1.5rem 1rem;
-        min-height: 52px;
-        text-align: left;
-        border: 0;
-        border-bottom: 1px solid var(--wedding-line);
-        background: transparent;
-        font: 1.75rem var(--font-anonymous);
-        color: var(--wedding-ink);
-        cursor: pointer;
-    }
-    &__guest:hover,
-    &__guest[aria-pressed='true'] {
-        background: var(--wedding-surface);
-    }
+
     &__badge {
         flex-shrink: 0;
         color: var(--wedding-muted);
@@ -113,7 +89,6 @@
         background: var(--wedding-sage);
         color: var(--wedding-paper);
     }
-    button:focus-visible,
     input:focus-visible {
         outline: 2px solid var(--wedding-sage);
         outline-offset: -2px;

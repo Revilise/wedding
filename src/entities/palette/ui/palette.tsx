@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@ui/button';
 import { type FC, useState } from 'react';
 import { useBEM } from '@lib/bem';
 import type { IPalette } from '../config/types';
@@ -61,22 +62,23 @@ export const Palette: FC<IPalette> = ({ extraCN, utilCN, colors = [] }) => {
                 <p>Тёплые оттенки лета</p>
                 <div className='palette__legend' aria-label='Оттенки палитры'>
                     {colors.map((item, index) => (
-                        <button
+                        <Button
                             key={item.hex}
                             type='button'
-                            aria-pressed={active === index}
                             onClick={() => select(index)}
+                            extraCN={{ isPaletteOption: true }}
+                            motion={false}
+                            extraAttrs={{ 'aria-pressed': active === index }}
                         >
-                            <span style={{ backgroundColor: item.hex }} />
+                            <span className='btn__swatch' style={{ backgroundColor: item.hex }} />
                             {item.name}
-                        </button>
+                        </Button>
                     ))}
                 </div>
                 <p className='palette__hint'>
                     Наведите на сектор или коснитесь цвета, чтобы узнать его название и HEX.
                 </p>
-                <button
-                    className='palette__copy'
+                <Button
                     type='button'
                     onClick={async () => {
                         try {
@@ -86,9 +88,11 @@ export const Palette: FC<IPalette> = ({ extraCN, utilCN, colors = [] }) => {
                             setCopyStatus(`Не удалось скопировать. Код: ${color.hex.toUpperCase()}`);
                         }
                     }}
+                    extraCN={{ isTextLink: true }}
+                    motion={false}
                 >
                     Скопировать {color.hex.toUpperCase()}
-                </button>
+                </Button>
                 <span className='palette__status' role='status'>
                     {copyStatus}
                 </span>

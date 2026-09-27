@@ -1,7 +1,6 @@
 /* Мобиле: карточка по центру + затемнённый blur-фон. Десктоп/планшет: нижняя «стеклянная» полоска без полноэкранного затемнения */
 
 .dialog-box {
-    
     --dialogBoxAccent: var(--colorShinyCopper);
     --dialogBoxBorderRad: 4rem;
 
@@ -66,7 +65,7 @@
 
             padding-block: 4rem;
             padding-inline: 3rem;
-            
+
             --dialogBoxBorderRad: 4rem;
             background: var(--colorWhite);
             border: none;
@@ -100,37 +99,5 @@
         @media (--mobile) {
             justify-content: center;
         }
-    }
-
-    /* Кнопки макета: «Анкета» — текст, «Уже да» — outline */
-    .btn--isDialogGhost {
-        --btnBg: transparent;
-        --btnHoverBg: transparent;
-        --btnActiveBg: transparent;
-        --btnCurColor: var(--dialogBoxAccent);
-        --btnHoverColor: var(--colorRedStage);
-        --btnActiveColor: var(--colorRedStage);
-        --btnBorderColor: transparent;
-        --btnPadX: 2rem;
-        --btnPadY: 1.5rem;
-        --btnBorderRad: 2rem;
-        text-decoration: none;
-        font-weight: 400;
-    }
-
-    .btn--isDialogOutline {
-        --btnBg: transparent;
-        --btnHoverBg: rgba(223, 129, 71, 0.08);
-        --btnActiveBg: rgba(223, 129, 71, 0.14);
-        --btnCurColor: var(--dialogBoxAccent);
-        --btnHoverColor: var(--dialogBoxAccent);
-        --btnActiveColor: var(--dialogBoxAccent);
-        --btnBorderColor: var(--dialogBoxAccent);
-        --btnHoverBorderColor: var(--dialogBoxAccent);
-        --btnActiveBorderColor: var(--dialogBoxAccent);
-        --btnPadX: 3rem;
-        --btnPadY: 2rem;
-        --btnBorderRad: 2rem;
-        font-weight: 400;
     }
 }

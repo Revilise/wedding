@@ -1,3 +1,4 @@
+import { Button } from '@ui/button';
 import { useState } from 'react';
 import { useBEM } from '@lib/bem';
 import { Search } from '@ui/search';
@@ -60,12 +61,19 @@ export const SeatingPlan = ({ image, tables }: SeatingPlanProps) => {
                 resetLabel='Показать всех гостей'
                 onSelect={setSelected}
                 renderCard={(guest, { isSelected, select }) => (
-                    <button className={bem('guest')} type='button' aria-pressed={isSelected} onClick={select}>
+                    <Button
+                        utilCN={[bem('guest')]}
+                        type='button'
+                        onClick={select}
+                        extraCN={{ isGuest: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-pressed': isSelected }}
+                    >
                         <span>{guest.name}</span>
                         <span className={bem('badge')}>
                             Место <b>{guest.place}</b>
                         </span>
-                    </button>
+                    </Button>
                 )}
             />
         </div>

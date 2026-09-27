@@ -1,3 +1,4 @@
+import { Button } from '@ui/button';
 import { type FC, useState } from 'react';
 import { useBEM } from '@lib/bem';
 import { AccordionContext, useAccordionContext } from '../config/context.ts';
@@ -27,20 +28,19 @@ export const Accordion: FC<IAccordion> = ({
     return (
         <AccordionContext value={{ breakpoint }}>
             <div className={bem('', { extraCN, utilCN })}>
-                <div
-                    className={bem('item', { extraCN: { ...bpMod, ...extraCN }, utilCN })}
-                    data-open={isOpen}
-                >
-                    <button
-                        className={bem('trigger')}
-                        type="button"
+                <div className={bem('item', { extraCN: { ...bpMod, ...extraCN }, utilCN })} data-open={isOpen}>
+                    <Button
+                        utilCN={[bem('trigger')]}
+                        type='button'
                         onClick={() => setIsOpen(o => !o)}
-                        aria-expanded={isOpen}
+                        extraCN={{ isAccordion: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-expanded': isOpen }}
                     >
                         <span className={bem('label')}>{label}</span>
-                        <span className={bem('icon')} aria-hidden="true" />
-                    </button>
-                    <div className={bem('body')} role="region">
+                        <span className={bem('icon')} aria-hidden='true' />
+                    </Button>
+                    <div className={bem('body')} role='region'>
                         <div className={bem('inner')}>{children}</div>
                     </div>
                 </div>

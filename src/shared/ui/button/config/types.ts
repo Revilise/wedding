@@ -13,6 +13,7 @@ export interface IButton extends IComponent, Handlers {
   children?: ReactNode;
   href?: string;
   label?: string;
+  size?: number;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"] | "link";
   ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
   motion?: MotionConfigContextProps | boolean;

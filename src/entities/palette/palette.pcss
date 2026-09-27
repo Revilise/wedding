@@ -70,55 +70,17 @@
         display: grid;
         gap: 0.5rem;
     }
-    &__legend button {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        text-align: left;
-        padding: 1rem;
-        min-height: 44px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background: transparent;
-        color: var(--wedding-ink);
-        font: inherit;
-        font-size: 1.75rem;
-        cursor: pointer;
-        &[aria-pressed='true'] {
-            background: var(--wedding-paper);
-            border-color: var(--wedding-line);
-        }
-        span {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-    }
+
     &__hint {
         color: var(--wedding-muted);
         font-size: 1.5rem;
         margin-top: 2rem;
     }
-    &__copy {
-        background: transparent;
-        border: 0;
-        border-bottom: 1px solid var(--wedding-sage);
-        padding: 1rem 0;
-        min-height: 44px;
-        color: var(--wedding-sage);
-        font: inherit;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
+
     &__status {
         display: block;
         min-height: 2.5rem;
         font-size: 1.5rem;
-    }
-    button:focus-visible {
-        outline: 2px solid var(--wedding-sage);
-        outline-offset: 3px;
     }
 }
 @media (max-width: 640px) {
@@ -131,10 +93,6 @@
     }
     .palette__legend {
         grid-template-columns: 1fr 1fr;
-    }
-    .palette__legend button {
-        font-size: 1.5rem;
-        gap: 1rem;
     }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -1,3 +1,4 @@
+import { Button } from '@ui/button';
 import { useId, useState } from 'react';
 import type { Key } from 'react';
 import { useBEM } from '@lib/bem';
@@ -42,9 +43,16 @@ export const Search = <T,>({
                     aria-controls={`${searchId}-results`}
                 />
                 {query && (
-                    <button type='button' onClick={reset} aria-label='Очистить поиск'>
+                    <Button
+                        type='button'
+                        onClick={reset}
+                        utilCN={[bem('clear')]}
+                        extraCN={{ isSearchClear: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Очистить поиск' }}
+                    >
                         ×
-                    </button>
+                    </Button>
                 )}
             </div>
             <p className={bem('count')} role='status'>
@@ -72,9 +80,9 @@ export const Search = <T,>({
                     <div className={bem('empty')}>
                         <strong>{emptyTitle}</strong>
                         {emptyDescription && <p>{emptyDescription}</p>}
-                        <button type='button' onClick={reset}>
+                        <Button type='button' onClick={reset} extraCN={{ isSearchReset: true }} motion={false}>
                             {resetLabel}
-                        </button>
+                        </Button>
                     </div>
                 )}
             </div>

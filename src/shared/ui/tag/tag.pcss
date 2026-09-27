@@ -1,0 +1,24 @@
+.tag {
+    --tagBg: var(--wedding-surface);
+    --tagColor: var(--wedding-sage);
+    --tagBorderColor: transparent;
+    --tagRadius: 999px;
+    --tagFontSize: 1.5rem;
+
+    display: inline-flex;
+    max-width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--tagBorderColor);
+    border-radius: var(--tagRadius);
+    background: var(--tagBg);
+    color: var(--tagColor);
+    font-size: var(--tagFontSize);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+
+    &--isOutline {
+        --tagBg: transparent;
+        --tagBorderColor: var(--wedding-line);
+        --tagColor: var(--wedding-muted);
+    }
+}

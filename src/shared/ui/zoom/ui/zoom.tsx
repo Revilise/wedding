@@ -1,26 +1,20 @@
+import { Button } from '@ui/button';
 import type { FC } from 'react';
-import { usePanzoom } from "../lib";
-import { PanzoomAction } from "@fancyapps/ui/dist/panzoom/";
+import { usePanzoom } from '../lib';
+import { PanzoomAction } from '@fancyapps/ui/dist/panzoom/';
 import { useBEM } from '@lib/bem';
-import type { IZoom } from "../config/types.ts";
+import type { IZoom } from '../config/types.ts';
 
-export const Zoom: FC<IZoom> = ({
-    extraCN,
-    utilCN,
-    image,
-    width,
-    height,
-    showControls = false,
-}) => {
-    const { bem } = useBEM("zoom");
+export const Zoom: FC<IZoom> = ({ extraCN, utilCN, image, width, height, showControls = false }) => {
+    const { bem } = useBEM('zoom');
 
     const [panzoomRef, panzoomInstance] = usePanzoom({});
 
     return (
-        <div className={bem("", { extraCN, utilCN })}>
-            <div className={bem("container")} ref={panzoomRef}>
+        <div className={bem('', { extraCN, utilCN })}>
+            <div className={bem('container')} ref={panzoomRef}>
                 <img
-                    className={`${bem("image")} f-panzoom__content`}
+                    className={`${bem('image')} f-panzoom__content`}
                     src={image.src}
                     alt={image.alt}
                     height={height}
@@ -28,23 +22,25 @@ export const Zoom: FC<IZoom> = ({
                 />
             </div>
             {showControls && (
-                <div className={bem("controls")}>
-                    <button
-                        className={bem("btn")}
-                        type="button"
+                <div className={bem('controls')}>
+                    <Button
+                        type='button'
                         onClick={() => panzoomInstance?.execute(PanzoomAction.ZoomIn)}
-                        aria-label="Zoom in"
+                        extraCN={{ isZoom: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Zoom in' }}
                     >
                         +
-                    </button>
-                    <button
-                        className={bem("btn")}
-                        type="button"
+                    </Button>
+                    <Button
+                        type='button'
                         onClick={() => panzoomInstance?.execute(PanzoomAction.ZoomOut)}
-                        aria-label="Zoom out"
+                        extraCN={{ isZoom: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Zoom out' }}
                     >
                         −
-                    </button>
+                    </Button>
                 </div>
             )}
         </div>
