@@ -12,6 +12,7 @@ import {
     SuggestionsSection,
     GallerySection,
     SeatingPlanSection,
+    DressCodePaletteSection,
 } from './ui';
 import { footerNavigation } from './config/footerNavigation.ts';
 
@@ -24,6 +25,7 @@ export const HomePage = () => {
             <ProgramSection />
             <SeatingPlanSection />
             <GiftsSection />
+            <DressCodePaletteSection />
             <DressCodeSection />
             <CommunitySection />
             <FeedbackSection />

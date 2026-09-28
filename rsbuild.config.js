@@ -72,11 +72,11 @@ export default defineConfig({
     },
     tools: {
         rspack: config => {
-            // Расширяем правило для CSS, чтобы обрабатывать и .pcss (PostCSS)
+            // Расширяем правило для CSS, чтобы обрабатывать .pcss и .postcss (PostCSS)
             const rules = config.module?.rules ?? [];
             for (const rule of rules) {
                 if (rule && typeof rule === 'object' && rule.test instanceof RegExp && rule.test.source === '\\.css$') {
-                    rule.test = /\.(?:css|pcss)$/;
+                    rule.test = /\.(?:css|pcss|postcss)$/;
                     break;
                 }
             }

@@ -1,0 +1,45 @@
+.tabs {
+    --tabsGap: 16px;
+    --tabsNavigationGap: 8px;
+    --tabsContentDisplay: block;
+    --tabsContentColumns: minmax(0, 1fr);
+    --tabsContentGap: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--tabsGap);
+    min-width: 0;
+
+    &__navigation {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--tabsNavigationGap);
+        min-width: 0;
+    }
+
+    &__content,
+    &__panel {
+        display: var(--tabsContentDisplay);
+        grid-template-columns: var(--tabsContentColumns);
+        gap: var(--tabsContentGap);
+        min-width: 0;
+    }
+
+    &__panel {
+        grid-column: 1 / -1;
+    }
+
+    &--isLooks {
+        --tabsContentDisplay: grid;
+        --tabsContentColumns: repeat(2, minmax(0, 1fr));
+
+        .tabs__panel > [role='status'] {
+            grid-column: 1 / -1;
+        }
+
+        @media (--mobile) {
+            --tabsContentColumns: minmax(0, 1fr);
+        }
+    }
+}

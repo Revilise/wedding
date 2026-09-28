@@ -1,86 +1,112 @@
-import { homeSectionAnchors } from '../../config/sectionAnchors.ts';
+import { Button } from '@ui/button';
+import type { IOutfitLook } from './config/types';
 import ManLook1 from '@images/looks/man-1.jpg';
 import ManLook2 from '@images/looks/man-2.jpg';
 import WomanLook1 from '@images/looks/woman-1.jpg';
 import WomanLook2 from '@images/looks/woman-2.jpg';
 
-export const dressCodeSection = {
-    anchorId: homeSectionAnchors.dressCode,
-    heading: 'Dress Code',
-    subTitle: <>Итальянское лето</>,
-    content: (
-        <>
-            <p>
-                <mark>Дамы</mark>: Платья миди/макси, костюм или комбинезон. Приветствуются акцентные украшения.
-            </p>
-            <p>
-                <mark>Мужчины</mark>: Светлые летние костюмы, рубашки без галстуков или поло.
-            </p>
-
-            <b>Просим избегать белый и черный. Старайтесь придерживаться натуральных тканей: лён, хлопок, шёлк.</b>
-            <p>Спасибо, что разделяете нашу любовь к деталям!</p>
-        </>
-    ),
-    palette: [
-        { hex: '#3E4A34', name: 'Тёмно-оливковый' },
-        { hex: '#BBC298', name: 'Шалфей' },
-        { hex: '#D9B27B', name: 'Пшеничный (песочный)' },
-        { hex: '#F7B557', name: 'Янтарный' },
-        { hex: '#688EB3', name: 'Голубой' },
-        { hex: '#cb7e64', name: 'Светло-терракотовый' },
-    ],
-};
-
 export const outfitInspiration = {
     heading: 'Образы для вдохновения',
     looks: [
         {
-            src: WomanLook1,
-            width: 1002,
-            height: 774,
+            id: WomanLook1,
             category: 'women',
-            title: 'Нежность шалфея',
-            description: 'Воздушный силуэт, мягкие воланы и минимум украшений.',
-            alt: 'Платье шалфейного оттенка с воланами и V-образным вырезом',
-            color: '#BBC298',
-            shade: 'Шалфей',
-            detail: 'Летящая фактура',
+            previewCard: {
+                extraCN: { isLook: true },
+                heading: <h3 className='h3'>{'Нежность шалфея'}</h3>,
+                images: [{ src: WomanLook1, alt: 'Платье шалфейного оттенка с воланами и V-образным вырезом' }],
+                tags: [{ label: 'Шалфей' }, { label: 'Летящая фактура', extraCN: { isOutline: true } }],
+                children: <p>{'Воздушный силуэт, мягкие воланы и минимум украшений.'}</p>,
+                footer: (
+                    <Button
+                        extraCN={{ isOutline: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Рассмотреть образ «Нежность шалфея»' }}
+                    >
+                        Рассмотреть ↗
+                    </Button>
+                ),
+            },
+            fullscreenCard: {
+                extraCN: { isLookFullscreen: true },
+                heading: 'Нежность шалфея',
+                images: [{ src: WomanLook1, alt: 'Платье шалфейного оттенка с воланами и V-образным вырезом' }],
+            },
         },
         {
-            src: ManLook1,
-            width: 754,
-            height: 754,
+            id: ManLook1,
             category: 'men',
-            title: 'Тёплая терракота',
-            description: 'Костюм тёплого оттенка и светлая рубашка без галстука.',
-            alt: 'Мужской терракотовый костюм со светлой рубашкой без галстука',
-            color: '#CB7E64',
-            shade: 'Терракотовый',
-            detail: 'Расслабленная классика',
+            previewCard: {
+                extraCN: { isLook: true },
+                heading: <h3 className='h3'>{'Тёплая терракота'}</h3>,
+                images: [{ src: ManLook1, alt: 'Мужской терракотовый костюм со светлой рубашкой без галстука' }],
+                tags: [{ label: 'Терракотовый' }, { label: 'Расслабленная классика', extraCN: { isOutline: true } }],
+                children: <p>{'Костюм тёплого оттенка и светлая рубашка без галстука.'}</p>,
+                footer: (
+                    <Button
+                        extraCN={{ isOutline: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Рассмотреть образ «Тёплая терракота»' }}
+                    >
+                        Рассмотреть ↗
+                    </Button>
+                ),
+            },
+            fullscreenCard: {
+                extraCN: { isLookFullscreen: true },
+                heading: 'Тёплая терракота',
+                images: [{ src: ManLook1, alt: 'Мужской терракотовый костюм со светлой рубашкой без галстука' }],
+            },
         },
         {
-            src: WomanLook2,
-            width: 1002,
-            height: 1570,
+            id: WomanLook2,
             category: 'women',
-            title: 'Лето в оливковой роще',
-            description: 'Свободные рукава, натуральная фактура и золотистые акценты.',
-            alt: 'Оливковое платье с объёмными рукавами и золотистыми браслетами',
-            color: '#BBC298',
-            shade: 'Оливковый',
-            detail: 'Естественные линии',
+            previewCard: {
+                extraCN: { isLook: true },
+                heading: <h3 className='h3'>{'Лето в оливковой роще'}</h3>,
+                images: [{ src: WomanLook2, alt: 'Оливковое платье с объёмными рукавами и золотистыми браслетами' }],
+                tags: [{ label: 'Оливковый' }, { label: 'Естественные линии', extraCN: { isOutline: true } }],
+                children: <p>{'Свободные рукава, натуральная фактура и золотистые акценты.'}</p>,
+                footer: (
+                    <Button
+                        extraCN={{ isOutline: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Рассмотреть образ «Лето в оливковой роще»' }}
+                    >
+                        Рассмотреть ↗
+                    </Button>
+                ),
+            },
+            fullscreenCard: {
+                extraCN: { isLookFullscreen: true },
+                heading: 'Лето в оливковой роще',
+                images: [{ src: WomanLook2, alt: 'Оливковое платье с объёмными рукавами и золотистыми браслетами' }],
+            },
         },
         {
-            src: ManLook2,
-            width: 819,
-            height: 1024,
+            id: ManLook2,
             category: 'men',
-            title: 'Небо и песок',
-            description: 'Голубая рубашка, светлые брюки и удобная обувь для долгого вечера.',
-            alt: 'Голубая рубашка с бежевыми брюками и светлыми кедами',
-            color: '#688EB3',
-            shade: 'Голубой',
-            detail: 'Лёгкость в деталях',
+            previewCard: {
+                extraCN: { isLook: true },
+                heading: <h3 className='h3'>{'Небо и песок'}</h3>,
+                images: [{ src: ManLook2, alt: 'Голубая рубашка с бежевыми брюками и светлыми кедами' }],
+                tags: [{ label: 'Голубой' }, { label: 'Лёгкость в деталях', extraCN: { isOutline: true } }],
+                children: <p>{'Голубая рубашка, светлые брюки и удобная обувь для долгого вечера.'}</p>,
+                footer: (
+                    <Button
+                        extraCN={{ isOutline: true }}
+                        motion={false}
+                        extraAttrs={{ 'aria-label': 'Рассмотреть образ «Небо и песок»' }}
+                    >
+                        Рассмотреть ↗
+                    </Button>
+                ),
+            },
+            fullscreenCard: {
+                extraCN: { isLookFullscreen: true },
+                heading: 'Небо и песок',
+                images: [{ src: ManLook2, alt: 'Голубая рубашка с бежевыми брюками и светлыми кедами' }],
+            },
         },
-    ],
+    ] satisfies IOutfitLook[],
 };
