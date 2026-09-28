@@ -23,5 +23,29 @@ export default defineConfig([
             globals: globals.browser,
         },
     },
+    // Keep domain dependencies directed toward lower layers and use public APIs.
+    ...[
+        ['src/shared/**/*.{ts,tsx}', ['@entities/*', '@features/*', '@widgets/*', '@app/*']],
+        ['src/entities/**/*.{ts,tsx}', ['@features/*', '@widgets/*', '@app/*']],
+        ['src/features/**/*.{ts,tsx}', ['@features/*', '@widgets/*', '@app/*']],
+        ['src/widgets/**/*.{ts,tsx}', ['@widgets/*', '@app/*']],
+        ['src/pages/**/*.{ts,tsx}', ['@app/*']],
+    ].map(([files, forbidden]) => ({
+        files: [files],
+        rules: {
+            'no-restricted-imports': [
+                'error',
+                {
+                    patterns: [
+                        {
+                            group: [...forbidden, '@ui/*/*', '@entities/*/*', '@features/*/*', '@widgets/*/*'],
+                            message:
+                                'Use a lower layer through its public API; use relative imports inside the current slice.',
+                        },
+                    ],
+                },
+            ],
+        },
+    })),
     ...storybook.configs['flat/recommended'],
 ]);

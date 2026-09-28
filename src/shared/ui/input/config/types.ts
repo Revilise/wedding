@@ -1,6 +1,6 @@
 import type { IComponent } from '@shared/types/component.ts';
 import type { OnEventHandlers } from '@shared/types/utils.ts';
-import type { HTMLProps, ReactNode, Ref } from 'react';
+import type { HTMLProps, Ref } from 'react';
 
 type InputHandlers = OnEventHandlers<HTMLProps<HTMLInputElement>>;
 

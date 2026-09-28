@@ -7,35 +7,38 @@ import { Autoplay } from 'swiper/modules';
 export const GallerySection = () => {
     return (
         <Section
-            extraCN={{ isGallery: true, isLarge: true }}
-            heading={(
+            extraCN={{ isSplitHeading: true, isLarge: true }}
+            heading={
                 <>
-                    <h2 className={"h2 align-right"}>О нас</h2>
-                    <p className={"align-right"}>Мы познакомились в колледже - учились на одной специальности. Спустя несколько лет дружба переросла в что-то большее. “Что-то большее” затем стало желанием стать семьёй.</p>
+                    <h2 className={'h2'}>О нас</h2>
+                    <p className={'text-muted max-w-68ch'}>
+                        Мы познакомились в колледже - учились на одной специальности. Спустя несколько лет дружба
+                        переросла в что-то большее. “Что-то большее” затем стало желанием стать семьёй.
+                    </p>
                 </>
-            )}
+            }
         >
             <Swiper
                 slidesPerView={1}
                 spaceBetween={16}
                 loop={true}
                 autoplay={{
-                    delay: 2000
+                    delay: 2000,
                 }}
                 speed={1000}
                 modules={[Autoplay]}
                 breakpoints={{
-                    "768": {
-                        slidesPerView: 3
-                    }
+                    '768': {
+                        slidesPerView: 3,
+                    },
                 }}
             >
                 {gallerySection.images.map(image => (
-                    <SwiperSlide>
-                        <Image src={image} alt={""} />
+                    <SwiperSlide key={image}>
+                        <Image extraCN={{ isPortrait: true, isHoverZoom: true }} src={image} alt={''} />
                     </SwiperSlide>
                 ))}
             </Swiper>
         </Section>
-    )
-}
+    );
+};

@@ -1,6 +1,6 @@
 import { Section } from '@ui/section';
 import { seatingPlanSection } from './mock.ts';
-import { SeatingPlan } from './seatingPlan.tsx';
+import { SeatingPlan } from '@widgets/seatingPlan';
 
 export const SeatingPlanSection = () => (
     <Section

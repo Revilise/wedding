@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { ICard } from '@ui/card/config/types.ts';
+import type { ICard } from '../config';
 import { useBEM } from '@lib/bem';
 import { Tag } from '@ui/tag';
 

@@ -4,11 +4,11 @@ import { SuggestForm } from '@widgets/suggestForm';
 export const SuggestionsSection = () => {
     return (
         <Section
-            extraCN={{ isSuggestions: true }}
+            extraCN={{ isBordered: true }}
             heading={
                 <>
-                    <h2 className="h2 align-right">Ваши идеи</h2>
-                    <p className="align-right">
+                    <h2 className='h2 align-right'>Ваши идеи</h2>
+                    <p className='align-right'>
                         Если у вас есть предложения к программе, например, хотите спеть или станцевать, вы можете
                         оставить заявку.
                     </p>

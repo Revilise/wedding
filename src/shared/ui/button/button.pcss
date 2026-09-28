@@ -80,26 +80,14 @@
     text-decoration: var(--btnTextDecorationCur);
     text-underline-offset: var(--btnTextUnderlineOffset);
 
-    &__swatch {
-        width: var(--btnSwatchSize);
-        height: var(--btnSwatchSize);
-        border-radius: var(--btnSwatchBorderRad);
-        flex-shrink: 0;
-    }
-
     &.isFocusVisible,
     &:focus-visible {
         outline: 2px solid var(--btnFocusColor);
         outline-offset: var(--btnFocusOffset);
     }
 
-    &__label {
-        width: var(--btnLabelWidth);
-    }
-
     &.isHover,
-    &:hover,
-    &--isHover {
+    &:hover {
         --btnBgCur: var(--btnBgHover);
         --btnBorderColorCur: var(--btnBorderColorHover);
         --btnColorCur: var(--btnColorHover);
@@ -107,19 +95,33 @@
     }
 
     &.isActive,
-    &:active,
-    &--isActive {
+    &:active {
         --btnBgCur: var(--btnBgActive);
         --btnBorderColorCur: var(--btnBorderColorActive);
         --btnColorCur: var(--btnColorActive);
         --btnTextDecorationCur: var(--btnTextDecorationActive);
     }
 
+    &__swatch {
+        width: var(--btnSwatchSize);
+        height: var(--btnSwatchSize);
+        border-radius: var(--btnSwatchBorderRad);
+        flex-shrink: 0;
+    }
+
+    &__label {
+        width: var(--btnLabelWidth);
+    }
+
     * {
         pointer-events: none;
     }
 
-    &--isQr {
+    @media (prefers-reduced-motion: reduce) {
+        transform: none !important;
+    }
+
+    &--isStacked {
         --btnWidth: fit-content;
         --btnPadX: 2rem;
         --btnPadY: 2rem;
@@ -140,7 +142,7 @@
         --btnPadX: 2rem;
     }
 
-    &--isClosePopover {
+    &--isSquareGhost {
         --btnBg: transparent;
         --btnBgHover: transparent;
         --btnBgActive: transparent;
@@ -151,7 +153,7 @@
         aspect-ratio: 1;
     }
 
-    &--isNavLink {
+    &--isLightLink {
         --btnBg: transparent;
         --btnBgHover: transparent;
         --btnBgActive: transparent;
@@ -166,12 +168,21 @@
         --btnTextDecorationHover: underline;
     }
 
-    &--isLogoLink {
+    &--isUnstyled {
         --btnBg: transparent;
         --btnBgHover: transparent;
         --btnBgActive: transparent;
         --btnPadX: 0;
         --btnPadY: 0;
+    }
+
+    &--isSerif {
+        --btnFontFamily: var(--font-source-serif);
+        --btnFontSize: 4rem;
+        --btnFontWeight: 500;
+        --btnColor: var(--wedding-sage);
+        --btnColorHover: var(--btnColor);
+        --btnColorActive: var(--btnColor);
     }
 
     &--isOutline {
@@ -194,7 +205,7 @@
         }
     }
 
-    &--isPaletteOption {
+    &--isCompactOutline {
         --btnPadX: 1rem;
         --btnPadY: 1rem;
         --btnMinHeight: 44px;
@@ -215,6 +226,7 @@
         --btnBgSelected: var(--wedding-paper);
         --btnBorderColorSelected: var(--wedding-line);
         --btnFocusOffset: 3px;
+        &.isSelected,
         &[aria-pressed='true'] {
             --btnBgCur: var(--btnBgSelected);
             --btnBorderColorCur: var(--btnBorderColorSelected);
@@ -246,7 +258,7 @@
         --btnFocusOffset: 3px;
     }
 
-    &--isSearchClear {
+    &--isIconMuted {
         --btnPadX: 0;
         --btnPadY: 0;
         --btnMinHeight: 0;
@@ -265,7 +277,7 @@
         --btnFocusOffset: -2px;
     }
 
-    &--isSearchReset {
+    &--isCompactBordered {
         --btnPadX: 1rem;
         --btnPadY: 1rem;
         --btnMinHeight: 44px;
@@ -285,7 +297,7 @@
         --btnFocusOffset: -2px;
     }
 
-    &--isZoom {
+    &--isRound {
         --btnPadX: 0;
         --btnPadY: 0;
         --btnMinHeight: 44px;
@@ -308,7 +320,7 @@
         --btnFocusOffset: -2px;
     }
 
-    &--isGuest {
+    &--isUnderlinedRow {
         --btnPadX: 1rem;
         --btnPadY: 1.5rem;
         --btnMinHeight: 52px;
@@ -330,12 +342,13 @@
         --btnFontSize: 1.75rem;
         --btnBgSelected: var(--wedding-surface);
         --btnFocusOffset: -2px;
+        &.isSelected,
         &[aria-pressed='true'] {
             --btnBgCur: var(--btnBgSelected);
         }
     }
 
-    &--isAccordion {
+    &--isSpacedRow {
         --btnPadX: 0;
         --btnPadY: 2.5rem;
         --btnMinHeight: 0;
@@ -355,11 +368,11 @@
         --btnFontSize: var(--font-size);
     }
 
-    &--isDialogGhost {
+    &--isRoundedGhost {
         --btnBg: transparent;
         --btnBgHover: transparent;
         --btnBgActive: transparent;
-        --btnColor: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnColor: var(--colorShinyCopper);
         --btnColorHover: var(--colorRedStage);
         --btnColorActive: var(--colorRedStage);
         --btnBorderColor: transparent;
@@ -370,23 +383,19 @@
         --btnFontWeight: 400;
     }
 
-    &--isDialogOutline {
+    &--isRoundedOutline {
         --btnBg: transparent;
         --btnBgHover: rgba(223, 129, 71, 0.08);
         --btnBgActive: rgba(223, 129, 71, 0.14);
-        --btnColor: var(--dialogBoxAccent, var(--colorShinyCopper));
-        --btnColorHover: var(--dialogBoxAccent, var(--colorShinyCopper));
-        --btnColorActive: var(--dialogBoxAccent, var(--colorShinyCopper));
-        --btnBorderColor: var(--dialogBoxAccent, var(--colorShinyCopper));
-        --btnBorderColorHover: var(--dialogBoxAccent, var(--colorShinyCopper));
-        --btnBorderColorActive: var(--dialogBoxAccent, var(--colorShinyCopper));
+        --btnColor: var(--colorShinyCopper);
+        --btnColorHover: var(--colorShinyCopper);
+        --btnColorActive: var(--colorShinyCopper);
+        --btnBorderColor: var(--colorShinyCopper);
+        --btnBorderColorHover: var(--colorShinyCopper);
+        --btnBorderColorActive: var(--colorShinyCopper);
         --btnPadX: 3rem;
         --btnPadY: 2rem;
         --btnBorderRad: 2rem;
         --btnFontWeight: 400;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        transform: none !important;
     }
 }

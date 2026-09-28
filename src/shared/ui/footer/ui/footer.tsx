@@ -14,7 +14,7 @@ export const Footer: FC<IFooter> = ({ extraCN, utilCN, navigation = [] }) => {
                     {navigation.map(({ href, label }, idx) => (
                         <Button
                             key={`footer-navigation-${idx}`}
-                            extraCN={{ isNavLink: true }}
+                            extraCN={{ isLightLink: true }}
                             href={href}
                             type={'link'}
                         >

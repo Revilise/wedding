@@ -1,3 +1,4 @@
-import "./zoom.pcss";
+import '@fancyapps/ui/dist/panzoom/panzoom.css';
+import './zoom.pcss';
 
-export { Zoom } from "./ui/zoom.tsx";
+export { Zoom } from './ui/zoom.tsx';

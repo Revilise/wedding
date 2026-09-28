@@ -1,50 +1,120 @@
 .banner {
+    --bannerDisplayTitleSize: clamp(6rem, 6.8vw, 12rem);
+    --bannerHeadingSize: 1.625rem;
+    --bannerDescriptionMaxWidth: 38ch;
+    --bannerDescriptionColor: var(--wedding-muted);
     --bannerHeight: 58.75rem;
+    --bannerMinHeight: 0;
     --bannerBorderRad: 4rem;
     --bannerTextColor: var(--colorWhite);
-    
-    /* content */
+    --bannerBg: transparent;
+    --bannerDisplay: block;
+    --bannerColumns: 1.1fr 1fr;
     --bannerContentPad: 8rem;
-    --bannerContentZIndex: 1;
-
-    /* title */
+    --bannerContentPosition: absolute;
+    --bannerContentAlign: end;
+    --bannerContentGap: 0;
     --bannerTitlePad: 6rem;
-    --bannerZindex: 1;
-    
+    --bannerTitlePosition: absolute;
+    --bannerImagePosition: center;
+    --bannerPictureColumn: auto;
+    --bannerPictureRow: auto;
+    --bannerPictureHeight: auto;
+
     border-radius: var(--bannerBorderRad);
     height: var(--bannerHeight);
+    min-height: var(--bannerMinHeight);
     color: var(--bannerTextColor);
+    background: var(--bannerBg);
+    display: var(--bannerDisplay);
+    grid-template-columns: var(--bannerColumns);
+    grid-template-rows: 1fr auto;
     overflow: hidden;
     position: relative;
-    
-    img,
-    video {
+
+    &__displayTitle {
+        font-size: var(--bannerDisplayTitleSize);
+        line-height: 0.98;
+        opacity: 1;
+    }
+    &__heading {
+        font-family: var(--font-anonymous);
+        font-size: var(--bannerHeadingSize);
+        letter-spacing: 0.2em;
+        line-height: 1.5;
+        text-align: left;
+    }
+    &__description {
+        width: auto;
+        max-width: var(--bannerDescriptionMaxWidth);
+        color: var(--bannerDescriptionColor);
+    }
+    &__image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
+        object-position: var(--bannerImagePosition);
     }
-    
+    &__picture {
+        grid-column: var(--bannerPictureColumn);
+        grid-row: var(--bannerPictureRow);
+        min-height: 0;
+        height: var(--bannerPictureHeight);
+    }
     &__content {
         padding: var(--bannerContentPad);
-        z-index: var(--bannerContentZIndex);
+        z-index: 1;
         display: flex;
         flex-direction: column;
         place-content: end;
-        place-items: end;
-        position: absolute;
+        place-items: var(--bannerContentAlign);
+        position: var(--bannerContentPosition);
         inset: 0;
+        gap: var(--bannerContentGap);
     }
-    
     &__title {
         padding: var(--bannerTitlePad);
-        z-index: var(--bannerZindex);
-        position: absolute;
+        z-index: 1;
+        position: var(--bannerTitlePosition);
         inset: 0;
+        align-self: end;
     }
-    
+
     @media (--mobile) {
+        --bannerDisplayTitleSize: clamp(6rem, 12vw, 9rem);
         --bannerContentPad: 6rem;
         --bannerBorderRad: 0;
+    }
+
+    &--isSplit {
+        --bannerHeight: auto;
+        --bannerMinHeight: 76rem;
+        --bannerDisplay: grid;
+        --bannerBorderRad: 2px;
+        --bannerBg: var(--wedding-surface);
+        --bannerTextColor: var(--wedding-ink);
+        --bannerPictureColumn: 2;
+        --bannerPictureRow: 1 / 3;
+        --bannerImagePosition: center 40%;
+        --bannerTitlePosition: static;
+        --bannerTitlePad: clamp(4rem, 5vw, 9rem) clamp(3rem, 4vw, 7rem) 4rem;
+        --bannerContentPosition: static;
+        --bannerContentPad: 0 clamp(3rem, 4vw, 7rem) clamp(4rem, 5vw, 9rem);
+        --bannerContentAlign: start;
+        --bannerContentGap: 3rem;
+        @media (--mobile) {
+            --bannerColumns: 1fr;
+            --bannerMinHeight: 0;
+            --bannerTitlePad: 5rem 3rem 3rem;
+            --bannerContentPad: 0 3rem 5rem;
+            --bannerPictureColumn: 1;
+            --bannerPictureRow: 3;
+            --bannerPictureHeight: 48rem;
+        }
+    }
+    &--isSplit & {
+        &__image {
+            display: block;
+        }
     }
 }

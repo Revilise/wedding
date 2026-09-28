@@ -1,7 +1,7 @@
 'use client';
 
 import { useBEM } from '@lib/bem';
-import type { IDialogBox } from '@ui/dialogBox/config/types.ts';
+import type { IDialogBox } from '../config';
 import type { FC } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
@@ -26,8 +26,8 @@ const DialogBoxPortal: FC<IDialogBox> = ({ extraCN, utilCN, isOpen, children, ac
                     />
                     <motion.div
                         className={bem('panel')}
-                        role="dialog"
-                        aria-modal="true"
+                        role='dialog'
+                        aria-modal='true'
                         initial={{ opacity: 0, y: 16, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -39,7 +39,7 @@ const DialogBoxPortal: FC<IDialogBox> = ({ extraCN, utilCN, isOpen, children, ac
                 </div>
             )}
         </AnimatePresence>,
-        document.getElementById('portal') || document.body,
+        document.getElementById('portal') || document.body
     );
 };
 

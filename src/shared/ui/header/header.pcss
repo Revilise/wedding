@@ -1,9 +1,13 @@
 .header {
-    --headerBg: rgba(255, 255, 255, 0);
+    --headerBg: rgba(250, 248, 243, 0.94);
     --headerColor: var(--colorBlackout);
     --headerJustifyContent: space-between;
     --headerPadX: calc(var(--viewport-padding));
-    --headerPadY: 2rem;
+    --headerPadY: 1.75rem;
+    --headerBorderColor: var(--wedding-line);
+    --headerInfoFontSize: 1.625rem;
+    --headerInfoFontWeight: 500;
+    --headerInfoLetterSpacing: 0.025em;
     /* wrapper */
 
     /* info */
@@ -13,6 +17,7 @@
     --separatorHeight: 1.75rem;
 
     background: var(--headerBg);
+    border-bottom: 1px solid var(--headerBorderColor);
     padding-block: var(--headerPadY);
     backdrop-filter: blur(1.375rem);
     position: sticky;
@@ -22,6 +27,7 @@
     z-index: 100;
 
     &__wrapper {
+        align-items: center;
         padding-inline: var(--headerPadX);
         justify-content: var(--headerJustifyContent);
         max-width: var(--fluid-max-vw);
@@ -34,7 +40,9 @@
         color: var(--headerColor);
         gap: 3rem;
         align-items: center;
-        font-weight: bold;
+        font-size: var(--headerInfoFontSize);
+        font-weight: var(--headerInfoFontWeight);
+        letter-spacing: var(--headerInfoLetterSpacing);
 
         @media (--tablet) {
             grid-template-columns: min-content auto;
@@ -62,24 +70,4 @@
         --headerInfoDisplay: none;
         --headerJustifyContent: center;
     }
-}
-
-.layout .header {
-    --headerBg: rgba(250, 248, 243, 0.94);
-    --headerPadY: 1.75rem;
-    border-bottom: 1px solid var(--wedding-line);
-}
-.header .header__wrapper {
-    align-items: center;
-}
-.header .header__info {
-    font-size: 1.625rem;
-    font-weight: 500;
-    letter-spacing: 0.025em;
-}
-.header .btn--isLogoLink {
-    font-family: var(--font-source-serif);
-    font-size: 4rem;
-    font-weight: 500;
-    color: var(--wedding-sage);
 }

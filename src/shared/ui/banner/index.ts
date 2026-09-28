@@ -1,4 +1,4 @@
-import "./banner.pcss";
+import './banner.pcss';
 
-export * from "./ui";
-export type { IBanner } from "./config/types";
+export * from './ui';
+export type { IBanner } from './config/types';

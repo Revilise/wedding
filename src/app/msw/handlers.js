@@ -1,4 +1,4 @@
-import { feedbackFormApiHandlers } from '../../widgets/feedbackForm/model/handlers.js';
-import { suggestFormApiHandlers } from '../../widgets/suggestForm/model/handlers.js';
+import { feedbackFormApiHandlers } from '../../widgets/feedbackForm';
+import { suggestFormApiHandlers } from '../../widgets/suggestForm';
 
 export const handlers = [...feedbackFormApiHandlers, ...suggestFormApiHandlers];

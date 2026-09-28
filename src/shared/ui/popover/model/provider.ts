@@ -65,7 +65,7 @@ export const Provider: FC<IPopoverProvider> = ({ children }) => {
             document.removeEventListener('click', handleDocumentClick);
             document.removeEventListener('keydown', handleDocumentKeydown);
         };
-    }, []);
+    }, [handleDocumentClick, handleDocumentKeydown]);
 
     return children;
 };

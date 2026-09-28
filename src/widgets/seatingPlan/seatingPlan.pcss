@@ -1,0 +1,98 @@
+.seating-plan {
+    --seatingPlanColumns: 1.35fr 1fr;
+    --seatingPlanDirectoryRow: auto;
+
+    display: grid;
+    grid-template-columns: var(--seatingPlanColumns);
+    border: 1px solid var(--wedding-line);
+    border-radius: 8px;
+    overflow: hidden;
+    &__map {
+        padding: clamp(2rem, 3vw, 4rem);
+        background: var(--wedding-surface);
+        min-width: 0;
+    }
+    &__heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        align-items: baseline;
+        margin-bottom: 4rem;
+        font-family: var(--font-source-serif);
+        font-size: 3.5rem;
+    }
+    &__summary {
+        font: 1.4rem var(--font-anonymous);
+        color: var(--wedding-muted);
+    }
+
+    &__hint {
+        margin-block: 2rem 3rem;
+        color: var(--wedding-muted);
+        font-size: 1.5rem;
+    }
+    &__selection {
+        border-top: 1px solid var(--wedding-line);
+        padding-top: 3rem;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        min-height: 11rem;
+    }
+    &__selectionHint {
+        color: var(--wedding-muted);
+        font-size: 1.5rem;
+    }
+    &__selectedName {
+        display: block;
+        font-family: var(--font-source-serif);
+        font-size: 3rem;
+    }
+    &__place {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        background: var(--wedding-sage);
+        color: var(--wedding-paper);
+        font-size: 3rem;
+    }
+    &__directory {
+        grid-row: var(--seatingPlanDirectoryRow);
+        min-width: 0;
+        padding: clamp(2rem, 3vw, 4rem);
+    }
+
+    &__badge {
+        flex-shrink: 0;
+        color: var(--wedding-muted);
+        font-size: 1.25rem;
+    }
+    &__badgeNumber {
+        --seatingPlanBadgeBg: transparent;
+        --seatingPlanBadgeColor: var(--wedding-sage);
+
+        background: var(--seatingPlanBadgeBg);
+
+        display: inline-grid;
+        place-items: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-left: 0.5rem;
+        border: 1px solid var(--wedding-line);
+        border-radius: 50%;
+        color: var(--seatingPlanBadgeColor);
+        font-size: 1.5rem;
+
+        &.isSelected {
+            --seatingPlanBadgeBg: var(--wedding-sage);
+            --seatingPlanBadgeColor: var(--wedding-paper);
+        }
+    }
+    @media (max-width: 900px) {
+        --seatingPlanColumns: 1fr;
+        --seatingPlanDirectoryRow: 1;
+    }
+}

@@ -1,18 +1,19 @@
 import { Section } from '@ui/section';
 import { heroSection } from './mock.tsx';
-import { Banner } from '@ui/banner';
+import { Banner, BannerHeading, BannerDescription } from '@ui/banner';
 
 export const WelcomeSection = () => (
-    <Section extraCN={{ isWelcome: true, isLarge: true, isMobFull: true }}>
+    <Section extraCN={{ isLarge: true, isMobInset: true }}>
         <Banner
+            extraCN={{ isSplit: true }}
             title={heroSection.names}
             image={heroSection.image}
-            children={(
+            children={
                 <>
-                    <h1 className={"h2 align-right"}>{heroSection.title}</h1>
-                    <p className={"width[48]"}>{heroSection.description}</p>
+                    <BannerHeading>{heroSection.title}</BannerHeading>
+                    <BannerDescription>{heroSection.description}</BannerDescription>
                 </>
-            )}
+            }
         />
     </Section>
 );

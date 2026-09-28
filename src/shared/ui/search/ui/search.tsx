@@ -1,11 +1,7 @@
+import { useSearch } from '../model';
 import { Button } from '@ui/button';
-import { useId, useState } from 'react';
-import type { Key } from 'react';
 import { useBEM } from '@lib/bem';
 import type { SearchProps } from '../config/types';
-import '../search.pcss';
-
-const normalize = (value: string) => value.toLocaleLowerCase('ru').replace(/ё/g, 'е').trim();
 
 export const Search = <T,>({
     items,
@@ -23,18 +19,19 @@ export const Search = <T,>({
     resetLabel,
 }: SearchProps<T>) => {
     const { bem } = useBEM('search');
-    const searchId = useId();
-    const [query, setQuery] = useState('');
-    const [selectedKey, setSelectedKey] = useState<Key | null>(null);
-    const terms = normalize(query).split(/\s+/).filter(Boolean);
-    const filtered = items.filter(item => terms.every(term => matches(item, term, normalize)));
-    const reset = () => setQuery('');
+    const { searchId, query, setQuery, selectedKey, setSelectedKey, terms, filtered, reset } = useSearch({
+        items,
+        matches,
+    });
 
     return (
         <div className={bem('', { extraCN, utilCN })}>
-            <label htmlFor={searchId}>{label}</label>
+            <label className={bem('label')} htmlFor={searchId}>
+                {label}
+            </label>
             <div className={bem('input')}>
                 <input
+                    className={bem('field')}
                     id={searchId}
                     type='search'
                     placeholder={placeholder}
@@ -47,7 +44,7 @@ export const Search = <T,>({
                         type='button'
                         onClick={reset}
                         utilCN={[bem('clear')]}
-                        extraCN={{ isSearchClear: true }}
+                        extraCN={{ isIconMuted: true }}
                         motion={false}
                         extraAttrs={{ 'aria-label': 'Очистить поиск' }}
                     >
@@ -60,7 +57,7 @@ export const Search = <T,>({
             </p>
             <div className={bem('results')} id={`${searchId}-results`}>
                 {filtered.length ? (
-                    <ul>
+                    <ul className={bem('list')}>
                         {filtered.map(item => {
                             const key = getKey(item);
                             return (
@@ -79,8 +76,8 @@ export const Search = <T,>({
                 ) : (
                     <div className={bem('empty')}>
                         <strong>{emptyTitle}</strong>
-                        {emptyDescription && <p>{emptyDescription}</p>}
-                        <Button type='button' onClick={reset} extraCN={{ isSearchReset: true }} motion={false}>
+                        {emptyDescription && <p className={bem('description')}>{emptyDescription}</p>}
+                        <Button type='button' onClick={reset} extraCN={{ isCompactBordered: true }} motion={false}>
                             {resetLabel}
                         </Button>
                     </div>

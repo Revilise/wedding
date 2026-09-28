@@ -1,35 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useEffectEvent, useState } from 'react';
 
-export const useCountdown = (count: number = 5, min: number = 2) => {
+export const useCountdown = (count = 5, min = 2, onComplete?: () => void) => {
     const [isEnd, setIsEnd] = useState(true);
     const [time, setTime] = useState(count);
+    const complete = useEffectEvent(() => onComplete?.());
 
     useEffect(() => {
+        if (isEnd) return;
         const timeout = setTimeout(() => {
-            if (isEnd) return;
-
             if (time < min) {
                 setIsEnd(true);
-                clearTimeout(timeout);
-                return;
+                complete();
+            } else {
+                setTime(time - 1);
             }
-
-            setTime(time - 1);
         }, 1000);
+        return () => clearTimeout(timeout);
+    }, [time, isEnd, min]);
 
-        return function () {
-            clearTimeout(timeout);
-        };
-    }, [time, isEnd]);
-
-    const start = () => {
+    const start = useCallback(() => {
         setTime(count);
         setIsEnd(false);
-    };
-
-    const reset = () => {
-        setIsEnd(true);
-    };
-
+    }, [count]);
+    const reset = useCallback(() => setIsEnd(true), []);
     return { start, time, isEnd, reset };
 };

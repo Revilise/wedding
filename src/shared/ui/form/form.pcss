@@ -1,6 +1,6 @@
 .form {
     --formTemplCol: 1fr;
-    --formGap: 1rem;
+    --formGap: 2rem;
 
     --formStepGap: 1rem;
 
@@ -13,12 +13,6 @@
         gap: var(--formGap);
         flex-direction: column;
         display: flex;
-
-        &--isSuccess {
-            height: 100%;
-            place-content: center;
-            place-items: center;
-        }
     }
 
     &__controls {
@@ -41,12 +35,11 @@
         place-items: center;
     }
 
-    .form-error {
-        color: var(--colorRedStage);
-        font-weight: 600;
+    &--isSuccess & {
+        &__step {
+            height: 100%;
+            place-content: center;
+            place-items: center;
+        }
     }
-}
-
-body .form {
-    --formGap: 2rem;
 }

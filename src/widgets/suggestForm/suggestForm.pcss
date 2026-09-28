@@ -1,0 +1,20 @@
+.suggestForm {
+    --suggestFormMemberGap: 3rem;
+    --suggestFormErrorColor: var(--colorRedStage);
+    &__member {
+        display: flex;
+        gap: var(--suggestFormMemberGap);
+        align-items: start;
+        .input {
+            flex: 1;
+            min-width: 0;
+        }
+        .btn {
+            margin-top: 4.5rem;
+        }
+    }
+    &__error {
+        color: var(--suggestFormErrorColor);
+        font-weight: 600;
+    }
+}

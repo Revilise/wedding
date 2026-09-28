@@ -1,23 +1,17 @@
 import { type FC, useEffect, useState } from 'react';
-import type { IFullscreen } from '@features/fullscreen/config/types.ts';
+import type { IFullscreen } from '../config';
 import { useBEM } from '@lib/bem';
 import { AnimatePresence, motion } from 'motion/react';
 import { Button } from '@ui/button';
 import { generateId } from '@lib/random';
 
-export const Fullscreen: FC<IFullscreen> = ({
-    extraCN,
-    utilCN,
-    preview,
-    isOpen: defaultIsOpen = false,
-    children
-}) => {
-    const { bem } = useBEM("fullscreen");
+export const Fullscreen: FC<IFullscreen> = ({ extraCN, utilCN, preview, isOpen: defaultIsOpen = false, children }) => {
+    const { bem } = useBEM('fullscreen');
     const [isOpen, setIsOpen] = useState(defaultIsOpen);
     const [layoutId] = useState(() => generateId());
 
     function handleKeydown(e: KeyboardEvent) {
-        if (e.key.toLowerCase() === "escape") {
+        if (e.key.toLowerCase() === 'escape') {
             setIsOpen(false);
         }
     }
@@ -27,7 +21,7 @@ export const Fullscreen: FC<IFullscreen> = ({
 
         return () => {
             document.removeEventListener('keydown', handleKeydown);
-        }
+        };
     }, []);
 
     return (
@@ -49,7 +43,7 @@ export const Fullscreen: FC<IFullscreen> = ({
                         <div className={bem('modal')}>
                             <div className={bem('close')}>
                                 <Button
-                                    extraCN={{ isClosePopover: true }}
+                                    extraCN={{ isSquareGhost: true }}
                                     onClick={() => setIsOpen(false)}
                                     label={'X'}
                                 />
@@ -61,4 +55,4 @@ export const Fullscreen: FC<IFullscreen> = ({
             </AnimatePresence>
         </div>
     );
-}
+};

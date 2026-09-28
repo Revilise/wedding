@@ -1,14 +1,9 @@
 import { Button } from '@ui/button';
 import { type FC, useState } from 'react';
 import { useBEM } from '@lib/bem';
-import { AccordionContext, useAccordionContext } from '../config/context.ts';
-import type { AccordionBreakpoint, IAccordion } from '../config/types.ts';
-
-const BP_MODIFIER: Record<AccordionBreakpoint, string> = {
-    mobile: 'isMobileOnly',
-    tablet: 'isTabletOnly',
-    smallMobile: 'isSmallMobileOnly',
-};
+import { AccordionContext, BP_MODIFIER } from '../config';
+import { useAccordionContext } from '../model';
+import type { IAccordion } from '../config/types.ts';
 
 export const Accordion: FC<IAccordion> = ({
     extraCN,
@@ -33,7 +28,7 @@ export const Accordion: FC<IAccordion> = ({
                         utilCN={[bem('trigger')]}
                         type='button'
                         onClick={() => setIsOpen(o => !o)}
-                        extraCN={{ isAccordion: true }}
+                        extraCN={{ isSpacedRow: true }}
                         motion={false}
                         extraAttrs={{ 'aria-expanded': isOpen }}
                     >

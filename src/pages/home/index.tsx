@@ -1,6 +1,7 @@
 'use server';
 
-import { Layout } from '@ui/layout';
+import { header } from './config/header';
+import { Layout } from '@widgets/layout';
 import {
     CommunitySection,
     DressCodeSection,
@@ -18,7 +19,7 @@ import { footerNavigation } from './config/footerNavigation.ts';
 
 export const HomePage = () => {
     return (
-        <Layout footerNavigation={footerNavigation}>
+        <Layout extraCN={{ isSpaced: true }} header={header} footerNavigation={footerNavigation}>
             <WelcomeSection />
             <GallerySection />
             <TimePlaceSection />

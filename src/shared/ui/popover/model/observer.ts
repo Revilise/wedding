@@ -1,7 +1,5 @@
-import type { IPopoverObserver } from '../config/types';
+import type { IPopoverObserver, PopoverAction } from '../config/types';
 import Scroll from '@lib/scroll';
-
-type Actions = 'show' | 'hide';
 
 /**
  * Реализует паттерн "наблюдатель" для управления состояниями popover'ов.
@@ -20,7 +18,7 @@ class Observer implements IPopoverObserver {
      * id — уникальный идентификатор popover'а.
      * action — действие: "show" или "hide".
      */
-    notify(id: string, action: Actions) {
+    notify(id: string, action: PopoverAction) {
         const callbacks = this.collection.get(id);
         if (!callbacks?.size) return;
 
@@ -43,7 +41,7 @@ class Observer implements IPopoverObserver {
      * Уведомляет всех подписчиков о действии сразу.
      * action — действие, применяемое ко всем подписчикам.
      */
-    notifyAll(action: Actions) {
+    notifyAll(action: PopoverAction) {
         const ids = [...this.collection.keys()];
 
         for (const id of ids) {

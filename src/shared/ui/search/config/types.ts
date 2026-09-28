@@ -14,3 +14,5 @@ export interface SearchProps<T> extends IComponent {
     emptyDescription?: string;
     resetLabel: string;
 }
+
+export type SearchModelOptions<T> = Pick<SearchProps<T>, 'items' | 'matches'>;

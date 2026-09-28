@@ -1,27 +1,30 @@
 .zoom {
+    --zoomContainerBg: transparent;
+    --zoomContainerBorder: 0;
+    --zoomContainerRadius: 0;
+    --zoomContainerPad: 0;
+    --zoomImageWidth: auto;
+
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
 
-    &--isOutline & {
-        &__container {
-            border: 1px solid var(--colorBlackout30);
-            border-radius: 2rem;
-            padding: 2rem;
-        }
-    }
-
     &__container {
         width: 100%;
         overflow: hidden;
         touch-action: none;
+        background: var(--zoomContainerBg);
+        border: var(--zoomContainerBorder);
+        border-radius: var(--zoomContainerRadius);
+        padding: var(--zoomContainerPad);
     }
 
     &__image {
         display: block;
         max-width: 100%;
+        width: var(--zoomImageWidth);
         height: auto;
     }
 
@@ -29,5 +32,20 @@
         display: flex;
         gap: 1rem;
         justify-content: center;
+    }
+
+    &--isOutline {
+        --zoomContainerBorder: 1px solid var(--colorBlackout30);
+        --zoomContainerRadius: 2rem;
+        --zoomContainerPad: 2rem;
+    }
+
+    &--isPaper {
+        --zoomContainerBg: var(--wedding-paper);
+        --zoomContainerRadius: 4px;
+    }
+
+    &--isFullWidth {
+        --zoomImageWidth: 100%;
     }
 }

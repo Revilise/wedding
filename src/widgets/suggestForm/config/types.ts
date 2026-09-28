@@ -18,3 +18,15 @@ export type SuggestFormData = {
     participants: SuggestParticipants | undefined;
     teamMembers: SuggestTeamMember[];
 };
+
+export interface SuggestResponse {
+    success: boolean;
+}
+
+export interface SuggestFormTeamMembersProps {
+    fields: import('react-hook-form').FieldArrayWithId<SuggestFormData, 'teamMembers'>[];
+    register: import('react-hook-form').UseFormRegister<SuggestFormData>;
+    errors: import('react-hook-form').FieldErrors<SuggestFormData>;
+    addTeamMember: () => void;
+    deleteTeamMember: (index: number) => void;
+}

@@ -1,4 +1,7 @@
-import type { FooterNavItem } from '@ui/layout/config/types';
+export type FooterNavItem = {
+    href: string;
+    label: string;
+};
 
 import type { IComponent } from '@shared/types/component.ts';
 

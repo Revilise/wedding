@@ -9,3 +9,7 @@ export interface IAccordion extends IComponent {
     label: ReactNode;
     defaultOpen?: boolean;
 }
+
+export interface AccordionContextValue {
+    breakpoint?: AccordionBreakpoint;
+}

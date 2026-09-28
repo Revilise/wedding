@@ -1,6 +1,6 @@
 export function filterObject<T extends object>(
     object: T,
-    expression: ({ key, value }: { key: string, value: any }) => boolean
+    expression: ({ key, value }: { key: string; value: unknown }) => boolean
 ): Partial<T> {
     return Object.fromEntries(
         Object.entries(object).filter(([key, value]) => expression({ key, value }))

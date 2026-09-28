@@ -1,30 +1,17 @@
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect } from 'react';
 
-import {
-    type PanzoomOptions,
-    type PanzoomInstance,
-    Panzoom,
-} from "@fancyapps/ui/dist/panzoom/";
-import "@fancyapps/ui/dist/panzoom/panzoom.css";
+import { type PanzoomOptions, type PanzoomInstance, Panzoom } from '@fancyapps/ui/dist/panzoom/';
 
-import { canUseDOM } from "@fancyapps/ui/dist/utils/canUseDOM.js";
-import { isEqual } from "@fancyapps/ui/dist/utils/isEqual.js";
+import { canUseDOM } from '@fancyapps/ui/dist/utils/canUseDOM.js';
+import { isEqual } from '@fancyapps/ui/dist/utils/isEqual.js';
 
-export type PanzoomContainerRefType = <ContainerElement extends HTMLElement>(
-    el: ContainerElement | null
-) => void;
+import type { PanzoomResult } from '../config';
 
-export type usePanzoom = [PanzoomContainerRefType, PanzoomInstance | undefined];
-
-export function usePanzoom(
-    options: Partial<PanzoomOptions> = {}
-): usePanzoom {
+export function usePanzoom(options: Partial<PanzoomOptions> = {}): PanzoomResult {
     const storedOptions = useRef(options);
 
     const [container, setContainer] = useState<HTMLElement | null>(null);
-    const [panzoomInstance, setPanzoomInstance] = useState<
-        PanzoomInstance | undefined
-    >(undefined);
+    const [panzoomInstance, setPanzoomInstance] = useState<PanzoomInstance | undefined>(undefined);
 
     const reInit = useCallback(() => {
         if (panzoomInstance) {
@@ -41,10 +28,7 @@ export function usePanzoom(
 
     useEffect(() => {
         if (canUseDOM() && container) {
-            const newPanzoomInstance = Panzoom(
-                container,
-                storedOptions.current
-            ).init();
+            const newPanzoomInstance = Panzoom(container, storedOptions.current).init();
 
             setPanzoomInstance(newPanzoomInstance);
 

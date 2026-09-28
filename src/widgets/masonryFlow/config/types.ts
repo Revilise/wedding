@@ -8,3 +8,5 @@ export interface IMasonryFlow {
     /** Доп. класс на корневой контейнер */
     className?: string;
 }
+
+export type MasonryFlowModelOptions = Required<Pick<IMasonryFlow, 'columnsCountBreakPoints' | 'gutterBreakPoints'>>;

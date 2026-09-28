@@ -5,3 +5,8 @@ export type bemOptions = {
     extraCN?: Record<string, boolean>;
     utilCN?: Array<string>;
 };
+
+export type bemArguments = {
+    blockCN: string;
+    options: Omit<bemOptions, 'baseCN'>;
+};

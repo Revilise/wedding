@@ -1,4 +1,4 @@
-import type { ICard } from '@ui/card/config/types';
+import type { ICard } from '@ui/card';
 
 export interface IOutfitLook {
     id: string;

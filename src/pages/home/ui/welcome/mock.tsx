@@ -1,11 +1,12 @@
+import { BannerDisplayTitle } from '@ui/banner';
 import CoupleImage from '@images/banners/rings.jpg';
 
 export const heroSection = {
     names: (
-        <span className={'h0'}>
+        <BannerDisplayTitle>
             Анастасия
             <br />& Георгий
-        </span>
+        </BannerDisplayTitle>
     ),
     image: {
         alt: 'Анастасия и Георгий',

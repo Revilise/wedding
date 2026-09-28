@@ -66,7 +66,7 @@ export const Palette: FC<IPalette> = ({ extraCN, utilCN, colors = [] }) => {
                             key={item.hex}
                             type='button'
                             onClick={() => select(index)}
-                            extraCN={{ isPaletteOption: true }}
+                            extraCN={{ isCompactOutline: true }}
                             motion={false}
                             extraAttrs={{ 'aria-pressed': active === index }}
                         >

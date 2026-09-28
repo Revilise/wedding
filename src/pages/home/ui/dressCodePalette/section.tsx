@@ -6,7 +6,7 @@ export const DressCodePaletteSection = () => {
     return (
         <Section
             id={dressCodeSection.anchorId}
-            extraCN={{ isDressCode: true }}
+            extraCN={{ isStacked: true }}
             heading={
                 <>
                     <h2 className='h2'>{dressCodeSection.heading}</h2>

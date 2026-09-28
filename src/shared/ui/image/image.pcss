@@ -1,54 +1,81 @@
 .image {
-    --imageBorderRad: 4rem;
+    --imageBorderRad: 4px;
+    --imageHeight: auto;
+    --imageWidth: auto;
+    --imageMaxHeight: none;
+    --imageAspectRatio: auto;
+    --imagePictureHeight: 100%;
+    --imagePictureDisplay: inline;
+    --imagePictureTransform: none;
+    --imagePictureTransformCur: var(--imagePictureTransform);
+    --imagePictureTransformHover: scale(1.025);
+    --imagePictureTransition: none;
+
+    border-radius: var(--imageBorderRad);
+    height: var(--imageHeight);
+    width: var(--imageWidth);
+    max-height: var(--imageMaxHeight);
+    aspect-ratio: var(--imageAspectRatio);
     overflow: hidden;
     user-select: none;
 
-    img {
+    &__picture {
         border-radius: var(--imageBorderRad);
         object-fit: cover;
         object-position: center;
-        height: 100%;
+        height: var(--imagePictureHeight);
         width: 100%;
+        display: var(--imagePictureDisplay);
+        transform: var(--imagePictureTransformCur);
+        transition: var(--imagePictureTransition);
     }
 
     &--isFullHeight {
-        height: 100%;
+        --imageHeight: 100%;
     }
 
     &--isHeight280 {
-        height: 35rem;
+        --imageHeight: 35rem;
     }
 
     &--isAspect\[300\/470\] {
-        aspect-ratio: 300 / 470;
-        max-height: 58.75rem;
-        width: 100%;
+        --imageAspectRatio: 300 / 470;
+        --imageMaxHeight: 58.75rem;
+        --imageWidth: 100%;
     }
 
     &--isAspect\[390\/450\] {
-        aspect-ratio: 390 / 450;
-        max-height: 60rem;
+        --imageAspectRatio: 390 / 450;
+        --imageMaxHeight: 60rem;
     }
 
-    /* Естественная высота для masonry-колонок (MasonryFlow) */
     &--isMasonryFlow {
-        width: 100%;
-
-        img {
-            height: auto;
-            display: block;
-        }
+        --imageWidth: 100%;
+        --imagePictureHeight: auto;
+        --imagePictureDisplay: block;
 
         @media (--mobile) {
-            aspect-ratio: 1;
-            img {
-                height: 100%;
+            --imageAspectRatio: 1;
+            --imagePictureHeight: 100%;
+        }
+    }
+
+    &--isLandscape {
+        --imageAspectRatio: 4 / 3;
+    }
+
+    &--isPortrait {
+        --imageAspectRatio: 4 / 5;
+    }
+
+    &--isHoverZoom {
+        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+            --imagePictureTransition: transform 650ms cubic-bezier(0.2, 0.65, 0.3, 1);
+
+            &.isHover,
+            &:hover {
+                --imagePictureTransformCur: var(--imagePictureTransformHover);
             }
         }
     }
-}
-
-body .image {
-    --imageBorderRad: 4px;
-    border-radius: 4px;
 }

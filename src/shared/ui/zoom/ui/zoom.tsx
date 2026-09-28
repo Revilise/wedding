@@ -26,7 +26,7 @@ export const Zoom: FC<IZoom> = ({ extraCN, utilCN, image, width, height, showCon
                     <Button
                         type='button'
                         onClick={() => panzoomInstance?.execute(PanzoomAction.ZoomIn)}
-                        extraCN={{ isZoom: true }}
+                        extraCN={{ isRound: true }}
                         motion={false}
                         extraAttrs={{ 'aria-label': 'Zoom in' }}
                     >
@@ -35,7 +35,7 @@ export const Zoom: FC<IZoom> = ({ extraCN, utilCN, image, width, height, showCon
                     <Button
                         type='button'
                         onClick={() => panzoomInstance?.execute(PanzoomAction.ZoomOut)}
-                        extraCN={{ isZoom: true }}
+                        extraCN={{ isRound: true }}
                         motion={false}
                         extraAttrs={{ 'aria-label': 'Zoom out' }}
                     >

@@ -1,4 +1,3 @@
-export * from "./ui";
-export * from "./model/handlers";
-export type { FeedbackFormData, IFeedbackForm } from "./config/types";
-
+export * from './ui';
+export * from './api/handlers';
+export type { FeedbackFormData, IFeedbackForm } from './config/types';

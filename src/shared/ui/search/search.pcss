@@ -1,6 +1,6 @@
 .search {
     min-width: 0;
-    & > label {
+    &__label {
         display: block;
         font-family: var(--font-source-serif);
         font-size: 3.5rem;
@@ -9,7 +9,7 @@
     &__input {
         position: relative;
     }
-    &__input input {
+    &__field {
         width: 100%;
         min-height: 52px;
         padding: 1.5rem 5.5rem 1.5rem 1.5rem;
@@ -19,7 +19,7 @@
         color: var(--wedding-ink);
         font: 16px var(--font-anonymous);
     }
-    &__input input::-webkit-search-cancel-button {
+    &__field::-webkit-search-cancel-button {
         appearance: none;
     }
     &__clear {
@@ -38,7 +38,7 @@
         scrollbar-width: thin;
         scrollbar-color: var(--wedding-line) transparent;
     }
-    &__results ul {
+    &__list {
         padding: 0;
         margin: 0;
         list-style: none;
@@ -47,12 +47,12 @@
         padding-block: 3rem;
         font-size: 1.75rem;
     }
-    &__empty p {
+    &__description {
         margin-block: 1rem 2rem;
         color: var(--wedding-muted);
     }
 
-    input:focus-visible {
+    &__field:focus-visible {
         outline: 2px solid var(--wedding-sage);
         outline-offset: -2px;
     }
